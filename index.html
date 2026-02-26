@@ -1026,32 +1026,239 @@
   }
   footer a { color: #555; text-decoration: none; }
   footer a:hover { color: var(--red); }
+  /* ── DESKTOP: nav links always visible ──────────────────── */
+  @media (min-width: 901px) {
+    .nav-links { display: flex !important; }
+    .nav-hamburger { display: none !important; }
+  }
+
+  /* ── HAMBURGER BUTTON ───────────────────────────────────── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.4rem;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--rule);
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── MOBILE MENU OVERLAY ─────────────────────────────────── */
+  @media (max-width: 900px) {
+    .nav-hamburger { display: flex; }
+
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 56px;
+      left: 0; right: 0;
+      background: var(--ink);
+      border-top: 2px solid var(--red);
+      z-index: 99;
+      flex-direction: column;
+      height: calc(100vh - 56px);
+      overflow-y: auto;
+      padding: 0.5rem 0 2rem;
+    }
+    .nav-links.open { display: flex; }
+
+    .nav-links > li {
+      height: auto;
+      flex-direction: column;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .nav-links > li > a {
+      font-size: 0.7rem;
+      padding: 0.9rem 1.5rem;
+      height: auto;
+      color: var(--rule);
+      justify-content: space-between;
+    }
+    .nav-dropdown {
+      display: block !important;
+      position: static;
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      background: #0a0a0a;
+      padding: 0.25rem 0;
+      min-width: 0;
+    }
+    .nav-dropdown a {
+      padding: 0.65rem 2rem;
+      font-size: 0.62rem;
+    }
+  }
+
+  /* ── BANNER ──────────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .recent-banner-inner { padding: 0.5rem 1rem; gap: 0.5rem; }
+    .recent-banner-text {
+      font-size: 0.58rem;
+      letter-spacing: 0.06em;
+      text-align: left;
+    }
+    body { padding-top: 44px; }
+  }
+
+  /* ── HERO ────────────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .hero-content { padding: 3rem 1.5rem 2rem; }
+    .hero h1 { font-size: 2.8rem; }
+    .hero-subtitle { font-size: 1rem; margin: 1.25rem 0 2rem; }
+    .hero-meta { gap: 1.5rem; }
+    .hero-bottom { padding: 1.25rem 1.5rem; gap: 1rem; flex-direction: column; align-items: flex-start; }
+    .scroll-hint { margin-left: 0; }
+  }
+
+  /* ── SECTIONS & GENERAL LAYOUT ───────────────────────────── */
+  @media (max-width: 900px) {
+    section { padding: 3rem 1.5rem; }
+    #overview > .inner,
+    #state-proceedings > .inner,
+    #arguments > .inner,
+    #architecture .inner,
+    #admissions .inner,
+    #systemic-evidence .inner,
+    #procedural-maze .inner,
+    #complete-docket .inner,
+    #stakes .inner,
+    #timeline .inner { padding: 3rem 1.5rem; }
+
+    /* Part dividers */
+    [style*="padding: 1.25rem 4rem"] {
+      padding-left: 1.5rem !important;
+      padding-right: 1.5rem !important;
+    }
+  }
+
+  /* ── GRIDS → SINGLE COLUMN ───────────────────────────────── */
+  @media (max-width: 900px) {
+    .overview-grid,
+    .parties-grid,
+    .arguments-layout,
+    .evidence-grid,
+    .amendment-cards,
+    .status-grid,
+    .proceedings-grid,
+    .precedent-grid { grid-template-columns: 1fr !important; }
+
+    /* Inline grids set via style attributes */
+    [style*="grid-template-columns: 1fr 1fr"],
+    [style*="grid-template-columns: 2fr 1fr"],
+    [style*="grid-template-columns: 1fr 1fr 1fr"],
+    [style*="grid-template-columns: repeat(2"],
+    [style*="grid-template-columns: repeat(3"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  /* ── ADMISSION CARDS ─────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .admission-card { grid-template-columns: 1fr !important; }
+    .admission-source { writing-mode: horizontal-tb; transform: none; margin-bottom: 0.5rem; }
+    .admission-analysis { max-width: 100%; border-left: none; padding-left: 0; border-top: 1px solid #2a2a2a; padding-top: 1rem; }
+  }
+
+  /* ── TIMELINE ────────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .timeline-wrapper { padding-left: 1.75rem; }
+    .timeline-entry::before { left: -2.1rem; }
+    .timeline-entry.critical::before { left: -2.3rem; }
+    .entry-title { font-size: 1.1rem; }
+
+    /* Procedural docket inline grids */
+    [style*="grid-template-columns: 150px 1fr"],
+    [style*="grid-template-columns: 140px 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+    [style*="grid-template-columns: 150px 1fr"] > div:first-child,
+    [style*="grid-template-columns: 140px 1fr"] > div:first-child {
+      text-align: left !important;
+      padding-right: 0 !important;
+    }
+  }
+
+  /* ── SEVEN-EVENT TABLE ───────────────────────────────────── */
+  @media (max-width: 900px) {
+    table { font-size: 0.7rem !important; }
+    table td, table th { padding: 0.4rem 0.5rem !important; }
+    /* Allow horizontal scroll on the table wrapper */
+    [style*="overflow-x: auto"] { -webkit-overflow-scrolling: touch; }
+  }
+
+  /* ── PC CHAIN ────────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .pc-chain { gap: 0.4rem; }
+    .pc-chain-item { font-size: 0.55rem; padding: 0.4rem 0.6rem; }
+    .pc-chain-arrow { font-size: 0.8rem; }
+  }
+
+  /* ── EXHIBIT CARDS ───────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .evidence-grid { grid-template-columns: 1fr !important; }
+  }
+
+  /* ── STATUS DOCKET SIDEBAR ───────────────────────────────── */
+  @media (max-width: 900px) {
+    .status-docket { margin-top: 2rem; }
+    .docket-entry { font-size: 0.75rem; }
+  }
+
+  /* ── PULL QUOTE ──────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .pull-quote { padding: 2rem 1.5rem; }
+    .pull-quote::before { font-size: 4rem; top: -0.5rem; left: 1rem; }
+    .pull-quote p { font-size: 1rem; padding-top: 1.5rem; }
+  }
+
+  /* ── HOW TO USE / GLOBAL TOGGLE BAR ─────────────────────── */
+  @media (max-width: 900px) {
+    [style*="padding: 1.75rem 4rem"] { padding: 1.25rem 1.5rem !important; }
+    [style*="padding: 1rem 4rem"] { padding: 0.75rem 1.5rem !important; }
+  }
+
+  /* ── FOOTER ──────────────────────────────────────────────── */
   @media (max-width: 900px) {
     footer { padding: 1rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
   }
 
-  /* RESPONSIVE */
+  /* ── ARCH DIAGRAM ────────────────────────────────────────── */
   @media (max-width: 900px) {
-    nav { padding: 0 1.5rem; }
-    .nav-links { display: none; }
-    section { padding: 4rem 1.5rem; }
-    .hero-content { padding: 4rem 1.5rem 2rem; }
-    .hero-bottom { padding: 1.5rem; }
-    .overview-grid, .parties-grid, .arguments-layout,
-    .evidence-grid, .amendment-cards, .status-grid { grid-template-columns: 1fr; }
-    .precedent-grid { grid-template-columns: 1fr; }
-    .admission-card { grid-template-columns: 1fr; }
-    .admission-source { writing-mode: horizontal-tb; transform: none; }
-    footer { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 3rem; }
+    .arch-grid { gap: 2rem; }
   }
 
-  /* MYSTERY STEP INTERACTIVE */
-  @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(192, 57, 43, 0.7); }
-    50% { box-shadow: 0 0 0 15px rgba(192, 57, 43, 0); }
+  /* ── SECTION HEADERS ─────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .section-title { font-size: 1.75rem; }
+    .section-subtitle { display: none; }
   }
-  @media (max-width: 768px) {
+
+  /* ── MANDAMUS META ───────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .mandamus-meta { gap: 1rem; }
+    .mandamus-meta-item { min-width: 45%; }
+  }
+
+  /* ── EXECUTIVE SUMMARY ───────────────────────────────────── */
+  @media (max-width: 900px) {
+    [style*="padding: 3rem 4rem"],
+    [style*="padding: 2rem 4rem"] {
+      padding-left: 1.5rem !important;
+      padding-right: 1.5rem !important;
+    }
   }
 
   /* LEAD PARAGRAPH */
@@ -1075,16 +1282,51 @@
     color: var(--paper);
     font-family: 'DM Mono', monospace;
     font-size: 0.65rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    text-align: center;
-    padding: 0.5rem 2rem;
     position: fixed;
     top: 56px;
     left: 0; right: 0;
     z-index: 98;
   }
-  .recent-banner strong { font-weight: 600; color: #ffd; }
+  .recent-banner-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem 1.5rem 0.5rem 2rem;
+    max-width: 100%;
+  }
+  .recent-banner-text {
+    flex: 1;
+    text-align: center;
+    line-height: 1.5;
+  }
+  .recent-banner-text strong {
+    font-weight: 600;
+    color: #ffd;
+  }
+  .recent-banner-close {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+    line-height: 1;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 0;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .recent-banner-close:hover {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border-color: rgba(255,255,255,0.6);
+  }
   body { padding-top: 32px; }
 
   /* ARCHITECTURE OF PRIVACY */
@@ -1205,7 +1447,10 @@
 <!-- NAV -->
 <nav>
   <div class="nav-brand">Becker v. DCYF et al. — Case Record</div>
-  <ul class="nav-links">
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
     <li>
       <a href="#overview">The Violation ▾</a>
       <div class="nav-dropdown">
@@ -1258,8 +1503,13 @@
 </nav>
 
 <!-- RECENT DEVELOPMENTS BANNER -->
-<div class="recent-banner">
-  <strong>Mar. 5, 2026 — Objections Drafted:</strong> Plaintiff's objections to R&amp;R (Doc. 46) pending filing — contests official-capacity dismissal &amp; raises two unaddressed Fourth Amendment theories · Mandamus hearing week of Mar. 2 · DHHS response due Mar. 11
+<div class="recent-banner" id="recent-banner">
+  <div class="recent-banner-inner">
+    <span class="recent-banner-text">
+      <strong>Feb. 19 — Fourth Amendment Claim Survives:</strong> Magistrate Judge recommends denying MTD — individual-capacity claim proceeds &nbsp;·&nbsp; Plaintiff's objections to official-capacity dismissal drafted Mar. 5 (pending filing) &nbsp;·&nbsp; Mandamus hearing ~Mar. 2
+    </span>
+    <button class="recent-banner-close" onclick="document.getElementById('recent-banner').style.display='none'; document.body.style.paddingTop='0';" aria-label="Dismiss">&times;</button>
+  </div>
 </div>
 
 <!-- HERO -->
@@ -5716,6 +5966,43 @@
     // offsetTop so the existing listener picks them up automatically.
   }, { passive: true });
 
+})();
+</script>
+
+<script>
+// ── MOBILE NAV HAMBURGER ──────────────────────────────────────────────────────
+(function() {
+  const btn   = document.getElementById('nav-hamburger');
+  const links = document.getElementById('nav-links');
+  if (!btn || !links) return;
+
+  btn.addEventListener('click', function() {
+    const open = links.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open);
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  // Close menu when any nav link is clicked
+  links.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      links.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Close on outside tap
+  document.addEventListener('click', function(e) {
+    if (!btn.contains(e.target) && !links.contains(e.target)) {
+      links.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+  });
 })();
 </script>
 
