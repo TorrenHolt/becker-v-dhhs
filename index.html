@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1235,6 +1236,12 @@
     footer { padding: 1rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
   }
 
+  /* ── CTA / GET INVOLVED ──────────────────────────────────── */
+  @media (max-width: 900px) {
+    #get-involved > div { padding: 3rem 1.5rem; }
+    #get-involved [style*="grid-template-columns: repeat(3"] { grid-template-columns: 1fr !important; }
+  }
+
   /* ── ARCH DIAGRAM ────────────────────────────────────────── */
   @media (max-width: 900px) {
     .arch-grid { gap: 2rem; }
@@ -1987,6 +1994,15 @@
     </div>
     <div class="timeline-wrapper">
 
+      <div style="margin: 3rem 0 2rem -3rem; padding: 1.25rem 1.5rem 1.25rem 3rem; background: rgba(192,57,43,0.07); border-top: 1px solid rgba(192,57,43,0.25); border-bottom: 1px solid rgba(192,57,43,0.1);">
+        <div style="display: flex; align-items: baseline; gap: 1.25rem; flex-wrap: wrap;">
+          <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); flex-shrink: 0;">Phase I</span>
+          <span style="font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--paper); line-height: 1.2;">The Refusal</span>
+          <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase;">October 4–6, 2024</span>
+        </div>
+        <p style="font-size: 0.8rem; color: #666; margin-top: 0.5rem; font-style: italic; line-height: 1.6;">Becker explicitly refuses home entry on tape. McKenney acknowledges his right — then deploys police as a proxy the next morning.</p>
+      </div>
+
       <div class="timeline-entry critical">
         <div class="entry-date">October 4, 2024</div>
         <div class="entry-title">First Parent Contact — Recorded Meeting</div>
@@ -2006,6 +2022,15 @@
           <span class="entry-tag tag-critical" style="margin-left: 0.5rem;">Contact Log #20 — McKenney / MPD</span>
           <span class="entry-tag tag-refusal" style="margin-left: 0.5rem;">No Court Order Sought</span>
         </div>
+      </div>
+
+      <div style="margin: 3rem 0 2rem -3rem; padding: 1.25rem 1.5rem 1.25rem 3rem; background: rgba(192,57,43,0.07); border-top: 1px solid rgba(192,57,43,0.25); border-bottom: 1px solid rgba(192,57,43,0.1);">
+        <div style="display: flex; align-items: baseline; gap: 1.25rem; flex-wrap: wrap;">
+          <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); flex-shrink: 0;">Phase II</span>
+          <span style="font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--paper); line-height: 1.2;">The Safety Plan & Coercion</span>
+          <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase;">October 7, 2024</span>
+        </div>
+        <p style="font-size: 0.8rem; color: #666; margin-top: 0.5rem; font-style: italic; line-height: 1.6;">A safety plan built on disputed facts is issued under threat of child removal. Becker refuses to sign. The family is displaced the same afternoon.</p>
       </div>
 
       <div class="timeline-entry">
@@ -2058,6 +2083,15 @@
           <span class="entry-tag tag-coercion" style="margin-left: 0.5rem;">Promise of Morning Contact — Broken</span>
           <span class="entry-tag tag-critical" style="margin-left: 0.5rem;">10-7-24 Vermette Narrative</span>
         </div>
+      </div>
+
+      <div style="margin: 3rem 0 2rem -3rem; padding: 1.25rem 1.5rem 1.25rem 3rem; background: rgba(192,57,43,0.07); border-top: 1px solid rgba(192,57,43,0.25); border-bottom: 1px solid rgba(192,57,43,0.1);">
+        <div style="display: flex; align-items: baseline; gap: 1.25rem; flex-wrap: wrap;">
+          <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); flex-shrink: 0;">Phase III</span>
+          <span style="font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--paper); line-height: 1.2;">The Blackout & Coerced Entry</span>
+          <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase;">October 8–12, 2024</span>
+        </div>
+        <p style="font-size: 0.8rem; color: #666; margin-top: 0.5rem; font-style: italic; line-height: 1.6;">DCYF goes silent for 72+ hours while the family is homeless. The crisis culminates in consent extracted as the price of bringing a sick child home from a freezing campsite.</p>
       </div>
 
       <div class="timeline-entry">
@@ -2113,6 +2147,15 @@
         </div>
       </div>
 
+      <div style="margin: 3rem 0 2rem -3rem; padding: 1.25rem 1.5rem 1.25rem 3rem; background: rgba(192,57,43,0.07); border-top: 1px solid rgba(192,57,43,0.25); border-bottom: 1px solid rgba(192,57,43,0.1);">
+        <div style="display: flex; align-items: baseline; gap: 1.25rem; flex-wrap: wrap;">
+          <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); flex-shrink: 0;">Phase IV</span>
+          <span style="font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--paper); line-height: 1.2;">Return, Second Entry & Warrant Rebuke</span>
+          <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase;">October 17 – November 7, 2024</span>
+        </div>
+        <p style="font-size: 0.8rem; color: #666; margin-top: 0.5rem; font-style: italic; line-height: 1.6;">McKenney returns from vacation, goes silent for seven days, then enters the private stairwell unannounced. A week later, the landlord turns her away at the door — telling her she needs a warrant.</p>
+      </div>
+
       <div class="timeline-entry">
         <div class="entry-date">October 8, 2024</div>
         <div class="entry-title">McKenney Leaves on Vacation; Code Enforcement Request Documented</div>
@@ -2160,6 +2203,15 @@
           <span class="entry-tag tag-critical" style="margin-left: 0.5rem;">Warrant Requirement Confirmed at the Door</span>
           <span class="entry-tag tag-critical" style="margin-left: 0.5rem;"><a href="#idx-8" style="color: var(--gold); text-decoration: none; border-bottom: 1px dotted rgba(184,134,11,0.5); font-size: inherit;" title="Jump to Exhibit 8 in Exhibit Index">Exhibit 8</a></span>
         </div>
+      </div>
+
+      <div style="margin: 3rem 0 2rem -3rem; padding: 1.25rem 1.5rem 1.25rem 3rem; background: rgba(192,57,43,0.07); border-top: 1px solid rgba(192,57,43,0.25); border-bottom: 1px solid rgba(192,57,43,0.1);">
+        <div style="display: flex; align-items: baseline; gap: 1.25rem; flex-wrap: wrap;">
+          <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); flex-shrink: 0;">Phase V</span>
+          <span style="font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--paper); line-height: 1.2;">Federal Case, Landmark Ruling & AAU Appeals</span>
+          <span style="font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase;">December 2024 – February 2026</span>
+        </div>
+        <p style="font-size: 0.8rem; color: #666; margin-top: 0.5rem; font-style: italic; line-height: 1.6;">A federal complaint survives screening. An ALJ rules that 10,500 URC findings are appealable. The Magistrate Judge recommends denying the motion to dismiss. Three administrative appeals and a mandamus action run in parallel.</p>
       </div>
 
       <div class="timeline-entry">
@@ -5553,6 +5605,60 @@
   </div>
 </section>
 
+
+<!-- CALL TO ACTION -->
+<section id="get-involved" style="background: var(--ink); color: var(--paper); padding: 0;">
+  <div style="max-width: 1100px; margin: 0 auto; padding: 6rem 4rem;">
+
+    <div class="section-header" style="border-bottom-color: #2a2a2a;">
+      <span class="section-number">Take Action</span>
+      <h2 class="section-title" style="color: var(--paper);">Get Involved</h2>
+    </div>
+
+    <p style="font-size: 1.05rem; color: #a0998e; line-height: 1.8; max-width: 720px; margin-bottom: 4rem;">
+      This case is one family's record. But the systemic issues it documents — unappealable findings, no warrant tracking, no due process — affect thousands of New Hampshire families. If any of the below applies to you, please reach out.
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+
+      <!-- NH Families -->
+      <div style="padding: 2rem; border: 1px solid #2a2a2a; background: #111; position: relative;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--red);"></div>
+        <div style="font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 1.25rem;">NH Families</div>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--paper); margin-bottom: 1rem; line-height: 1.3;">Did DCYF issue you a URC finding without findings of fact or notice of appeal rights?</h3>
+        <p style="font-size: 0.875rem; color: #a0998e; line-height: 1.75; margin-bottom: 1.5rem;">
+          A September 2025 ALJ ruling confirmed these findings <em>are</em> appealable — contrary to what DCYF has told families for years. If you received an Unfounded with Reasonable Concern letter and were told you had no recourse, that may have been wrong.
+        </p>
+        <a href="mailto:[URC-FAMILIES-EMAIL]" style="display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); border: 1px solid rgba(192,57,43,0.5); padding: 0.6rem 1.1rem; text-decoration: none; transition: background 0.15s, border-color 0.15s;" onmouseover="this.style.background='rgba(192,57,43,0.1)';this.style.borderColor='var(--red)'" onmouseout="this.style.background='';this.style.borderColor='rgba(192,57,43,0.5)'">Contact Us ↗</a>
+      </div>
+
+      <!-- Media -->
+      <div style="padding: 2rem; border: 1px solid #2a2a2a; background: #111; position: relative;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gold);"></div>
+        <div style="font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem;">Press & Media</div>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--paper); margin-bottom: 1rem; line-height: 1.3;">Covering child welfare, Fourth Amendment rights, or administrative accountability in New Hampshire?</h3>
+        <p style="font-size: 0.875rem; color: #a0998e; line-height: 1.75; margin-bottom: 1.5rem;">
+          The full evidentiary record — audio recordings, internal agency logs, Right-to-Know responses, and federal court filings — is documented on this site. Background interviews and document access available on request.
+        </p>
+        <a href="mailto:[MEDIA-EMAIL]" style="display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(184,134,11,0.5); padding: 0.6rem 1.1rem; text-decoration: none; transition: background 0.15s, border-color 0.15s;" onmouseover="this.style.background='rgba(184,134,11,0.08)';this.style.borderColor='var(--gold)'" onmouseout="this.style.background='';this.style.borderColor='rgba(184,134,11,0.5)'">Media Inquiries ↗</a>
+      </div>
+
+      <!-- Support -->
+      <div style="padding: 2rem; border: 1px solid #2a2a2a; background: #111; position: relative;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--slate-light);"></div>
+        <div style="font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: #7f8c8d; margin-bottom: 1.25rem;">Support This Case</div>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--paper); margin-bottom: 1rem; line-height: 1.3;">This litigation is being pursued pro se against a state agency represented by the Attorney General's Office.</h3>
+        <p style="font-size: 0.875rem; color: #a0998e; line-height: 1.75; margin-bottom: 1.5rem;">
+          Filing fees, transcript costs, record requests, and the administrative burden of parallel proceedings across three forums add up. Any support — financial or otherwise — directly sustains the ability to continue.
+        </p>
+        <a href="mailto:[SUPPORT-EMAIL]" style="display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: #7f8c8d; border: 1px solid rgba(127,140,141,0.4); padding: 0.6rem 1.1rem; text-decoration: none; transition: background 0.15s, border-color 0.15s;" onmouseover="this.style.background='rgba(127,140,141,0.08)';this.style.borderColor='#7f8c8d'" onmouseout="this.style.background='';this.style.borderColor='rgba(127,140,141,0.4)'">Get in Touch ↗</a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <span>Becker v. DCYF et al. &nbsp;·&nbsp; Civil No. 1:24-cv-00430-JL-TSM &nbsp;·&nbsp; U.S.D.C. D.N.H. &nbsp;·&nbsp; 42 U.S.C. § 1983</span>
@@ -5847,6 +5953,7 @@
     { id: 'procedural-maze',   label: '¶ Procedural History' },
     { id: 'complete-docket',   label: '¶ Federal Docket' },
     { id: 'stakes',            label: '¶ Why It Matters' },
+    { id: 'get-involved',      label: '✦ Get Involved' },
   ];
 
   const style = document.createElement('style');
