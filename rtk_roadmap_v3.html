@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Becker v. NH DHHS — Right to Know Request Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0d1117;
+    --bg2:       #161b22;
+    --bg3:       #1c2330;
+    --border:    #30363d;
+    --border2:   #21262d;
+    --text:      #e6edf3;
+    --text2:     #8b949e;
+    --text3:     #484f58;
+    --accent:    #c9a84c;
+    --accent2:   #8b6914;
+
+    --success-bg: rgba(35,134,54,0.15);
+    --success-border: #238636;
+    --success-text: #56d364;
+
+    --warn-bg:    rgba(187,128,9,0.15);
+    --warn-border:#d29922;
+    --warn-text:  #e3b341;
+
+    --danger-bg:  rgba(218,54,51,0.15);
+    --danger-border:#f85149;
+    --danger-text:#ff7b72;
+
+    --info-bg:    rgba(31,111,235,0.15);
+    --info-border:#388bfd;
+    --info-text:  #79c0ff;
+
+    --partial-bg: rgba(88,166,255,0.1);
+    --partial-border:#388bfd;
+    --partial-text:#79c0ff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    border-bottom: 1px solid var(--border);
+    padding: 2.5rem 2rem 2rem;
+    background: linear-gradient(180deg, #0a0e14 0%, var(--bg) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 80px,
+      rgba(201,168,76,0.03) 80px,
+      rgba(201,168,76,0.03) 81px
+    );
+    pointer-events: none;
+  }
+  .header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .case-number {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  .header-sub {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--text2);
+    margin-bottom: 1.5rem;
+  }
+  .header-meta {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .header-meta-item {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .header-meta-item span {
+    color: var(--text2);
+  }
+
+  /* ── Layout ── */
+  .main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* ── Stats grid ── */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+  }
+  .stat {
+    background: var(--bg2);
+    padding: 1.25rem 1.5rem;
+  }
+  .stat-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text3);
+    margin-bottom: 0.5rem;
+  }
+  .stat-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .stat-val.danger { color: var(--danger-text); }
+  .stat-val.warn   { color: var(--warn-text); }
+  .stat-sub {
+    font-size: 11px;
+    color: var(--text3);
+    font-style: italic;
+  }
+
+  /* ── Section labels ── */
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text3);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border2);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border2);
+  }
+
+  /* ── Weaver complaint banner ── */
+  .weaver-wrapper {
+    margin-bottom: 1.25rem;
+  }
+  .weaver-card {
+    border: 1.5px solid var(--danger-border);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .weaver-card:hover { border-color: var(--danger-text); }
+  .weaver-card.open  { border-color: var(--danger-text); }
+  .weaver-banner-bar {
+    background: var(--danger-bg);
+    border-bottom: 1px solid var(--danger-border);
+    padding: 6px 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--danger-text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .weaver-banner-bar::before { content: '⚠'; }
+  .no-reply-pill {
+    margin-left: auto;
+    background: var(--danger-bg);
+    border: 1px solid var(--danger-border);
+    color: var(--danger-text);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* ── RTK cards ── */
+  .rtk-list { margin-bottom: 2.5rem; }
+  .rtk-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .rtk-card:hover  { border-color: var(--border2); filter: brightness(1.03); }
+  .rtk-card.open   { border-color: #3d4450; }
+  .rtk-card.litigated { border-left: 3px solid var(--danger-border); }
+  .rtk-card.complete  { border-left: 3px solid var(--success-border); }
+  .rtk-card.notable   { border-left: 3px solid var(--accent); }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+  .card-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text3);
+    min-width: 64px;
+    padding-top: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .card-main { flex: 1; min-width: 0; }
+  .card-title {
+    font-family: 'Source Serif 4', serif;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 3px;
+    line-height: 1.4;
+  }
+  .card-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+  }
+  .card-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+  .badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .badge.open     { background: var(--warn-bg);    color: var(--warn-text);    border: 1px solid var(--warn-border); }
+  .badge.complete { background: var(--success-bg); color: var(--success-text); border: 1px solid var(--success-border); }
+  .badge.partial  { background: var(--partial-bg); color: var(--partial-text); border: 1px solid var(--partial-border); }
+  .badge.denied   { background: var(--danger-bg);  color: var(--danger-text);  border: 1px solid var(--danger-border); }
+  .badge.litigated{ background: var(--danger-bg);  color: var(--danger-text);  border: 1px solid var(--danger-border); }
+  .badge.noreply  { background: var(--danger-bg);  color: var(--danger-text);  border: 1px solid var(--danger-border); }
+  .badge.notable  { background: rgba(201,168,76,0.12); color: var(--accent); border: 1px solid var(--accent2); }
+  .badge.closed   { background: var(--bg3); color: var(--text3); border: 1px solid var(--border); }
+  .due {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+    text-align: right;
+  }
+  .chevron {
+    font-size: 10px;
+    color: var(--text3);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+    margin-top: 4px;
+    margin-left: 4px;
+  }
+  .rtk-card.open .chevron,
+  .weaver-card.open .chevron { transform: rotate(90deg); }
+
+  /* ── Card body ── */
+  .card-body {
+    display: none;
+    padding: 0 16px 16px;
+    border-top: 1px solid var(--border2);
+  }
+  .rtk-card.open .card-body,
+  .weaver-card.open .card-body { display: block; }
+
+  /* ── Banners inside cards ── */
+  .inner-banner {
+    margin: 12px 0 0;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .inner-banner.danger { background: var(--danger-bg); color: var(--danger-text); border: 1px solid var(--danger-border); }
+  .inner-banner.success { background: var(--success-bg); color: var(--success-text); border: 1px solid var(--success-border); }
+  .inner-banner.accent { background: rgba(201,168,76,0.08); color: var(--accent); border: 1px solid var(--accent2); }
+
+  /* ── Timeline ── */
+  .timeline { margin-top: 14px; }
+  .tl-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: flex-start;
+    font-size: 13.5px;
+  }
+  .tl-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+  .tl-dot.done    { background: var(--success-text); box-shadow: 0 0 0 2px rgba(86,211,100,0.2); }
+  .tl-dot.warn    { background: var(--warn-text);    box-shadow: 0 0 0 2px rgba(227,179,65,0.2); }
+  .tl-dot.deny    { background: var(--danger-text);  box-shadow: 0 0 0 2px rgba(255,123,114,0.2); }
+  .tl-dot.info    { background: var(--info-text);    box-shadow: 0 0 0 2px rgba(121,192,255,0.2); }
+  .tl-dot.pend    { background: var(--text3);        border: 1.5px solid var(--border); }
+  .tl-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+    min-width: 76px;
+    padding-top: 2px;
+    letter-spacing: 0.02em;
+  }
+  .tl-text { color: var(--text2); line-height: 1.55; flex: 1; }
+  .tl-text strong { color: var(--text); font-weight: 600; }
+  .tl-text em { color: var(--accent); font-style: italic; }
+
+  /* ── Callouts ── */
+  .callout {
+    margin-top: 12px;
+    border-radius: 6px;
+    padding: 12px 14px;
+    border-left: 3px solid;
+  }
+  .callout.danger { background: var(--danger-bg);  border-color: var(--danger-border); }
+  .callout.warn   { background: var(--warn-bg);    border-color: var(--warn-border); }
+  .callout.success{ background: var(--success-bg); border-color: var(--success-border); }
+  .callout.info   { background: var(--info-bg);    border-color: var(--info-border); }
+  .callout-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .callout.danger  .callout-title { color: var(--danger-text); }
+  .callout.warn    .callout-title { color: var(--warn-text); }
+  .callout.success .callout-title { color: var(--success-text); }
+  .callout.info    .callout-title { color: var(--info-text); }
+  .callout-item {
+    display: flex;
+    gap: 8px;
+    font-size: 12.5px;
+    color: var(--text2);
+    margin-bottom: 5px;
+    line-height: 1.5;
+  }
+  .callout-item:last-child { margin-bottom: 0; }
+  .callout-arrow { flex-shrink: 0; color: var(--text3); }
+
+  /* ── Next actions ── */
+  .next-actions {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+  .next-actions h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+  .action-item {
+    display: flex;
+    gap: 12px;
+    font-size: 13.5px;
+    color: var(--text2);
+    margin-bottom: 10px;
+    align-items: flex-start;
+    line-height: 1.5;
+  }
+  .action-item:last-child { margin-bottom: 0; }
+  .action-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .action-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+    min-width: 60px;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--border2);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 0.06em;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  /* ── Produced Documents Inventory ── */
+  .doc-inventory {
+    margin-top: 16px;
+  }
+  .doc-inventory-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text3);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border2);
+  }
+  .doc-group {
+    margin-bottom: 14px;
+  }
+  .doc-group-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 6px;
+    padding-left: 4px;
+    border-left: 2px solid var(--accent2);
+    padding-left: 8px;
+  }
+  .doc-item {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 6px;
+    font-size: 12.5px;
+  }
+  .doc-item-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 5px;
+  }
+  .doc-filename {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    color: var(--accent);
+    font-weight: 500;
+    flex: 1;
+    word-break: break-all;
+  }
+  .doc-pages {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--text3);
+    white-space: nowrap;
+    padding-top: 1px;
+    flex-shrink: 0;
+  }
+  .doc-what {
+    color: var(--text2);
+    line-height: 1.5;
+    margin-bottom: 5px;
+  }
+  .doc-relevance {
+    color: var(--text3);
+    line-height: 1.5;
+    font-size: 12px;
+    padding-left: 10px;
+    border-left: 2px solid var(--border);
+  }
+  .doc-relevance strong {
+    color: var(--warn-text);
+    font-weight: 600;
+  }
+  .doc-placeholder {
+    opacity: 0.5;
+    border-style: dashed;
+  }
+  .doc-placeholder .doc-filename { color: var(--text3); }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .main { padding: 1rem; }
+    .card-header { gap: 8px; }
+    .card-num { min-width: 48px; font-size: 9px; }
+    .tl-date { min-width: 58px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="case-number">Becker · NH DHHS / DCYF · RSA 91-A Campaign · 2024–2026</div>
+    <h1>Right to Know Request Roadmap</h1>
+    <p class="header-sub">A complete record of public records requests, escalations, and active litigation</p>
+    <div class="header-meta">
+      <div class="header-meta-item">Requestor: <span>Torrence H. Becker, Pro Se</span></div>
+      <div class="header-meta-item">Agency: <span>NH DHHS / DCYF</span></div>
+      <div class="header-meta-item">Generated: <span>March 28, 2026</span></div>
+      <div class="header-meta-item">State case: <span>216-2025-CV-00240</span></div>
+      <div class="header-meta-item">Federal case: <span>1:24-cv-00430-JL-TSM</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">Total RTK / access requests</div>
+      <div class="stat-val">10</div>
+      <div class="stat-sub">Feb 2024 – Mar 2026</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Open / awaiting</div>
+      <div class="stat-val warn">5</div>
+      <div class="stat-sub">SNAP + RTK-5, 8, 9 + 170-G</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Commissioner complaint</div>
+      <div class="stat-val warn">F/U</div>
+      <div class="stat-sub">Follow-up sent Mar 28 · 38 days</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Active litigation</div>
+      <div class="stat-val">2</div>
+      <div class="stat-sub">State court + Federal</div>
+    </div>
+  </div>
+
+  <!-- WEAVER COMPLAINT -->
+  <div class="section-label">Administrative Escalation</div>
+
+  <div class="weaver-wrapper">
+    <div class="weaver-card" id="weaver" onclick="toggleCard('weaver')">
+      <div class="weaver-banner-bar">
+        Formal complaint to DHHS Commissioner Lori Weaver — systemic RSA 91-A non-compliance by Legal Unit
+        <span class="no-reply-pill">Follow-up sent Mar 28 · 38 days no response</span>
+      </div>
+      <div class="card-header">
+        <div class="card-num" style="color:var(--danger-text)">Compl.</div>
+        <div class="card-main">
+          <div class="card-title">Formal Complaint to Commissioner Weaver — Systemic RSA 91-A Non-Compliance by DHHS Legal Unit (Caitlin Sittig)</div>
+          <div class="card-meta">Filed Feb 19, 2026 &nbsp;·&nbsp; CC: Martin (Deputy Chief Counsel), Bentley (AAG) &nbsp;·&nbsp; Follow-up sent Mar 28, 2026</div>
+        </div>
+        <div class="card-right">
+          <span class="badge noreply">No response</span>
+        </div>
+        <div class="chevron">▶</div>
+      </div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot deny"></div><div class="tl-date">Feb 19, 2026</div><div class="tl-text"><strong>Complaint filed</strong> — Addressed to Commissioner Lori A. Weaver; CC'd Deputy Chief Counsel John Martin and AAG Shawna Bentley; seven documentary exhibits attached</div></div>
+          <div class="tl-item"><div class="tl-dot deny"></div><div class="tl-date">Mar 28, 2026</div><div class="tl-text"><strong>Follow-up letter sent</strong> — 38 days with no acknowledgment; formally notes non-response; restates four outstanding actions; states that absent substantive response within 10 business days (~Apr 11), next step is RSA 91-A:7 petition framing systemic departmental pattern; references concurrent 170-G:8-a filing as further consequence of Sittig pattern; CC: Martin, Bentley (Sittig not CC'd)</div></div>
+          <div class="tl-item"><div class="tl-dot pend"></div><div class="tl-date">~Apr 11, 2026</div><div class="tl-text"><strong>10-business-day response window closes</strong> — If no response, RSA 91-A:7 petition posture activated</div></div>
+        </div>
+        <div class="callout danger">
+          <div class="callout-title">4 Systemic Violations Alleged</div>
+          <div class="callout-item"><span class="callout-arrow">1.</span><span>Failure to respond within 5 business days (RSA 91-A:4, IV) — Sep 25 SNAP request ignored 29 days; Oct 28 clarification never answered at all</span></div>
+          <div class="callout-item"><span class="callout-arrow">2.</span><span>Overbroad exemptions — audit logs and inter-agency comms treated as confidential SNAP records; no specific RSA 91-A:5 subsection ever cited</span></div>
+          <div class="callout-item"><span class="callout-arrow">3.</span><span>Blanket attorney-client privilege invocation without document-specific analysis or privilege log — contrary to NH Supreme Court narrow-construction precedent (<em>Mans v. Lebanon Sch. Bd.</em>)</span></div>
+          <div class="callout-item"><span class="callout-arrow">4.</span><span>Failure to address redaction alternatives — SNAP Cat B and RTK-6 Alt. A (redacted face sheets) both entirely ignored in responses</span></div>
+        </div>
+        <div class="callout warn">
+          <div class="callout-title">4 Actions Requested of Commissioner</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Review of Legal Unit (Sittig) RSA 91-A compliance practices</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Immediate production of SNAP Category B records: audit logs, Surgento/Horne inter-agency communications</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Written response to RTK-6 Alt. A (redacted face sheets) — Alt. B aggregate count accepted as resolved under no-compilation rule</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Directive to Legal Unit requiring narrow construction and reasonable assistance going forward</span></div>
+        </div>
+        <div class="callout info">
+          <div class="callout-title">Strategic Significance</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>38 days with no response — combined with follow-up's 10-business-day window — establishes RSA 91-A:7 petition posture as imminent next step if unaddressed</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Martin (CC'd on both complaint and follow-up) is the same person who responded promptly and fully to RTK-3 — the contrast is formally on the record twice now</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>CC to Bentley (active litigation counsel) means the systemic documentation is formally known to the state's own defense attorney</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Concurrent 170-G:8-a filing (Mar 28) demonstrates that Sittig's pattern of routing case-specific records away from RSA 91-A is now generating access requests through the very vehicle her responses established</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RTK CARDS -->
+  <div class="section-label">RTK Requests — Chronological order · Click to expand</div>
+
+  <div class="rtk-list">
+
+    <!-- RTK-1 (formerly RTK-0) -->
+    <div class="inner-banner danger" style="margin-bottom:6px; border-radius:6px; padding:8px 14px; font-family:'IBM Plex Mono',monospace; font-size:11px;">
+      ⚠ RTK-1 is the root case — active state litigation Case 216-2025-CV-00240 and federal Case 1:24-cv-00430-JL-TSM
+    </div>
+    <div class="rtk-card litigated" id="rtk0" onclick="toggleCard('rtk0')">
+      <div class="card-header">
+        <div class="card-num">RTK-1</div>
+        <div class="card-main">
+          <div class="card-title">DCYF Case Records, Assessment Letters & Audio Recordings (Surgento + Nixon)</div>
+          <div class="card-meta">Filed Feb 8, 2024 &nbsp;·&nbsp; Litigated Mar 2025 &nbsp;·&nbsp; Nixon recording produced Mar 9, 2026</div>
+        </div>
+        <div class="card-right">
+          <span class="badge litigated">Litigated</span>
+          <span class="due">Active</span>
+        </div>
+        <div class="chevron">▶</div>
+      </div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Feb 8, 2024</div><div class="tl-text"><strong>Original RTK filed</strong> — Email to Alida Narine (DCYF Secretary II); case records, assessment letters, audio recordings of DCYF contacts with Becker family</div></div>
+          <div class="tl-item"><div class="tl-dot warn"></div><div class="tl-date">Feb 2024</div><div class="tl-text"><strong>Narine redirects</strong> — Directed to fill out a form; Becker challenges via DCYF Policy 2765.1 II-B (written + signed is sufficient; form not required)</div></div>
+          <div class="tl-item"><div class="tl-dot info"></div><div class="tl-date">Nov 6, 2024</div><div class="tl-text"><strong>Ombudsman complaint filed</strong> — Formal complaint re: RSA 91-A denial and inability to access evidence of RSA 169-C:34(VII) failures</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Nov 19, 2024</div><div class="tl-text"><strong>Re-filed on required forms</strong> — "Records Request second try" to Narine on DCYF's own forms; Parker and Amelia Becker case records, assessment letters, audio recordings</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Nov 22, 2024</div><div class="tl-text"><strong>Heiple engages</strong> — Jessica Heiple (Constituent Relations Administrator) confirms records pulled and with attorney; identifies two tracks: (A) records request, (B) conduct complaints</div></div>
+          <div class="tl-item"><div class="tl-dot warn"></div><div class="tl-date">Dec 2024</div><div class="tl-text"><strong>Back-and-forth with Heiple</strong> — CPSW McKinney conduct, Surgento's Oct 11 phone call commitment, missing assessment letters; Catrina Horne involved; Heiple "conducting inquiry"</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Jan 16, 2025</div><div class="tl-text"><strong>Two missing recordings explicitly named</strong> — Becker identifies Supervisor Surgento recording and CPSW Nixon recording to Narine by name</div></div>
+          <div class="tl-item"><div class="tl-dot warn"></div><div class="tl-date">Jan 30, 2025</div><div class="tl-text"><strong>Heiple states</strong> — "The District Office is determining how to furnish the audio recordings"; no timeline given</div></div>
+          <div class="tl-item"><div class="tl-dot deny"></div><div class="tl-date">Feb 25–27, 2025</div><div class="tl-text"><strong>Preservation demands + AG copy</strong> — Formal preservation letter to DHHS Legal (cc: Heiple, Surgento, Andrews); letter forwarded to NH Attorney General's Office</div></div>
+          <div class="tl-item"><div class="tl-dot deny"></div><div class="tl-date">Mar 12, 2025</div><div class="tl-text"><strong>RSA 91-A petition filed</strong> — Case 216-2025-CV-00240, Merrimack County Superior Court, for failure to produce records and recordings</div></div>
+          <div class="tl-item"><div class="tl-dot warn"></div><div class="tl-date">Jun 3, 2025</div><div class="tl-text"><strong>Surgento recording offered by Bentley</strong> — AAG Shawna Bentley offers the Surgento recording for production <em>the day before the scheduled litigation hearing</em>. Nixon recording not offered.</div></div>
+          <div class="tl-item"><div class="tl-dot deny"></div><div class="tl-date">Jun 4, 2025</div><div class="tl-text"><strong>Litigation hearing</strong> — Surgento recording offered day prior; Nixon still not produced; DHHS acknowledges "technical difficulties"</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Mar 9, 2026</div><div class="tl-text"><strong>Nixon recording produced</strong> — ~2 years after original request; produced as <em>a recording of the recording</em>, not the original digital file; submitted as exhibits in mandamus proceedings</div></div>
+        </div>
+        <div class="callout danger">
+          <div class="callout-title">Pattern of Concern</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>9 months of form obstruction (Feb–Nov 2024); Becker was forced to refile on DCYF's own forms despite Policy 2765.1 II-B not requiring them</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Surgento recording produced only the day before litigation — strongly implies awareness of its significance to the case</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Nixon recording: "technical difficulties" acknowledged but unresolved for ~9 months after litigation began; final production is a recording of a recording, not the original digital file</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Aug 22, 2025 Bentley email references "corrupted" recordings — directly connects to SNAP audit log spoliation risk in RTK-SNAP</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RTK-2 (OCA) — filed Feb 3 2025 -->
+    <div class="rtk-card" id="rtkoca" onclick="toggleCard('rtkoca')">
+      <div class="card-header">
+        <div class="card-num">RTK-2</div>
+        <div class="card-main">
+          <div class="card-title">Office of the Child Advocate — All Records Relating to Becker Family (2012–Present)</div>
+          <div class="card-meta">Filed Feb 3, 2025 &nbsp;·&nbsp; Final denial Feb 13, 2025 &nbsp;·&nbsp; Noted in NEFAC correspondence Feb 28, 2025</div>
+        </div>
+        <div class="card-right">
+          <span class="badge denied">Denied</span>
+          <span class="due">Closed · longer tail possible</span>
+        </div>
+        <div class="chevron">▶</div>
+      </div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Feb 3, 2025</div><div class="tl-text"><strong>Filed</strong> — RSA 91-A + RSA 170-G:18-a; all OCA records relating to Becker family from 2012–present: comms with DCYF, intake notes, findings, recommendations, decisions</div></div>
+          <div class="tl-item"><div class="tl-dot warn"></div><div class="tl-date">Feb 10, 2025</div><div class="tl-text"><strong>OCA formal response attached</strong> — Becker immediately submits narrowed request citing RSA 21-V:5, III (parent as responsible party entitled to minimum necessary disclosure) and RSA 21-V:9 (operational processes exempt from confidentiality)</div></div>
+          <div class="tl-item"><div class="tl-dot info"></div><div class="tl-date">Feb 11, 2025</div><div class="tl-text"><strong>Crime/fraud exception argued</strong> — Becker argues RSA 21-V:9 exception applies: OCA was made aware of children in 37°F camping conditions while ill, transgender child in transphobic environment, constitutional violations by DCYF, de facto removal without due process</div></div>
+          <div class="tl-item"><div class="tl-dot deny"></div><div class="tl-date">Feb 13, 2025</div><div class="tl-text"><strong>OCA final position</strong> — "RSA 21-V protects OCA from compelled disclosure... our ability to disclose is at our discretion, and only to protect and serve the children of NH." Crime/fraud argument not substantively addressed.</div></div>
+          <div class="tl-item"><div class="tl-dot info"></div><div class="tl-date">Feb 13, 2025</div><div class="tl-text"><strong>Becker's final reply</strong> — Notes federal court will need to weigh state confidentiality provisions against constitutional rights; leaves open future litigation angle on OCA-DCYF communications</div></div>
+          <div class="tl-item"><div class="tl-dot info"></div><div class="tl-date">Feb 28, 2025</div><div class="tl-text"><strong>Noted in NEFAC correspondence</strong> — Becker describes the OCA records issue to Justin Silverman alongside the audio recording refusal, framing both as part of the same transparency pattern</div></div>
+        </div>
+        <div class="callout danger">
+          <div class="callout-title">OCA's Position vs. the Law</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>OCA invokes RSA 21-V as a blanket shield — but RSA 21-V:9's crime/fraud exception was directly argued and never substantively rebutted</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>RSA 21-V:5, III authorizes disclosure to "any individual responsible for the child" — parent argued to qualify; OCA did not rebut this argument</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>No attachment produced; no itemized withholding list; no explanation of why redaction couldn't work</span></div>
+        </div>
+        <div class="callout info">
+          <div class="callout-title">Strategic Note</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>OCA is independent and cannot easily be compelled via RSA 91-A:7 petition in the same way DHHS can</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Federal discovery in Case 1:24-cv-00430-JL-TSM could potentially reach OCA-DCYF communications if they are material to the constitutional claims, bypassing RSA 21-V's state-law shield</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RTK-3 (Martin / URC data) — filed Jul 17 2025 -->
+    <div class="inner-banner success" style="margin-bottom:6px; border-radius:6px; padding:8px 14px; font-family:'IBM Plex Mono',monospace; font-size:11px;">
+      ✓ Notable: handled by Deputy Chief Counsel Martin — prompt, complete, corrected without resistance. Stark contrast with Sittig pattern.
+    </div>
+    <div class="rtk-card notable" id="rtk6" onclick="toggleCard('rtk6')">
+      <div class="card-header">
+        <div class="card-num">RTK-3</div>
+        <div class="card-main">
+          <div class="card-title">DCYF Assessment Practices, URC Data & CPS Training Materials — Request #2025-196</div>
+          <div class="card-meta">Filed Jul 17, 2025 &nbsp;·&nbsp; Produced Aug 20, 2025 (17 files) &nbsp;·&nbsp; Supplemental URC data Sep 27, 2025 &nbsp;·&nbsp; Respondent: Deputy Chief Counsel John Martin</div>
+        </div>
+        <div class="card-right">
+          <span class="badge complete">Complete</span>
+          <span class="due">Closed</span>
+        </div>
+        <div class="chevron">▶</div>
+      </div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Jul 17, 2025</div><div class="tl-text"><strong>Filed to Narine</strong> — Assessment practices and procedures; annual outcome data broken down by Founded / Unfounded / Unfounded with Reasonable Concern (URC) / Incomplete, 2020–2024; CPS policies and training materials</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Jul 24, 2025</div><div class="tl-text"><strong>Martin assumes responsibility</strong> — Deputy Chief Legal Counsel responds directly; produces "Bear Data Request 2025-196.pdf" covering items #1 and #6</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Aug 20, 2025</div><div class="tl-text"><strong>Massive same-day production — 17 files, 7 emails</strong> — Includes: Activities.pdf, Court Forms.pdf, Day 1 Legal Aspects for CPS, DCYF Policies.pdf, Handouts, Investigations FG 20240801.pdf, PowerPoint Presentations (Parts I–III), RSA 169-C.pdf, Simulation Handouts, Staff Folder Handouts, Training Documents, plus encrypted attachment</div></div>
+          <div class="tl-item"><div class="tl-dot warn"></div><div class="tl-date">Sep 25, 2025</div><div class="tl-text"><strong>Becker follow-up</strong> — "Unfounded with Reasonable Concern" category missing from data despite being explicitly requested in Section 1; demands supplemental response within 5 business days under RSA 91-A:4</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Sep 27, 2025</div><div class="tl-text"><strong>Martin responds (Saturday)</strong> — "Here you go. I apologize for the omission." Produces 2025196_Report_Revisions.docx with complete URC annual counts and percentages 2020–2024</div></div>
+        </div>
+        <div class="callout success">
+          <div class="callout-title">Significance for the Overall Campaign</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Martin produced 17 files proactively in an afternoon, corrected an omission without resistance, and responded on a Saturday — stark contrast with Sittig's pattern of delays and blanket denials now documented in the Weaver complaint</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>The URC data (2020–2024) directly establishes how frequently DCYF uses the "Unfounded but Reasonable Concern" category that PD 17-72 (RTK-5) governs and that Policy 1215 was identified as needing revision to address</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>The CPS training materials — especially <em>Court Forms.pdf</em> and <em>Investigations FG</em> — document what DCYF workers were trained to do regarding RSA 169-C:34; directly relevant to RTK-6 (NHJB-2597 court orders) and RTK-1 (McKinney/Surgento conduct)</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Weaver complaint CC'd Martin — he now has formal notice that his counterpart is accused of the exact systemic failures he demonstrably avoided</span></div>
+        </div>
+
+        <!-- PRODUCED DOCUMENTS INVENTORY -->
+        <div class="doc-inventory">
+          <div class="doc-inventory-title">Produced Documents — Request #2025-196 · 19 files documented</div>
+
+          <!-- GROUP: Data Productions -->
+          <div class="doc-group">
+            <div class="doc-group-label">Data &amp; Request Records</div>
+
+            <div class="doc-item">
+              <div class="doc-item-header">
+                <div class="doc-filename">Gmail__Request_for_Public_Records__Assessment_Practices_and_Procedures.pdf</div>
+                <div class="doc-pages">Email thread</div>
+              </div>
+              <div class="doc-what">The original Jul 17, 2025 RTK email to Alida Narine, printed from Gmail. Contains the full six-section request plus the complete response thread through Martin's production emails.</div>
+              <div class="doc-relevance"><strong>Cross-ref:</strong> Establishes scope of what was requested vs. produced. Sections 2–5 (entry refusal data, RSA 169-C:34 court order counts, training on entry refusal, internal protocols) were never substantively addressed — potential basis for supplemental demand.</div>
+            </div>
+
+            <div class="doc-item">
+              <div class="doc-item-header">
+                <div class="doc-filename">Bear_Data_Request_2025196.pdf</div>
+                <div class="doc-pages">2 pp.</div>
+              </div>
+              <div class="doc-what">BEAR (Bridges Analytical and Evaluation Reporting) data pull produced Aug 19, 2025. Covers Items #1 and #6: assessment outcome statistics and incomplete-case return data, 2020–2024. Does <em>not</em> break out URC separately — that omission triggered the Sep 25 follow-up.</div>
+              <div class="doc-relevance"><strong>Cross-ref:</strong> Proves the DCYF data system could produce the numbers; the URC omission was an oversight. Compare against 2025196_Report_Revisions.docx for the corrected dataset. Establishes Bridges SACWIS as the system of record for assessment outcomes — relevant to RTK-4 (SNAP audit log request).</div>
+            </div>
+
+            <div class="doc-item">
+              <div class="doc-item-header">
+                <div class="doc-filename">2025196_Report_Revisions.docx</div>
+                <div class="doc-pages">Sep 27, 2025 supp.</div>
+              </div>
+              <div class="doc-what">Martin's Saturday supplemental correcting the URC omission. Complete assessment outcome data 2020–2024 broken into all four categories with annual percentages. Key figures: URC runs 19–22% of all assessments annually (~2,000 cases/yr). Incomplete cases show 87–92% return rates.</div>
+              <div class="doc-relevance"><strong>Cross-ref:</strong> Core evidentiary data. ~20% URC rate quantifies how often DCYF uses the category that PD 17-72 (RTK-5) governs. ~89% incomplete-case return rate documents systemic case cycling. Both figures are directly relevant to mandamus proceedings and federal case 1:24-cv-00430.</div>
+            </div>
+          </div>
+
+          <!-- GROUP: Statutes & Court Forms -->
+          <div class="doc-group">
+            <div class="doc-group-label">Statutes &amp; Court Forms</div>
+
+            <div class="doc-item">
+              <div class="doc-item-header">
+                <div class="doc-filename">RSA_169C.pdf</div>
+                <div class="doc-pages">32 pp.</div>
+              </div>
+              <div class="doc-what">Full text of RSA Chapter 169-C (Child Protection Act), 2021 edition. All sections: definitions, mandatory reporting, investigation procedures, hearing framework, disposition options, parental rights, and RSA 169-C:34 (court orders to enter premises when parent refuses entry).</div>
+              <div class="doc-relevance"><strong>Cross-ref:</strong> RSA 169-C:34(VII) is the statutory basis for the court order data sought in RTK request Section 3 (never produced) and the entire RTK-6 dispute. The fact Martin produced the statute as a training document confirms DCYF workers are expected to know it — bearing on McKinney and Surgento's obligations in RTK-1.</div>
+            </div>
+
+            <div class="doc-item">
+              <div class="doc-item-header">
+                <div class="doc-filename">Court_Forms.pdf</div>
+                <div class="doc-pages">33 pp.</div>
+              </div>
+              <div class="doc-what">Collection of official NH Judicial Branch forms used in RSA 169-C proceedings. Confirmed contents include the "Acknowledgment of Possible Consequences to Parental Rights" form (RSA 169-C:15, IV). Likely contains NHJB-2597-F (Motion in Furtherance of Child Protection Investigation — the form at issue in RTK-6) and related RSA 169-C:34 petition forms.</div>
+              <div class="doc-relevance"><strong>Cross-ref (priority):</strong> Must be reviewed page-by-page to locate NHJB-2597-F and any DCYF annotations around it. RTK-6 roadmap note: this file "may document internal DCYF guidance on RSA 169-C:34 petitions and how frequently they expect to use them." Any DCYF guidance on completing the form could bear on the RTK-6 Alt. A redaction argument.</div>
+            </div>
+          </div>
+
+          <!-- GROUP: Policy Manual -->
+          <div class="doc-group">
+            <div class="doc-group-label">DCYF Policy Manual</div>
+
+            <div class="doc-item">
+              <div class="doc-item-header">
+                <div class="doc-filename">DCYF_Policies.pdf</div>
+                <div class="doc-pages">111 pp.</div>
+              </div>
+              <div class="doc-what">Multi-policy excerpt from the DCYF Policy Manual, Child Protective Field Services chapter. Confirmed policies: <strong>Policy 1151 — Child Neglect</strong> (PD 17-54, Jul 2017): definitions, intake criteria, "serious impairment" factors. <strong>Policy 1215 — Administrative Appeals</strong> (PD 17-54, Jul 2017, ~p. 95): appeal procedures, Forms 1214–1218, RSA 169-C:35. <strong>Policy 1217 — Transition of Assessment to Family Services Case</strong> (PD 13-13). Enhanced Response Assessment protocols (~p. 50). Ex parte removal standards under RSA 169-C:6-a (~p. 105). Form 1215 (Notice of Finding — Juvenile) service procedures (~p. 90).</div>
+              <div class="doc-relevance"><strong>Cross-ref (priority):</strong> Policy 1215 is produced here in its Jul 2017 form — the baseline against which the RTK-5 supplemental response (due Apr 24, 2026) must be compared for what changed, when, and why. Enhanced Response protocols at ~p. 50 directly govern McKinney's obligations in RTK-1. Ex parte removal standards at ~p. 105 are relevant to RTK-6 and federal case constitutional claims. This is the single most cross-referenced document in the production.</div>
+            </div>
+          </div>
+
+          <!-- GROUP: Field Guide -->
+          <div class="doc-group">
+            <div class="doc-group-label">Field Guide</div>
+
+            <div class="doc-item">
+              <div class="doc-item-header">
+                <div class="doc-filename">Investigations_FG_20240801.pdf</div>
+                <div class="doc-pages">Aug 1, 2024</div>
+              </div>
+              <div class="doc-what">DCYF Field Guide for Investigations, effective August 1, 2024. Operational manual governing how DCYF workers conduct child protection investigations — the "FG" designation indicates this is a field-level procedural guide, not a policy directive.</div>
+              <div class="doc-relevance"><strong>Cross-ref (priority):</strong> Roadmap action item explicitly targets this file: cross-reference with RTK-2 (what workers were trained to do re: RSA 169-C:34 petitions) and RTK-1 (McKinney/Surgento conduct). The Aug 2024 effective date means it was in force during the events at issue. Must be compared against Attachment 17 Parts I–III to identify any gaps between field guidance and formal training curriculum.</div>
+            </div>
+          </div>
+
+          <!-- GROUP: CPS Training Curriculum -->
+          <div class="doc-group">
+            <div class="doc-group-label">CPS Training Curriculum — Aug 14, 2025 Series</div>
+
+            <div class="doc-item">
+              <div class="doc-item-header">
+                <div class="doc-filename">Day_1_Legal_Aspects_and_Legal_Writing_for_CPS_20240806.pdf</div>
+                <div class="doc-pages">95 pp.</div>
+              </div>
+              <div class="doc-what">Full training materials for the "Day 1: Legal Aspects and Legal Writing for CPS" course, Aug 6, 2024. Comprehensive coverage of CPS workers' legal authority, investigation standards, documentation requirements, and legal writing obligations.</div>
+              <div class="doc-relevance"><strong>Cross-ref:</strong> Documents what DCYF told its workers about legal authority and limitations as of Aug 2024 — directly before the Sep–Nov 2024 events in RTK-1. If this training covers RSA 169-C:34 petition authority, it connects to RTK-6. Legal writing standards section bears on completeness of the case records produced in RTK-1.</div>
+            </div>
+
+            <div class="doc-item">
+              <div class="doc-item-header">
+                <div class="doc-filename">PowerPoint_Presentations_Part_I.pdf</div>
+                <div class="doc-pages">119 pp.</div>
+              </div>
+              <div class="doc-what">"Investigations in Solution-Based Child Protection, Part I," Aug 14, 2025. Covers investigation phase and process, 72-hour commencement requirement (including weekends), investigation principles (full/accurate information gathering, family engagement), case scenario exercises (Davis Family intake simulation), safety assessment screen in Bridges, and abuse/neglect petition filing under RSA 169-C:10.</div>
+              <div class="doc-relevance"><strong>Cross-ref:</strong> The 72-hour commencement standard and Bridges safety assessment screen protocols directly govern McKinney and Surgento's trained obligations in RTK-1 events. Bridges face-to-face contact entry triggering the safety assessment screen is relevant to RTK-4 — it shows the system auto-logs certain worker actions, supporting the audit log request.</div>
+            </div>
+
+            <div class="doc-item">
+              <div class="doc-item-header">
+                <div class="doc-filename">PowerPoint_Presentations_Part_II.pdf</div>
+                <div class="doc-pages">100 pp.</div>
+              </div>
+              <div class="doc-what">Slide deck for Part II of the same Aug 14, 2025 Investigations training series. Contents bridge the investigation process content of Part I with the legal/court proceedings content of Part III.</div>
+              <div class="doc-relevance"><strong>Cross-ref:</strong> Should be reviewed alongside Parts I and III and Attachment 17 Parts I–III for the complete picture of investigation training. Content overlap with Attachment 17 will indicate which training elements were considered foundational vs. supplemental.</div>
+            </div>
+
+            <div class="doc-item">
+              <div class="doc-item-header">
+                <div class="doc-filename">PowerPoint_Presentations_Part_III.pdf</div>
+                <div class="doc-pages">115 pp.</div>
+              </div>
+              <div class="doc-what">"Investigations in Solution-Based Child Protection, Part III," Aug 14, 2025. Covers: Child Protection Act scope and worker duties; federal law supremacy; NH court structure; RSA 169-C definitions (neglected/abandoned child, serious impairment); preliminary hearing standards including DCYF's "reasonable efforts to prevent removal" obligation; missing parent/service by publication; caregiver/perpetrator interviewing techniques; Period of PURPLE Crying (abusive head trauma); court safety systems (SafeSignal).</div>
+              <div class="doc-relevance"><strong>Cross-ref:</strong> Most directly relevant training document to RTK-1 and RTK-6. "Reasonable efforts to prevent removal" framing is central to federal constitutional claims. Preliminary hearing standards document the legal threshold workers are trained to apply — compare against McKinney/Surgento's actual conduct. Interviewing caregiver section documents the trained approach for Surgento's Oct 11 phone call at issue in RTK-1 and RTK-4.</div>
+            </div>
+
+            <div class="doc-item">
+              <div class="doc-item-header">
+                <div class="doc-filename">Attachment_17Investigation_and_Assessment_Part_I.pdf</div>
+                <div class="doc-pages">100 pp.</div>
+              </div>
+              <div class="doc-what">Part I of "Attachment 17: Investigation and Assessment" — a numbered attachment to a larger training program or policy manual. At 100 pages, this is the foundational section covering intake and initial assessment procedures.</div>
+              <div class="doc-relevance"><strong>Cross-ref:</strong> Must be cross-referenced against PD 17-72 (RTK-5) to assess whether the policy directive's URC standards were implemented in training. Together with Parts II and III (216 pages total), this is the most comprehensive documentation of how DCYF trains workers to conduct the assessments that generate the URC outcomes in 2025196_Report_Revisions.docx.</div>
+            </div>
+
+            <div class="doc-item">
+              <div class="doc-item-header">
+                <div class="doc-filename">Attachment_17Investigation_and_Assessment_Part_II.pdf</div>
+                <div class="doc-pages">51 pp.</div>
+              </div>
+              <div class="doc-what">Part II of Attachment 17. Covers the mid-stage investigation procedures — likely safety assessment completion, family engagement, and documentation standards.</div>
+              <div class="doc-relevance"><strong>Cross-ref:</strong> Compare against Investigations_FG_20240801.pdf to identify discrepancies between field guide and formal curriculum. Any gap between what workers are trained to do and what the field guide directs is relevant to RTK-1 conduct analysis.</div>
+            </div>
+
+            <div class="doc-item">
+              <div class="doc-item-header">
+                <div class="doc-filename">Attachment_17Investigation_and_Assessment_Part_III.pdf</div>
+                <div class="doc-pages">65 pp.</div>
+              </div>
+              <div class="doc-what">Part III of Attachment 17. Covers assessment conclusions, determination criteria, disposition decisions, and case closure or transition procedures. Likely addresses the Founded / Unfounded / URC / Incomplete determination framework directly.</div>
+              <div class="doc-relevance"><strong>Cross-ref:</strong> The URC determination criteria here must be compared against PD 17-72 (RTK-5) — PD 17-72 governs the URC category, and this document will show what workers were actually trained the standard means. Any inconsistency between the directive and the training is significant evidence.</div>
+            </div>
+
+            <div class="doc-item">
+              <div class="doc-item-header">
+                <div class="doc-filename">Training_Documents.pdf</div>
+                <div class="doc-pages">110 pp.</div>
+              </div>
+              <div class="doc-what">CWEP (Child Welfare Education Program) instructional design and facilitation package for the "Legal Aspects and Legal Writing for CPS" course. Contains: CWEP Course Project Plan (course redesign of Core 403 &amp; Master, by Tracy Smith/Lindsay Seavey); mock trial/testifying activity facilitator guide (3–4 exercise cycles, role assignments, objection handling); testifying guidance (impartiality standard, don't pre-decide outcomes, confidence under cross-examination); history of child protection narrative.</div>
+              <div class="doc-relevance"><strong>Cross-ref:</strong> The testifying guidance (~p. 40) is directly actionable: DCYF workers are explicitly trained that they "must always come across" as impartial and must "never present as a biased worker who already made their mind up before assessing the situation." This creates a documented institutional standard against which McKinney's conduct in RTK-1 can be measured. Identifies Tracy Smith and Lindsay Seavey as responsible for this training program — relevant if DCYF training adequacy is raised in federal case.</div>
+            </div>
+          </div>
+
+          <!-- GROUP: Supplemental Training Materials -->
+          <div class="doc-group">
+            <div class="doc-group-label">Supplemental Training Materials</div>
+
+            <div class="doc-item">
+              <div class="doc-item-header">
+                <div class="doc-filename">Handouts.pdf</div>
+                <div class="doc-pages">28 pp.</div>
+              </div>
+              <div class="doc-what">Participant-facing handout materials corresponding to the Day 1 / Attachment 17 training sessions. Reference sheets, decision frameworks, and quick-reference materials distributed to CPS workers during training.</div>
+              <div class="doc-relevance"><strong>Cross-ref:</strong> Review alongside Activities.pdf and Simulation_Handouts.pdf for the complete participant experience. Any decision checklists or assessment frameworks distributed as handouts establish what workers had in hand during training and are expected to apply in the field.</div>
+            </div>
+
+            <div class="doc-item">
+              <div class="doc-item-header">
+                <div class="doc-filename">Simulation_Handouts.pdf</div>
+                <div class="doc-pages">30 pp.</div>
+              </div>
+              <div class="doc-what">Materials for scenario-based simulation exercises. Documents the case scenarios, decision points, and expected responses that DCYF uses to train workers on investigation and assessment judgment calls.</div>
+              <div class="doc-relevance"><strong>Cross-ref:</strong> The simulation scenarios are particularly valuable — they document what DCYF considers "appropriate" conduct in investigation scenarios, which can be directly compared against McKinney and Surgento's actual conduct in RTK-1. If any simulation covers entry refusal or RSA 169-C:34 situations, it is directly relevant to RTK-6.</div>
+            </div>
+
+            <div class="doc-item">
+              <div class="doc-item-header">
+                <div class="doc-filename">Staff_Folder_Handouts.pdf</div>
+                <div class="doc-pages">26 pp.</div>
+              </div>
+              <div class="doc-what">Materials maintained in the training staff or supervisor folder — instructor-facing resources, facilitation notes, or supervisor reference materials distinct from participant handouts.</div>
+              <div class="doc-relevance"><strong>Cross-ref:</strong> May contain supervisor-specific guidance on how to handle edge cases in investigations — relevant to Surgento's role as supervisor in RTK-1 events. Supervisor-level materials would document what Surgento was trained to do when a CPSW encounters resistance or complex family situations.</div>
+            </div>
+
+            <div class="doc-item">
+              <div class="doc-item-header">
+                <div class="doc-filename">Activities.pdf</div>
+                <div class="doc-pages">22 pp.</div>
+              </div>
+              <div class="doc-what">In-class activity materials for the CPS training series. Structured exercises, worksheets, or group discussion prompts used during training sessions to reinforce the curriculum content.</div>
+              <div class="doc-relevance"><strong>Cross-ref:</strong> Review alongside Simulation_Handouts.pdf and Handouts.pdf to reconstruct the full training experience. Activity content revealing how workers are trained to think about URC determinations or family engagement is directly relevant to the PD 17-72 (RTK-5) analysis.</div>
+            </div>
+          </div>
+
+        </div><!-- end doc-inventory -->
+      </div>
+    </div>
+
+    <!-- RTK-4 (SNAP) — filed Sep 25 2025 -->
+    <div class="rtk-card" id="rtksnap" onclick="toggleCard('rtksnap')">
+      <div class="card-header">
+        <div class="card-num">RTK-4</div>
+        <div class="card-main">
+          <div class="card-title">SNAP Benefit Termination Records & System Audit Logs — Case #620663264</div>
+          <div class="card-meta">Filed Sep 25, 2025 &nbsp;·&nbsp; Denied Dec 31, 2025 &nbsp;·&nbsp; Escalated in Weaver complaint Feb 19, 2026</div>
+        </div>
+        <div class="card-right">
+          <span class="badge denied">Denied</span>
+          <span class="due">Escalated to Weaver</span>
+        </div>
+        <div class="chevron">▶</div>
+      </div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Sep 25, 2025</div><div class="tl-text"><strong>Filed</strong> — Dual RSA 91-A + RSA 170-G:8-a request. <strong>Category A:</strong> personal SNAP case file. <strong>Category B:</strong> inter-agency comms (DHHS/BFA ↔ DCYF), New HEIGHTS/BRIDGES audit logs for Oct 11 termination and Nov 5 restoration</div></div>
+          <div class="tl-item"><div class="tl-dot deny"></div><div class="tl-date">Oct 6 + 23</div><div class="tl-text"><strong>No response</strong> — Two follow-up requests sent; no acknowledgement from DHHS</div></div>
+          <div class="tl-item"><div class="tl-dot warn"></div><div class="tl-date">Oct 24, 2025</div><div class="tl-text"><strong>Sittig acknowledges oversight</strong> — Request "overlooked" due to her absence; claims SNAP records confidential under RSA 91-A:5; directs to Access to Records form; dismisses RSA 170-G:8-a as inapplicable</div></div>
+          <div class="tl-item"><div class="tl-dot info"></div><div class="tl-date">Oct 28, 2025</div><div class="tl-text"><strong>Detailed response sent</strong> — Accepts apology; reiterates Cat A/Cat B distinction; cites 7 C.F.R. § 272.1(c) confirming right to own case file; requests legal authority for form and Cat B audit log basis. <strong>Never answered.</strong></div></div>
+          <div class="tl-item"><div class="tl-dot deny"></div><div class="tl-date">Dec 29, 2025</div><div class="tl-text"><strong>Urgent follow-up filed</strong> — CC'd Commissioner Weaver directly; documents two-month non-response as constructive denial; formally requests audit logs; invokes spoliation risk citing Bentley's Aug 22 "corrupted recordings" email</div></div>
+          <div class="tl-item"><div class="tl-dot deny"></div><div class="tl-date">Dec 31, 2025</div><div class="tl-text"><strong>Denied by Sittig</strong> — "Records pertain to a specific individual case" = RSA 91-A:5 (no subsection cited). Redirect to Access to Records form again. Category B records entirely ignored.</div></div>
+          <div class="tl-item"><div class="tl-dot info"></div><div class="tl-date">Jan 1, 2026</div><div class="tl-text"><strong>Draft follow-up prepared</strong> — Challenges failure to cite specific RSA 91-A:5 subsection; distinguishes Cat B audit logs as governmental records, not personal SNAP records (draft not yet sent)</div></div>
+          <div class="tl-item"><div class="tl-dot deny"></div><div class="tl-date">Feb 19, 2026</div><div class="tl-text"><strong>Escalated to Weaver complaint</strong> — SNAP RTK is one of two requests forming the basis of the formal commissioner complaint</div></div>
+        </div>
+        <div class="callout danger">
+          <div class="callout-title">Core Allegation — Directly Connects to RTK-1</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Oct 11, 2024 termination notice stated benefits cut "because you told us he or she is no longer living with you" — Becker explicitly denies making this statement</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Benefits restored immediately Nov 5, 2024 after Becker's complaint — suggests DHHS knew the Oct 11 determination was erroneous or based on false DCYF input</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Category B audit logs would reveal <em>which user account</em> made the Oct 11 change — directly implicates Surgento/Horne inter-agency communication with BFA</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>These records are material evidence in federal case 1:24-cv-00430-JL-TSM</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RTK-5 (PD 17-72 + Policy 1215) — filed Jan 5, 2026 -->
+    <div class="rtk-card" id="rtk1" onclick="toggleCard('rtk1')">
+      <div class="card-header">
+        <div class="card-num">RTK-5</div>
+        <div class="card-main">
+          <div class="card-title">DCYF Policy Directive 17-72 Development Records + Policy 1215 Administrative Appeals</div>
+          <div class="card-meta">Filed Jan 5, 2026 &nbsp;·&nbsp; Supplemental filed Mar 6, 2026 &nbsp;·&nbsp; Respondent: Caitlin Sittig</div>
+        </div>
+        <div class="card-right">
+          <span class="badge open">Open</span>
+          <span class="due">Supp. due Apr 24, 2026</span>
+        </div>
+        <div class="chevron">▶</div>
+      </div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Jan 5, 2026</div><div class="tl-text"><strong>Filed</strong> — PD 17-72 policy, transmittal documents, signatory identification, meeting minutes and deliberative records (2016–present), superseding or revised directives</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Jan 9, 2026</div><div class="tl-text"><strong>Acknowledged</strong> — Caitlin Sittig; 30 business days; response on or before Feb 20, 2026</div></div>
+          <div class="tl-item"><div class="tl-dot warn"></div><div class="tl-date">Feb 20, 2026</div><div class="tl-text"><strong>Initial response</strong> — Docs on SFTP. Meeting minutes: "no responsive records." Only deliberative doc produced dates from Dec 2018 (wrong timeframe). Missing: 3 attachments from Jan 3, 2018 transmittal email + PD 26-03 directive.</div></div>
+          <div class="tl-item"><div class="tl-dot info"></div><div class="tl-date">Feb 24, 2026</div><div class="tl-text"><strong>4-deficiency follow-up</strong> — (1) Self-contradicting response: Dec 2018 email confirms other staff feedback was collected yet "no responsive records" claimed; (2) Missing attachments listed by filename in produced email; (3) Missing PD 26-03 referenced in produced Form 1213; (4) Wrong timeframe — 2016–2017 deliberative records requested, 2018 records produced</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Mar 4, 2026</div><div class="tl-text"><strong>DHHS reconduces search</strong> — Policy Unit re-searched; new documents found; missing attachments acknowledged as "oversight"; PD 26-03 Release Packet attached</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Mar 6, 2026</div><div class="tl-text"><strong>Additional production</strong> — Becker-RTK-PD17-72.PDF (redacted with marked exemptions: draft, nonresponsive)</div></div>
+          <div class="tl-item"><div class="tl-dot info"></div><div class="tl-date">Mar 6, 2026</div><div class="tl-text"><strong>Supplemental RTK filed</strong> — Policy 1215 Administrative Appeals: all versions 2017–present; HB 400 revision decision records; Bridges prerequisite status; policy directives for 1215 from Jan 1, 2017 to present</div></div>
+          <div class="tl-item"><div class="tl-dot pend"></div><div class="tl-date">Apr 24, 2026</div><div class="tl-text"><strong>Response due</strong> — Policy 1215 supplemental request</div></div>
+        </div>
+        <div class="callout warn">
+          <div class="callout-title">Still Open</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>2016–2017 deliberative records (Leadership discussions referenced in PD 17-72 itself) — no substantive response ever provided</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Policy 1215 supplemental response due April 24, 2026</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Intake and Assessment Workgroup feedback from Dec 2018 explicitly acknowledged in a produced document — never searched for or addressed</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RTK-6 (Court orders RSA 169-C:34) — filed Jan 5, 2026 -->
+    <div class="rtk-card" id="rtk2" onclick="toggleCard('rtk2')">
+      <div class="card-header">
+        <div class="card-num">RTK-6</div>
+        <div class="card-main">
+          <div class="card-title">Court Orders Under RSA 169-C:34(VII) — Form NHJB-2597 (Motion in Furtherance of Child Protection Investigation)</div>
+          <div class="card-meta">Filed Jan 5, 2026 &nbsp;·&nbsp; Final denial Mar 3, 2026 &nbsp;·&nbsp; Cited in Weaver complaint</div>
+        </div>
+        <div class="card-right">
+          <span class="badge partial">Partial</span>
+          <span class="due">May litigate Alt. A</span>
+        </div>
+        <div class="chevron">▶</div>
+      </div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Jan 5–6, 2026</div><div class="tl-text"><strong>Filed + clarified</strong> — Part 1 (protocols/training) granted via SFTP. Parts 2–4 sought petitions and data. Offered <strong>Alternative A:</strong> redacted face sheets showing only the checked RSA 169-C:34(VII) checkbox. <strong>Alternative B:</strong> sworn aggregate count of 2024 filings.</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Jan 6, 2026</div><div class="tl-text"><strong>Acknowledged</strong> — 30 business days; response by Feb 17</div></div>
+          <div class="tl-item"><div class="tl-dot warn"></div><div class="tl-date">Feb 17, 2026</div><div class="tl-text"><strong>Response</strong> — Part 1 produced. Part 2 denied: RSA 169-C:25 confidentiality. Part 3 denied: attorney-client privilege (RSA 91-A:5, XII). Part 4 denied: no such records tracked. Alternatives A and B not addressed.</div></div>
+          <div class="tl-item"><div class="tl-dot info"></div><div class="tl-date">Feb 17, 2026</div><div class="tl-text"><strong>Becker challenges</strong> — (1) 30-day delay for what were purely legal denials requiring no document gathering; (2) Alternative B (bare aggregate count) ignored; presses for specific statutory authority barring a single number</div></div>
+          <div class="tl-item"><div class="tl-dot deny"></div><div class="tl-date">Feb 24, 2026</div><div class="tl-text"><strong>DHHS maintains position</strong> — 30-day timeline justified; Alt. B declined under no-compilation rule (RSA 91-A:4, VII, citing <em>Brent v. Paquette</em>, 132 NH 415 (1989)). Alternative A still not addressed.</div></div>
+          <div class="tl-item"><div class="tl-dot info"></div><div class="tl-date">Feb 24, 2026</div><div class="tl-text"><strong>Becker narrows to Alt. A only</strong> — Accepts Alt. B analysis; presses: "does the Department contend that even a document stripped of all identifying information, retaining only a checked statutory checkbox, remains exempt?"</div></div>
+          <div class="tl-item"><div class="tl-dot deny"></div><div class="tl-date">Mar 3, 2026</div><div class="tl-text"><strong>DHHS final position</strong> — "Records of proceedings under RSA 169-C are court records and shall be withheld from public inspection... the statute does not require or allow DHHS to convert a court record to a public record through redactions." Denial stands.</div></div>
+          <div class="tl-item"><div class="tl-dot deny"></div><div class="tl-date">Feb 19, 2026</div><div class="tl-text"><strong>Cited in Weaver complaint</strong> — Blanket attorney-client privilege denial (Part 3) without a privilege log cited as institutional pattern violation</div></div>
+        </div>
+        <div class="callout danger">
+          <div class="callout-title">Decision Point</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Alternative A (just the checked checkbox, stripped of all identifying information) was never directly addressed by DHHS on the merits — RSA 91-A:7 Superior Court petition is viable</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>DHHS's position that the <em>entire</em> form is a "court record" such that even a non-identifying procedural notation cannot be redacted and disclosed is arguably legally unsound</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>RTK-6 produced <em>Court Forms.pdf</em> — may document internal DCYF guidance on RSA 169-C:34 petitions and how frequently they expect to use them</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RTK-7 (AAU caseload) — filed Feb 17, 2026 -->
+    <div class="rtk-card complete" id="rtk3" onclick="toggleCard('rtk3')">
+      <div class="card-header">
+        <div class="card-num">RTK-7</div>
+        <div class="card-main">
+          <div class="card-title">AAU Processing Times, Pending Caseload & Staffing Records (RSA 91-A)</div>
+          <div class="card-meta">Filed Feb 17, 2026 &nbsp;·&nbsp; Completed Mar 2, 2026 &nbsp;·&nbsp; Filed same day as mandamus notice to AAU</div>
+        </div>
+        <div class="card-right">
+          <span class="badge complete">Complete</span>
+        </div>
+        <div class="chevron">▶</div>
+      </div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Feb 17, 2026</div><div class="tl-text"><strong>Filed</strong> — Avg/median processing times (2023–present), total pending appeals as of filing date, internal timeframe standards, memoranda/reports on resource constraints and staffing. Filed same day as mandamus petition notice; information directly relevant to Feb 26 mandamus hearing.</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Feb 17, 2026</div><div class="tl-text"><strong>AAU acknowledges</strong> — Forwarded to Senior Administrative Law Judge</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Feb 23, 2026</div><div class="tl-text"><strong>Partial response with key finding</strong> — Item 1 (avg/median times): no such document exists. <strong>Item 2: 629 appeals currently pending.</strong> Item 3 (internal timeframe standards): no such documents exist; AAU adheres to federal and state law. Item 4: 10 more days needed.</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Mar 2, 2026</div><div class="tl-text"><strong>Item 4 produced — complete</strong> — RTK-Becker-AAU_Redacted.pdf; redactions: page 3 medical information + case-specific confidential/nonresponsive content; redaction basis explained in follow-up email</div></div>
+        </div>
+        <div class="callout success">
+          <div class="callout-title">Key Findings</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>629 appeals pending</strong> as of February 17, 2026 — critical evidence for mandamus proceedings showing systemic backlog</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>No internal processing-time standards exist — the AAU formally confirmed it tracks no metrics on decision timelines</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Staffing/resource records produced (redacted) — the redacted content reveals DHHS was aware of resource constraints affecting decision timelines</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>Pages 6–7 withheld</strong> as "case-specific confidential/nonresponsive content" — no privilege log produced; 170-G:8-a request filed Mar 28, 2026 to obtain withheld pages through subject-access vehicle Sittig's own practice established</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 170-G:8-a request — filed Mar 28, 2026 -->
+    <div class="inner-banner accent" style="margin-bottom:6px; border-radius:6px; padding:8px 14px; font-family:'IBM Plex Mono',monospace; font-size:11px;">
+      ★ New — RSA 170-G:8-a subject-access request; distinct from RSA 91-A public records framework
+    </div>
+    <div class="rtk-card notable" id="rtk170g" onclick="toggleCard('rtk170g')">
+      <div class="card-header">
+        <div class="card-num">170-G</div>
+        <div class="card-main">
+          <div class="card-title">RSA 170-G:8-a Subject-Access Request — RTK-7 Withheld Pages 6–7 (RTK-Becker-AAU_Redacted.pdf)</div>
+          <div class="card-meta">Filed Mar 28, 2026 &nbsp;·&nbsp; To: Caitlin Sittig (Legal Unit) &nbsp;·&nbsp; CC: John Martin</div>
+        </div>
+        <div class="card-right">
+          <span class="badge open">Open</span>
+          <span class="due">Response pending</span>
+        </div>
+        <div class="chevron">▶</div>
+      </div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Mar 2, 2026</div><div class="tl-text"><strong>RTK-7 completed with redactions</strong> — Pages 6–7 withheld as "case-specific confidential/nonresponsive content"; no privilege log produced identifying statutory basis for withholding</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Mar 28, 2026</div><div class="tl-text"><strong>170-G:8-a request filed to Sittig</strong> — Requests withheld pages as subject-access records; invokes Sittig's own established practice of routing "case-specific" records to 170-G:8-a process; if records are case-specific (as characterized), Becker as subject-party has independent access right; if non-responsive, Department must explain why records in AAU communications about his pending appeals are non-responsive to a request about those proceedings</div></div>
+          <div class="tl-item"><div class="tl-dot pend"></div><div class="tl-date">Pending</div><div class="tl-text"><strong>Response awaited</strong></div></div>
+        </div>
+        <div class="callout info">
+          <div class="callout-title">The Core Argument</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Sittig's consistent practice: "case-specific" records = outside RSA 91-A = use 170-G:8-a instead. RTK-7 redaction basis uses the word "case-specific." Request takes her at her word and uses the vehicle her own responses established.</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Department cannot simultaneously argue records are "case-specific" (removing them from 91-A) and inaccessible to the subject of that case (defeating 170-G:8-a). One position forecloses the other.</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>No privilege log was produced with the RTK-7 redaction — withholding without stating the specific statutory basis is independently deficient under <em>Mans v. Lebanon Sch. Bd.</em> narrow-construction requirement</span></div>
+        </div>
+        <div class="callout warn">
+          <div class="callout-title">Strategic Connection</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Pages 6–7 were withheld from a production documenting the Cremmen–St. Cyr relationship; the production decision was made by the respondent's own attorneys (Nachman and Sittig); the withheld content, whatever it contains, was reviewed for disclosure by the party with the greatest interest in non-disclosure</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>If pages discuss the Becker proceedings specifically, they are case records accessible under 170-G:8-a. If they are genuinely non-responsive, the "case-specific confidential" characterization was inaccurate and requires explanation.</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Result feeds directly into Motion for Reconsideration Ground VII/VIII — structural independence argument in AAU Dockets 2026-0310 &amp; 2026-0311</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RTK-8 (Post-AAU comms) — filed Mar 6, 2026 -->
+    <div class="rtk-card" id="rtk4" onclick="toggleCard('rtk4')">
+      <div class="card-header">
+        <div class="card-num">RTK-8</div>
+        <div class="card-main">
+          <div class="card-title">Post-AAU Ruling Internal Communications (September 25 – November 7, 2025)</div>
+          <div class="card-meta">Filed Mar 6, 2026 &nbsp;·&nbsp; Acknowledged Mar 12, 2026</div>
+        </div>
+        <div class="card-right">
+          <span class="badge open">Open</span>
+          <span class="due">Response due ~Apr 24, 2026</span>
+        </div>
+        <div class="chevron">▶</div>
+      </div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Mar 6, 2026</div><div class="tl-text"><strong>Filed</strong> — All internal DCYF/DHHS communications following the September 25, 2025 AAU ruling through November 7, 2025; seeks to document how the agency responded internally to the AAU's decision</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Mar 12, 2026</div><div class="tl-text"><strong>Acknowledged</strong> — DHHS anticipates approximately 30 business days; response on or before April 24, 2026</div></div>
+          <div class="tl-item"><div class="tl-dot pend"></div><div class="tl-date">Apr 24, 2026</div><div class="tl-text"><strong>Response due</strong></div></div>
+        </div>
+        <div class="callout warn">
+          <div class="callout-title">Watch For</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Expect blanket attorney-client privilege claims on internal communications — given Weaver complaint, push for a privilege log and non-privileged operational records</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Given RTK-2 precedent, DHHS may attempt categorical denial without addressing alternatives — be prepared with narrowed proposals from the outset</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RTK-9 (PD 26-03) — filed Mar 6, 2026 -->
+    <div class="rtk-card" id="rtk5" onclick="toggleCard('rtk5')">
+      <div class="card-header">
+        <div class="card-num">RTK-9</div>
+        <div class="card-main">
+          <div class="card-title">Policy Directive 26-03 Development Records — Issuance, Drafts, Deliberative Documents</div>
+          <div class="card-meta">Filed Mar 6, 2026 &nbsp;·&nbsp; Draft follow-up on 30-day delay prepared Mar 12, 2026</div>
+        </div>
+        <div class="card-right">
+          <span class="badge open">Open</span>
+          <span class="due">Response due ~Apr 24, 2026</span>
+        </div>
+        <div class="chevron">▶</div>
+      </div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Mar 6, 2026</div><div class="tl-text"><strong>Filed</strong> — PD 26-03 development and issuance records: all drafts, deliberative documents, transmittals, legal review, and records reflecting who authorized the addition of RSA 169-C:34, II-a and II-b citations to Form 1213 in January 2026</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Mar 12, 2026</div><div class="tl-text"><strong>Acknowledged</strong> — 30 business days; response on or before April 24, 2026</div></div>
+          <div class="tl-item"><div class="tl-dot info"></div><div class="tl-date">Mar 12, 2026</div><div class="tl-text"><strong>Draft follow-up prepared</strong> — Challenges 30-day estimate: PD 26-03 was issued January 2026; records are current and should be immediately accessible; cites RTK-5 initial response pattern as context. Not yet sent.</div></div>
+          <div class="tl-item"><div class="tl-dot pend"></div><div class="tl-date">Apr 24, 2026</div><div class="tl-text"><strong>Response due</strong></div></div>
+        </div>
+        <div class="callout warn">
+          <div class="callout-title">Strategic Note</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>PD 26-03 was issued January 2026 — the records are recent and a 30-day gathering estimate is difficult to justify; send the draft follow-up now</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Key target: the January 2026 Form 1213 adds citations to RSA 169-C:34, II-a and II-b that did not appear in prior versions — this is a deliberate policy decision whose authorization trail is a responsive record</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>RTK-5 established the pattern of initial incomplete response followed by supplemental production — anticipate needing a follow-up deficiency letter after initial response</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end rtk-list -->
+
+  <!-- AAU PROCEEDINGS -->
+  <div class="section-label">AAU Proceedings — Dockets 2026-0310 &amp; 2026-0311</div>
+  <div class="weaver-wrapper">
+    <div class="weaver-card" id="aau" onclick="toggleCard('aau')">
+      <div class="weaver-banner-bar" style="background:rgba(31,111,235,0.15); border-color:#388bfd; color:#79c0ff;">
+        March 25, 2026 Good Cause Hearing — split ruling — Motion for Reconsideration due April 24
+        <span class="no-reply-pill" style="background:rgba(31,111,235,0.15); border-color:#388bfd; color:#79c0ff;">Written order pending</span>
+      </div>
+      <div class="card-header">
+        <div class="card-num" style="color:var(--info-text)">AAU</div>
+        <div class="card-main">
+          <div class="card-title">Good Cause Preliminary Hearing — Dockets 2026-0310 &amp; 2026-0311</div>
+          <div class="card-meta">Heard Mar 25, 2026 &nbsp;·&nbsp; Oral ruling same day &nbsp;·&nbsp; Written order confirmed pending &nbsp;·&nbsp; Recon. deadline Apr 24, 2026</div>
+        </div>
+        <div class="card-right">
+          <span class="badge open">Active</span>
+        </div>
+        <div class="chevron">▶</div>
+      </div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Mar 25, 2026</div><div class="tl-text"><strong>2026-0311: Good cause GRANTED</strong> — Actual-receipt standard applied; November 7, 2025 letter not received until December 21, 2025; 12-day gap to January 2 filing deemed sufficient</div></div>
+          <div class="tl-item"><div class="tl-dot deny"></div><div class="tl-date">Mar 25, 2026</div><div class="tl-text"><strong>2026-0310: Good cause DENIED</strong> — Presiding officer inferred that because Becker filed one URC appeal on June 5, 2025, he should have filed both; 140-day gap found unreasonable; inference has no basis in He-C 201.03(b), RSA 541-A, or administrative law</div></div>
+          <div class="tl-item"><div class="tl-dot deny"></div><div class="tl-date">Mar 25, 2026</div><div class="tl-text"><strong>Sua sponte escape hatch raised</strong> — Immediately after denying good cause for 2026-0310, presiding officer raised unprompted whether the URC letter addressed both parents or only Ms. Becker; proposed Zoom conference with DCYF Seacoast office to clarify; stated explicitly that if Seacoast confirmed letter addressed only Ms. Becker, "that will make this appeal moot." DCYF attorneys had not raised this argument. This is Ground VIII of the Motion for Reconsideration.</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Mar 26, 2026</div><div class="tl-text"><strong>Written order and recording confirmed</strong> — AAU email: written order will issue; reconsideration period runs from March 25 oral ruling; audio recording invoiced separately upon payment</div></div>
+          <div class="tl-item"><div class="tl-dot pend"></div><div class="tl-date">Apr 24, 2026</div><div class="tl-text"><strong>Motion for Reconsideration due</strong> — He-C 204; runs from oral ruling; draft complete; 8 grounds</div></div>
+        </div>
+        <div class="callout danger">
+          <div class="callout-title">Ground VIII — The Sua Sponte Escape Hatch</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>She generated the respondent's argument</strong> — The standing/mooting theory was raised by the presiding officer, not DCYF's attorneys; a structurally independent adjudicator notes an unraised standing issue and directs parties to brief it; she identified it, designed the vehicle, and previewed the outcome in the respondent's favor</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>She proposed asking the respondent to interpret its own document</strong> — Zoom conference with DCYF Seacoast would assign the threshold standing determination to the respondent; no principle of administrative adjudication permits this</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>She named the outcome</strong> — "That will make this appeal moot" previewed the result if DCYF provided the answer that benefits DCYF; this is not neutral adjudication</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>All characterizations from appellant's firsthand account; audio recording requested and invoiced; motion filed on this basis with reservation to supplement upon recording receipt</span></div>
+        </div>
+        <div class="callout warn">
+          <div class="callout-title">Evidentiary Gap</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>No written order yet — motion must characterize oral ruling from firsthand account; reconsideration clock already running from March 25</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Audio recording requested March 26; invoice pending; payment to be tendered upon receipt; recording is the evidentiary foundation for Ground VIII quote</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>If written order arrives before April 24: review against motion and supplement; if after filing: file notice of supplementation</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT ACTIONS -->
+  <div class="section-label">Upcoming Deadlines &amp; Action Items</div>
+  <div class="next-actions">
+    <h3>Priority Actions</h3>
+
+    <div class="action-item">
+      <div class="action-dot" style="background:#f85149"></div>
+      <div class="action-date">Apr 24, 2026</div>
+      <div><strong>Motion for Reconsideration due</strong> — AAU Docket 2026-0310, He-C 204; reconsideration period runs from March 25 oral ruling. Eight grounds including: (I) internal inconsistency with 2026-0311 ruling; (II–IV) no legal basis for "should have filed both" inference; (V) 43-day appellant-attributable gap after subtracting 97 AAU days; (VI) AAU applied timeliness standard it has not itself met; (VII) Cremmen–St. Cyr structural independence; (VIII) sua sponte escape hatch — ALJ raised, designed vehicle for, and previewed outcome of, standing argument DCYF attorneys had not raised, immediately after denying good cause. Draft complete.</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-dot" style="background:#f85149"></div>
+      <div class="action-date">Apr 24, 2026</div>
+      <div><strong>Three RTK responses due simultaneously</strong> — RTK-5 Policy 1215 supplemental, RTK-8 post-AAU internal communications, RTK-9 PD 26-03 development records. Prepare deficiency letter templates in advance based on RTK-5 initial response pattern. Anticipate blanket attorney-client privilege claims on RTK-8; push for privilege log.</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-dot" style="background:#f85149"></div>
+      <div class="action-date">~Apr 11, 2026</div>
+      <div><strong>Weaver follow-up response window closes</strong> — Follow-up sent March 28 with explicit 10-business-day deadline. If no substantive response by ~Apr 11, RSA 91-A:7 petition framing systemic departmental pattern is the stated next step.</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-dot" style="background:#d29922"></div>
+      <div class="action-date">Pending</div>
+      <div><strong>AAU audio recording — March 25 hearing</strong> — Requested March 26; invoice to follow per AAU. Payment to be tendered upon receipt. Recording is the evidentiary confirmation of Ground VIII (sua sponte escape hatch quote). Motion for Reconsideration filed on firsthand account; recording supplements the record upon arrival. Critical to obtain before any merits hearing on reconsideration.</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-dot" style="background:#d29922"></div>
+      <div class="action-date">Pending</div>
+      <div><strong>AAU written order — March 25 oral ruling</strong> — AAU confirmed March 26 that written order will issue; no timeline given. Reconsideration period confirmed to run from oral ruling (March 25), not written order. If written order arrives before April 24, review against motion characterization and supplement if necessary. If it arrives after filing, file notice of supplementation.</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-dot" style="background:#d29922"></div>
+      <div class="action-date">Pending</div>
+      <div><strong>170-G:8-a response — withheld RTK-7 pages 6–7</strong> — Filed March 28 to Sittig; CC Martin. No statutory deadline established for 170-G:8-a responses. Follow up if no response within 10 business days (~Apr 11). Result feeds Ground VII/VIII of Motion for Reconsideration.</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-dot" style="background:#d29922"></div>
+      <div class="action-date">Now</div>
+      <div>Send RTK-9 follow-up challenging the 30-day estimate for PD 26-03. The directive was issued January 2026 — records are recent and should be immediately accessible. The draft is prepared.</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-dot" style="background:#388bfd"></div>
+      <div class="action-date">Anytime</div>
+      <div>RTK-SNAP Category B audit logs — send the draft follow-up challenging Sittig's denial; her response fails to cite any specific RSA 91-A:5 subsection and never addresses the Category A/B distinction or 7 C.F.R. § 272.1(c). RSA 91-A:7 petition is an independent option.</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-dot" style="background:#388bfd"></div>
+      <div class="action-date">Anytime</div>
+      <div>RTK-6 Alternative A — DHHS's final position that the <em>entire</em> NHJB-2597-F is a court record requiring no redaction was never applied to the specific question of a non-identifying checked checkbox. RSA 91-A:7 Superior Court petition is viable on this narrow ground.</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-dot" style="background:#388bfd"></div>
+      <div class="action-date">Anytime</div>
+      <div>RTK Ombudsman — challenge redaction of RTK-7 pages 6–7 as independent track alongside 170-G:8-a request. Ombudsman route addresses the RSA 91-A withholding-without-privilege-log deficiency; 170-G:8-a route addresses subject-access right. Both can run in parallel.</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-dot" style="background:#484f58"></div>
+      <div class="action-date">Cross-reference</div>
+      <div>RTK-3 training materials — Court Forms.pdf, Investigations FG 20240801.pdf, and the RSA 169-C.pdf should be systematically cross-referenced with RTK-2 (what DCYF workers were trained to do re: RSA 169-C:34 petitions) and RTK-1 arguments about McKinney and Surgento's conduct.</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-dot" style="background:#484f58"></div>
+      <div class="action-date">Federal case</div>
+      <div>RTK-OCA — OCA's RSA 21-V shield is a state-law protection. Federal discovery in Case 1:24-cv-00430-JL-TSM could potentially reach OCA-DCYF communications if material to constitutional claims, bypassing the state confidentiality framework entirely.</div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  Becker v. NH DHHS/DCYF &nbsp;·&nbsp; RSA 91-A Campaign 2024–2026 &nbsp;·&nbsp; Generated March 28, 2026 &nbsp;·&nbsp; Pro Se
+</footer>
+
+<script>
+  function toggleCard(id) {
+    const el = document.getElementById(id);
+    const isOpen = el.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.rtk-card, .weaver-card').forEach(c => c.classList.remove('open'));
+    // Open clicked if it was closed
+    if (!isOpen) el.classList.add('open');
+  }
+</script>
+</body>
+</html>
