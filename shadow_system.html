@@ -665,6 +665,104 @@
   .cover > *:nth-child(4) { animation-delay: 0.45s; }
   .cover > *:nth-child(5) { animation-delay: 0.55s; }
   .cover > *:nth-child(6) { animation-delay: 0.65s; }
+
+  /* ── PASSWORD GATE ── */
+  #password-gate {
+    position: fixed;
+    inset: 0;
+    background: var(--ink);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  #password-gate::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255,255,255,0.015) 2px,
+      rgba(255,255,255,0.015) 4px
+    );
+    pointer-events: none;
+  }
+  .gate-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .gate-title {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--page);
+    text-align: center;
+    letter-spacing: -0.02em;
+  }
+  .gate-rule {
+    width: 3rem;
+    height: 2px;
+    background: var(--accent);
+  }
+  .gate-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+  }
+  .gate-input {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--page);
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    padding: 0.7rem 1.25rem;
+    width: 16rem;
+    outline: none;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .gate-input:focus {
+    border-color: var(--accent);
+  }
+  .gate-input::placeholder {
+    color: rgba(250,248,245,0.25);
+    letter-spacing: 0.08em;
+  }
+  .gate-btn {
+    background: var(--accent);
+    color: var(--page);
+    border: none;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.65rem 1.75rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    width: 16rem;
+  }
+  .gate-btn:hover { opacity: 0.85; }
+  .gate-error {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.2s;
+    min-height: 1rem;
+  }
+  .gate-error.visible { opacity: 1; }
 </style>
 </head>
 <body>
@@ -1326,6 +1424,53 @@
 <footer class="footnote">
   <p>This paper describes documented institutional practices of the New Hampshire Division for Children, Youth and Families between December 2017 and the present. All factual claims are sourced to agency-produced records. Primary sources include: Policy Directive 17-72 and its successor directives (PD 19-10, PD 22-10, PD 26-03); Intake and Assessment Workgroup minutes (November 5, 2017 and December 4, 2017); legislative implementation tracking spreadsheet (December 2017); internal email correspondence, Allen–Tappan–Deputy Director Michael O'Connor chain (December 18–19, 2017); Allen–Thomas O'Connor correspondence (December 1, 2017); DHHS Right-to-Know production by Deputy Chief Counsel John B. Martin, August 20 and September 27, 2025 (RTK Request #2025-196), including the complete CPS training curriculum; Right-to-Know responses from DHHS Deputy Chief Counsel Martin (July 24, 2025) and DHHS Legal Unit Coordinator Caitlin Sittig (February 17, 2026) confirming absence of RSA 169-C:34(VII) compliance tracking; the AAU Order on Motion to Dismiss, Docket 2025-1149 (September 25, 2025); DCYF Policy 1215 Administrative Appeals (produced 2026); SOP 1213.2 Considerations for an Assessment Timeframe Extension (PD 22-10, May 2022); Form 1213 (all versions, December 2017 through January 2026); Form 1214 (January 2026); PD 26-03 Release Packet including Forms 1212, 1213, 1214, 1215, 1217, 1218, 1220, and 1221 (January 2026); the Becker v. DCYF Supplemental Constitutional Argument V — Pre-HB 400 Framework, AAU Dockets 2026-0310 and 2026-0311 (March 2026); and the RTK-7 production, RTK-Becker-AAU_Redacted.pdf (completed March 2, 2026), including the Executive Order 2025-02 Hiring Waiver Request (DHHS Administrative Appeals Unit, March 3, 2025, POC: Melissa St. Cyr), the Cremmen–St. Cyr email chain (February 2, 2026), and the Cremmen–St. Cyr NHH email (December 17, 2025). The Becker proceedings (AAU Dockets 2026-0310 and 2026-0311) are referenced for procedural events occurring within those proceedings; the March 25, 2026 Good Cause hearing and the presiding officer's verbal order are referenced from the appellant's firsthand account. No specific case determination is referenced. The paper is an internal working draft intended as the basis for a final version to be prepared with full citation attributions to specific documents and page references within the produced record.</p>
 </footer>
+
+<!-- PASSWORD GATE -->
+<div id="password-gate">
+  <span class="gate-label">White Paper · Restricted Access</span>
+  <h2 class="gate-title">The Shadow System</h2>
+  <div class="gate-rule"></div>
+  <div class="gate-form">
+    <input
+      class="gate-input"
+      id="gate-input"
+      type="password"
+      placeholder="Enter password"
+      autocomplete="off"
+      autofocus
+    />
+    <button class="gate-btn" id="gate-btn">Enter</button>
+    <span class="gate-error" id="gate-error">Incorrect password</span>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const CORRECT = 'Becker2026';
+    const gate    = document.getElementById('password-gate');
+    const input   = document.getElementById('gate-input');
+    const btn     = document.getElementById('gate-btn');
+    const error   = document.getElementById('gate-error');
+
+    function attempt() {
+      if (input.value === CORRECT) {
+        gate.style.transition = 'opacity 0.4s ease';
+        gate.style.opacity = '0';
+        setTimeout(() => gate.remove(), 420);
+      } else {
+        error.classList.add('visible');
+        input.value = '';
+        input.focus();
+        setTimeout(() => error.classList.remove('visible'), 2000);
+      }
+    }
+
+    btn.addEventListener('click', attempt);
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') attempt();
+    });
+  })();
+</script>
 
 </main>
 </body>
