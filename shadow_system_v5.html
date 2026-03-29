@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Shadow System — NH DCYF White Paper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1410;
+    --ink-mid: #3a3028;
+    --ink-light: #6b5f54;
+    --rule: #c8bfb4;
+    --rule-light: #e8e2db;
+    --accent: #8b1a1a;
+    --accent-pale: #f7f0ee;
+    --page: #faf8f5;
+    --white: #ffffff;
+    --callout-bg: #f2ece5;
+    --mono: 'DM Mono', monospace;
+    --serif: 'Libre Baskerville', Georgia, serif;
+    --body: 'Source Serif 4', Georgia, serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 17px; scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--body);
+    font-weight: 300;
+    background: var(--page);
+    color: var(--ink);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--ink);
+    color: var(--page);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255,255,255,0.015) 2px,
+      rgba(255,255,255,0.015) 4px
+    );
+  }
+  .cover-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    display: block;
+    position: relative;
+  }
+  .cover h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  .cover-rule {
+    width: 3rem;
+    height: 2px;
+    background: var(--accent);
+    margin: 0 auto 1.5rem;
+    position: relative;
+  }
+  .cover-subtitle {
+    font-family: var(--body);
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(250,248,245,0.7);
+    max-width: 42rem;
+    margin: 0 auto 2.5rem;
+    font-style: italic;
+    position: relative;
+  }
+  .cover-meta {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(250,248,245,0.4);
+    position: relative;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 52rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* ── PREAMBLE ── */
+  .preamble {
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .preamble p {
+    font-size: 1.08rem;
+    line-height: 1.8;
+    color: var(--ink-mid);
+    margin-bottom: 1.25rem;
+  }
+  .preamble p:last-child { margin-bottom: 0; }
+
+  /* ── SECTION LABELS ── */
+  .part-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.75rem;
+    margin-top: 4.5rem;
+  }
+
+  /* ── HEADINGS ── */
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.55rem, 3vw, 2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  h3 {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* ── BODY TEXT ── */
+  p {
+    margin-bottom: 1.25rem;
+    color: var(--ink-mid);
+    font-size: 0.98rem;
+    line-height: 1.82;
+  }
+
+  /* ── PRINCIPLE CARDS ── */
+  .principles {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    border: 1px solid var(--rule);
+    background: var(--rule);
+  }
+  .principle {
+    background: var(--white);
+    padding: 1.4rem 1.6rem;
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem;
+  }
+  .principle-num {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    padding-top: 0.15rem;
+  }
+  .principle-text {
+    font-size: 0.93rem;
+    line-height: 1.75;
+    color: var(--ink-mid);
+    margin: 0;
+  }
+  .principle-text strong {
+    font-family: var(--serif);
+    font-weight: 700;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+  }
+
+  /* ── COMPARISON TIERS ── */
+  .tier-list {
+    margin: 1.5rem 0;
+    border-left: 3px solid var(--accent);
+    padding-left: 1.5rem;
+  }
+  .tier-item {
+    margin-bottom: 0.7rem;
+    font-size: 0.93rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+  }
+  .tier-item:last-child { margin-bottom: 0; }
+
+  /* ── BULLET LISTS ── */
+  ul {
+    list-style: none;
+    margin: 1.25rem 0 1.25rem 0;
+  }
+  ul li {
+    font-size: 0.93rem;
+    color: var(--ink-mid);
+    line-height: 1.75;
+    margin-bottom: 0.5rem;
+    padding-left: 1.4rem;
+    position: relative;
+  }
+  ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-family: var(--mono);
+  }
+
+  /* ── FORM COMPARISON ── */
+  .form-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 2rem 0;
+  }
+  @media (max-width: 640px) {
+    .form-compare { grid-template-columns: 1fr; }
+  }
+  .form-col {
+    background: var(--white);
+    padding: 1.5rem;
+  }
+  .form-col-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    font-size: 0.58rem;
+    border-radius: 2px;
+    letter-spacing: 0.08em;
+    font-family: var(--mono);
+  }
+  .badge-full {
+    background: #1a3a1a;
+    color: #c8e6c8;
+  }
+  .badge-empty {
+    background: var(--accent);
+    color: #f7d0d0;
+  }
+  .form-col ul { margin: 0; }
+  .form-col ul li { font-size: 0.85rem; margin-bottom: 0.4rem; }
+
+  /* ── PULLQUOTE ── */
+  .pullquote {
+    margin: 2.5rem 0;
+    padding: 1.75rem 2rem;
+    background: var(--accent-pale);
+    border-left: 4px solid var(--accent);
+    position: relative;
+  }
+  .pullquote p {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--ink);
+    margin: 0;
+  }
+  .pullquote cite {
+    display: block;
+    margin-top: 0.75rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    font-style: normal;
+  }
+
+  /* ── EMAIL CHAIN ── */
+  .email-chain {
+    background: var(--callout-bg);
+    border: 1px solid var(--rule);
+    margin: 2rem 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  .email-chain-header {
+    background: var(--ink);
+    color: var(--page);
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.25rem;
+  }
+  .email-entry {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 1rem;
+  }
+  .email-entry:last-child { border-bottom: none; }
+  .email-date {
+    font-family: var(--mono);
+    font-size: 0.67rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    padding-top: 0.05rem;
+  }
+  .email-content {
+    font-size: 0.88rem;
+    color: var(--ink-mid);
+    line-height: 1.65;
+    margin: 0;
+  }
+  .email-content strong { color: var(--ink); font-weight: 600; }
+
+  /* ── DIRECTIVE TIMELINE ── */
+  .timeline {
+    margin: 2rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 1px;
+    background: var(--rule);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .timeline-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.5rem;
+    top: 0.55rem;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .tl-year {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .timeline-item p { margin: 0; font-size: 0.91rem; }
+
+  /* ── CALLOUT BOX ── */
+  .callout {
+    border: 1px solid var(--rule);
+    padding: 1.5rem 1.75rem;
+    margin: 2rem 0;
+    background: var(--white);
+    position: relative;
+  }
+  .callout::before {
+    content: attr(data-label);
+    position: absolute;
+    top: -0.55rem;
+    left: 1rem;
+    background: var(--white);
+    padding: 0 0.4rem;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+  }
+  .callout p { margin: 0; font-size: 0.93rem; }
+
+  /* ── SCALE STAT ── */
+  .scale-stat {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: var(--ink);
+    color: var(--page);
+    margin: 2.5rem 0;
+  }
+  .scale-num {
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 8vw, 5.5rem);
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    display: block;
+  }
+  .scale-desc {
+    font-family: var(--body);
+    font-size: 0.9rem;
+    color: rgba(250,248,245,0.6);
+    margin-top: 0.75rem;
+    letter-spacing: 0.03em;
+    font-style: italic;
+  }
+
+  /* ── POPULATIONS ── */
+  .populations {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 2rem 0;
+  }
+  .population-item {
+    background: var(--white);
+    padding: 1.25rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1.25rem 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  .pop-marker {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-top: 0.55rem;
+  }
+  .population-item p { margin: 0; font-size: 0.92rem; }
+
+  /* ── RTK REQUESTS ── */
+  .rtk-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin: 2rem 0;
+  }
+  .rtk-item {
+    border: 1px solid var(--rule);
+    background: var(--white);
+    padding: 1.4rem 1.5rem;
+  }
+  .rtk-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+  .rtk-item h4 {
+    font-family: var(--serif);
+    font-size: 0.97rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+  .rtk-item p { margin: 0; font-size: 0.9rem; }
+
+  /* ── REMEDIES ── */
+  .remedy-section {
+    border-top: 1px solid var(--rule);
+    padding-top: 2rem;
+    margin-top: 2rem;
+  }
+  .remedy-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── CLOSING ── */
+  .closing-statement {
+    background: var(--ink);
+    color: var(--page);
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-top: 4rem;
+  }
+  .closing-statement p {
+    color: rgba(250,248,245,0.75);
+    max-width: 40rem;
+    margin: 0 auto 1.25rem;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+  .closing-statement .final-line {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--page);
+    margin-top: 2rem;
+    margin-bottom: 0;
+  }
+
+  /* ── FOOTNOTE ── */
+  .footnote {
+    border-top: 1px solid var(--rule);
+    padding: 2.5rem 0;
+    margin-top: 0;
+    background: var(--page);
+  }
+  .footnote p {
+    font-size: 0.78rem;
+    color: var(--ink-light);
+    font-style: italic;
+    line-height: 1.8;
+    max-width: 52rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* ── NAV ── */
+  .toc {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    margin: 3rem 0;
+    padding: 1.75rem 2rem;
+  }
+  .toc-title {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    display: block;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .toc ol {
+    list-style: none;
+    counter-reset: toc-counter;
+    margin: 0;
+  }
+  .toc ol li {
+    counter-increment: toc-counter;
+    margin-bottom: 0.5rem;
+    padding-left: 2rem;
+    position: relative;
+    font-size: 0.88rem;
+  }
+  .toc ol li::before {
+    content: counter(toc-counter, upper-roman);
+    position: absolute;
+    left: 0;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    top: 0.15rem;
+  }
+  .toc ol li a {
+    color: var(--ink-mid);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule-light);
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .toc ol li a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* ── DIVIDERS ── */
+  .section-break {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 3.5rem 0;
+  }
+
+  /* ── STATUTE CALLOUT ── */
+  .statute {
+    background: var(--callout-bg);
+    border: 1px solid var(--rule);
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--ink-mid);
+    line-height: 1.65;
+  }
+  .statute strong {
+    color: var(--ink);
+    font-weight: 400;
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+  }
+
+  /* ── DUE PROCESS DEF ── */
+  .definition-block {
+    border-left: 3px solid var(--rule);
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0;
+    background: var(--white);
+  }
+  .definition-block p {
+    margin: 0;
+    font-style: italic;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 600px) {
+    .email-entry { grid-template-columns: 1fr; gap: 0.25rem; }
+    .principle { grid-template-columns: 1fr; gap: 0.3rem; }
+    .principle-num { padding-top: 0; }
+  }
+
+  /* ── PAGE ANIMATION ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .cover > * { animation: fadeUp 0.7s ease both; }
+  .cover > *:nth-child(1) { animation-delay: 0.1s; }
+  .cover > *:nth-child(2) { animation-delay: 0.25s; }
+  .cover > *:nth-child(3) { animation-delay: 0.35s; }
+  .cover > *:nth-child(4) { animation-delay: 0.45s; }
+  .cover > *:nth-child(5) { animation-delay: 0.55s; }
+  .cover > *:nth-child(6) { animation-delay: 0.65s; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<header class="cover">
+  <span class="cover-label">White Paper · New Hampshire DCYF</span>
+  <h1>The Shadow System</h1>
+  <div class="cover-rule"></div>
+  <p class="cover-subtitle">How New Hampshire's Child Protective Agency Constructed and Maintained a Framework Operating Outside the Law — And What Its Own Documents Prove</p>
+  <span class="cover-meta">December 2017 – Present · Integrated Revised Draft v5</span>
+</header>
+
+<!-- BODY -->
+<main>
+<div class="container">
+
+  <!-- TABLE OF CONTENTS -->
+  <nav class="toc">
+    <span class="toc-title">Contents</span>
+    <ol>
+      <li><a href="#unified-theory">The Unified Theory</a></li>
+      <li><a href="#part-i">The Constitutional Foundation</a></li>
+      <li><a href="#part-ii">The Paper System</a></li>
+      <li><a href="#part-iii">The Operational System</a></li>
+      <li><a href="#part-iv">The Immunity Apparatus</a></li>
+      <li><a href="#part-v">The Scale</a></li>
+      <li><a href="#part-vi">The Bidirectional Trap</a></li>
+      <li><a href="#part-vii">The Pending Record</a></li>
+      <li><a href="#part-viii">What the Shadow System Requires</a></li>
+    </ol>
+  </nav>
+
+  <!-- UNIFIED THEORY -->
+  <section id="unified-theory" class="preamble">
+    <span class="part-label">The Unified Theory</span>
+
+    <p>Between December 2017 and the present, the New Hampshire Division for Children, Youth and Families constructed and maintained a system operating simultaneously at three levels: a <em>paper level</em> that issues probable cause findings without the findings of fact, conclusions of law, or notice of appeal rights that both the Constitution and state law independently require; an <em>operational level</em> built around a documented training methodology that instructs workers to construct persuasive narratives toward predetermined conclusions, filter the evidentiary record to remove what doesn't prove the case, and manage constitutional resistance through clinical techniques rather than legal process; and a <em>structural level</em> that denied for nearly nine years that any appeal of these findings was available, while internally identifying the need to provide one — and internally tracking the appeal window it was publicly denying existed.</p>
+
+    <p>All three levels are documented in the agency's own records.</p>
+
+    <p>The system's most consequential feature is not that it operates in one direction. It is that it operates without accountability in both. The same paper system that prevents a wrongly-marked family from challenging an unwarranted finding prevents a reporting family from challenging an inadequate one. The same training methodology that builds a narrative toward a probable cause determination builds a narrative away from protective action. The same immunity apparatus that blocked families from contesting URC findings blocked families from demanding answers when their concerns were dismissed. The mechanism is identical. The direction is the only thing that changes.</p>
+
+    <p>This paper documents how the system was built, how it operates, and what it does to all families it touches — in both directions. Every factual claim is sourced to the agency's own produced records.</p>
+  </section>
+
+  <!-- PART I -->
+  <section id="part-i">
+    <span class="part-label">Part I</span>
+    <h2>The Constitutional Foundation</h2>
+
+    <h3>What the Government Owes Families</h3>
+
+    <p>When a government agency makes a formal determination about a family — finding that probable cause exists to believe a parent abused or neglected a child — two things are constitutionally required. The agency must explain what it decided and why, in writing, with enough specificity that the determination can be understood and challenged. And the family must be told that they have the right to challenge it.</p>
+
+    <p>These are not bureaucratic formalities. They are the minimum conditions under which government power over families can be exercised without becoming arbitrary. Without a written explanation, no one — not the family, not a reviewing court, not an oversight body — can determine whether the agency got it right. Without notice of appeal rights, the family cannot exercise the remedy that written explanation is supposed to enable. Both requirements are independently mandated by the New Hampshire Administrative Procedure Act under RSA 541-A:35. Both attach by constitutional necessity to any formal government finding of probable cause regarding a parent and child.</p>
+
+    <p>These requirements run in both directions. They protect a family against whom a probable cause finding is made — giving that family the explanation and the process to contest the finding if it is wrong. They also protect the family or individual who made a report — because the adequacy of the agency's response to that report is itself a government decision, and government decisions affecting substantial interests must be explained, documented, and subject to challenge.</p>
+
+    <p>New Hampshire's Division for Children, Youth and Families built a system that satisfies neither requirement — and did so knowingly, from the moment the system was created.</p>
+
+    <h3>The Pre-HB 400 Framework: The Rights That Always Existed</h3>
+
+    <p>Before June 14, 2017, New Hampshire child protective services operated under a binary dispositional system: Founded and Unfounded. A Founded determination meant that DCYF had concluded, based on probable cause, that abuse or neglect had occurred. That determination triggered the full suite of procedural protections required by New Hampshire administrative law and constitutional due process. These protections were not administrative courtesies. They were the constitutional minimum required when a government agency makes a formal finding that a parent has, in all probability, abused or neglected a child.</p>
+
+    <p>Confirmed in DCYF's own RTK-produced Form 1214 — which has remained substantively unchanged through every policy directive revision since before 2017 — those protections included:</p>
+
+    <ul>
+      <li>Explicit written notice of the right to appeal the determination</li>
+      <li>A stated 30-day deadline with a specific waiver warning</li>
+      <li>Notice of the right to a formal hearing before an independent adjudicative officer</li>
+      <li>Notice of the right to legal representation at that hearing at the recipient's expense</li>
+      <li>Disclosure of the consequences of the finding, including placement on the Central Registry</li>
+      <li>Notice of the right to seek expungement, with a reference to the applicable court form</li>
+      <li>Physical attachment of the hearing request form to the notice letter itself</li>
+      <li>Delivery by certified mail with tracking confirmation</li>
+      <li>Citation of the governing statute</li>
+    </ul>
+
+    <p>These protections existed because a formal government determination that probable cause exists to believe a parent harmed their child carries profound legal, social, and practical consequences: indefinite retention under RSA 169-C:35-a(III), use as pattern evidence under RSA 169-C:12, mandatory administrative review under RSA 169-C:34(II)(b), and direct relevance to custody and guardianship matters. The procedural protections were the constitutional answer to those stakes. They were constitutionally required for a probable-cause-based finding of child abuse before 2017. They remain constitutionally required for a probable-cause-based finding of child abuse after 2017 — regardless of the label DCYF attaches to it.</p>
+
+    <h3>The Five Constitutional Principles</h3>
+
+    <p>The pre-HB 400 framework establishes more than a historical baseline. It establishes five constitutional principles that govern the URC category's validity from the moment of its creation:</p>
+
+    <div class="principles">
+      <div class="principle">
+        <span class="principle-num">01</span>
+        <p class="principle-text"><strong>The government cannot use its own administrative architecture to define away constitutionally required protections.</strong> Due process analysis begins with the nature of the interest at stake, not with how the government chooses to characterize the proceeding. When DCYF makes a formal determination that probable cause exists to believe a parent abused or neglected a child, it is doing something of constitutional weight — regardless of what it calls the document it generates. DCYF cannot use the definitional architecture of its own administrative scheme to define away the procedural protections that constitutional due process independently requires. The label is DCYF's. The rights are not.</p>
+      </div>
+      <div class="principle">
+        <span class="principle-num">02</span>
+        <p class="principle-text"><strong>A parent's liberty interest in the care of their children is fundamental and predates any statute.</strong> The right of a parent to raise their children free from unjustified government interference is among the most deeply rooted liberty interests in American constitutional law. It is not a statutory creation. A URC finding is a formal recorded government determination, indefinitely retained, that in the agency's judgment probable cause exists to believe the named parent abused or neglected a child. The liberty interest at stake is exactly what it was before 2017. The label changed. The interest did not.</p>
+      </div>
+      <div class="principle">
+        <span class="principle-num">03</span>
+        <p class="principle-text"><strong>Meaningful notice is the constitutional minimum; Form 1213 fails all four of its elements.</strong> Due process requires, at minimum, that a person subject to an adverse government action receive notice that: (1) identifies the factual basis for the action; (2) informs the recipient of the right to challenge the action; (3) states the applicable deadline; and (4) describes the procedure for doing so. Form 1213, in every version issued from December 2017 through the present, fails all four elements. It is an outcome notification dressed in official letterhead.</p>
+      </div>
+      <div class="principle">
+        <span class="principle-num">04</span>
+        <p class="principle-text"><strong>Constitutionally defective notice cannot start a limitations period.</strong> A limitations period begins to run only when the affected party has received notice adequate to inform them that a clock is running, what it is counting down, and what will happen when it expires. The recipient who was never told they had a right, never told there was a deadline, and never told what the deadline was for, cannot be deemed to have forfeited that right by failing to act. Every Form 1213 issued from 2017 to the present was constitutionally defective as notice. The 30-day limitations period therefore never ran against any URC recipient.</p>
+      </div>
+      <div class="principle">
+        <span class="principle-num">05</span>
+        <p class="principle-text"><strong>The state cannot regress from established procedural protections without clear legislative authorization.</strong> Once procedural protections have been established for a category of government action because they are constitutionally required, they cannot be eliminated by administrative restructuring of the category. The constitutional floor does not move because the administrative label does. HB 400 restructured the category. It did not — and on this record demonstrably could not — provide that authorization.</p>
+      </div>
+    </div>
+
+    <h3>What House Bill 400 Did — and Did Not Do</h3>
+
+    <p>House Bill 400, effective June 14, 2017, made two changes. It raised the evidentiary standard for a Founded determination from probable cause to a preponderance of the evidence. And it created a new category — "Unfounded but with Reasonable Concerns," or URC — defined by statute as a determination that probable cause exists to believe the child was abused or neglected, but that the evidence is insufficient to meet the higher preponderance standard.</p>
+
+    <p>The URC category is, precisely and entirely, the old Founded standard applied to a new label. The evidentiary threshold is identical to what Founded required before 2017. The substantive nature of the finding — a formal government determination of probable cause regarding a parent and child — is identical. The consequences are identical.</p>
+
+    <p>HB 400 said nothing about stripping procedural rights from URC recipients. The legislature raised one evidentiary standard and created one new label. It did not mention, modify, or eliminate the protections that had attached for decades to probable cause findings of child abuse. Three foundational principles of statutory construction independently require that the pre-existing protections survive:</p>
+
+    <p>The <strong>canon against implicit elimination of rights</strong> holds that a statute is not read to eliminate long-established constitutional protections unless the legislature has said so clearly and expressly. HB 400's silence admits of two constructions: either it means DCYF may implement URC without any procedural protections, or it means the protections continue because the legislature did not expressly eliminate them. The first construction raises serious constitutional questions and eliminates the rights of thousands of families by implication. The second raises no constitutional questions. Courts choose the second.</p>
+
+    <p>The <strong>uniform meaning principle</strong> establishes that "probable cause" carries the same meaning throughout RSA 169-C. DCYF cannot claim that "probable cause" is legally significant enough to support issuing a URC determination — a formal government finding with indefinite retention and ongoing legal consequences — while simultaneously claiming it is legally insignificant for purposes of the procedural protections that always attached to that standard.</p>
+
+    <p>The <strong>expressio unius</strong> principle confirms that when a legislature intends to modify or eliminate procedural rights, it says so. HB 400 explicitly raised the Founded standard and explicitly created the URC category. It said nothing about stripping procedural rights. Courts do not supply by implication what the legislature declined to include in its text.</p>
+
+    <p>The three-tier comparison makes the constitutional incoherence precise:</p>
+
+    <div class="tier-list">
+      <div class="tier-item">Before HB 400: A probable cause finding triggered a Founded determination and full procedural protections.</div>
+      <div class="tier-item">After HB 400: A preponderance finding triggers a Founded determination and full procedural protections.</div>
+      <div class="tier-item">After HB 400: A probable cause finding — the identical standard Founded previously required — triggers a URC determination and <em>no procedural protections</em>.</div>
+    </div>
+
+    <p>The only variable is the label. The constitutional weight of a formal government finding of probable cause that a parent abused or neglected a child does not diminish because the agency calls the finding something different. DCYF implemented HB 400 as if the legislature had authorized something it had not: the elimination of every procedural protection the pre-2017 system provided for probable cause findings. The consequence was nearly nine years of constitutionally defective determinations — not because the law permitted it, but because the agency chose to read legislative silence as permission.</p>
+
+    <h3>RSA 541-A:35: The Independent Statutory Floor</h3>
+
+    <div class="statute">
+      <strong>RSA 541-A:35</strong><br>
+      "A final decision shall include findings of fact and conclusions of law, separately stated."
+    </div>
+
+    <p>A URC determination is a final decision within the meaning of RSA 541-A:30 because it terminates DCYF's assessment, is communicated to the family as a closed matter, is not subject to further DCYF reconsideration, and carries ongoing legal consequences in future assessments. ALJ Towle's September 25, 2025 ruling — that URC findings are appealable final agency decisions — forecloses any argument that URC determinations fall outside the RSA 541-A framework. The statutory requirement therefore applies. Form 1213 does not meet it. DCYF's own staff established this on December 4, 2017.</p>
+  </section>
+
+  <hr class="section-break">
+
+  <!-- PART II -->
+  <section id="part-ii">
+    <span class="part-label">Part II</span>
+    <h2>The Paper System</h2>
+
+    <h3>A Notice of Outcome, Not a Notice of Findings</h3>
+
+    <p>The standardized form DCYF uses to communicate URC determinations to families — Form 1213 — contains a date, an assessment number, a generic acknowledgment that a report was received, the conclusory URC designation, two RSA citations (added in January 2026), a list of service recommendations, and a phone number. It does not identify what facts DCYF found. It does not state what evidence was considered. It does not describe what specific conduct was identified. It does not explain what legal standard was applied or why the identified facts meet the probable cause threshold. It does not mention that any right to challenge the finding exists. It does not state any deadline. It does not describe any procedure.</p>
+
+    <p>This is, by every legal and constitutional standard, not a final decision. It is a conclusion delivered without the reasoning that constitutional and statutory law require.</p>
+
+    <p>The form's design presents a conclusion while concealing the construction behind it. The absence of findings in Form 1213 is not a failure to communicate adequately. It is the form's design.</p>
+
+    <h3>The Document That Proves It Was Known — Twice</h3>
+
+    <p>Before Form 1213 was finalized in December 2017, DCYF's own field staff had identified its structural inadequacy on two separate occasions, in two separate formal workgroup meetings.</p>
+
+    <div class="callout" data-label="November 5, 2017 — Workgroup Objection">
+      <p>An earlier workgroup session recorded a design-level objection: the template letter "does not allow for descriptive acknowledgement of patterns that are the reason for the determination." Staff were not pointing to a missing line that could be added. They were identifying an architectural choice — the form was built around a conclusion, with no mechanism for recording the factual basis for that conclusion in any systematic way. This was not a drafting gap. It was a design decision.</p>
+    </div>
+
+    <div class="callout" data-label="December 4, 2017 — Intake and Assessment Workgroup, LETTER Section">
+      <p>The Intake and Assessment Workgroup convened with representatives from every district office in the state — Laconia, Manchester, Keene, Rochester, Claremont, Conway, Seacoast, Concord, Southern Telework, SAT, and the State office. The minutes record, under the "LETTER" section of the URC discussion, the following bullet point: <strong>"Doesn't meet statutory requirements."</strong> The finding carries no attribution. It appears in a list of collectively recorded workgroup observations, alongside wording problems and formatting issues, with no named dissenter and no recorded counter-position. This is not one person's objection being overridden. It is the statewide field-level consensus of DCYF's own intake and assessment workforce — every district office represented — recorded as settled institutional knowledge before the first URC determination was ever issued.</p>
+      <p>The same workgroup minutes record, under "EXAMPLES," the anticipated use cases for the URC category: overturned findings, evidence that an incident occurred but didn't meet statute, neglect that could not legally support a finding, emotional abuse where facts couldn't support a finding. The workgroup was not envisioning URC as a low-stakes administrative category. They knew exactly what URC was for — cases with genuine evidentiary substance that fell short of the preponderance threshold — and recorded the statutory deficiency in that context.</p>
+    </div>
+
+    <p>Two workgroup sessions. Two documented objections. Zero corrective responses before the form was issued.</p>
+
+    <h3>The December 2017 Administrative Urgency Chain</h3>
+
+    <p>The December 4 workgroup objection was not transmitted upward in a way that changed the form or the timeline. It did not change either because the administrative priority was not getting the form right — it was getting the form signed before the Director left for the holiday.</p>
+
+    <div class="email-chain">
+      <div class="email-chain-header">Email Chain — RTK-Produced Record</div>
+      <div class="email-entry">
+        <span class="email-date">Dec 18, 2017<br>9:54 PM</span>
+        <p class="email-content"><strong>Deputy Commissioner Tappan → Policy Manager Allen:</strong> "That one needs to be finalized and signed off on as soon as possible." Marked standard importance.</p>
+      </div>
+      <div class="email-entry">
+        <span class="email-date">Dec 19, 2017</span>
+        <p class="email-content"><strong>Tappan follow-up</strong> — Marked <strong>Importance: High</strong>.</p>
+      </div>
+      <div class="email-entry">
+        <span class="email-date">Dec 19, 2017<br>2:34 PM</span>
+        <p class="email-content"><strong>Allen → Tappan</strong>, copied to <strong>Director Joseph Ribsam and Deputy Director Michael O'Connor</strong>: Updated legislative tracking spreadsheet transmitted. That spreadsheet identified Policy 1215 — the Administrative Appeals policy — as requiring revision to address URC determinations, status: <em>"Needs Bridges process first to identify procedures,"</em> dated June 14, 2017, unresolved. Allen confirmed she was preparing Forms 1172 and 1213 for signatures, with the folder going to Deputy Director O'Connor. Allen's email closed: <em>"Everything is prepared so I only need to hit send tomorrow morning."</em> There is no reference to the December 4 statutory deficiency, no reference to the Policy 1215 gap identified in the spreadsheet sent hours earlier, and no corrective conversation in the produced record at any level of the chain. Director Ribsam received the documentation of the appeal rights gap in his inbox on the same day his staff was assembling his signature folder.</p>
+      </div>
+      <div class="email-entry">
+        <span class="email-date">Dec 26, 2017</span>
+        <p class="email-content">Documents distributed statewide to all supervisors — "not official at this time" but approved for Director's review upon return.</p>
+      </div>
+      <div class="email-entry">
+        <span class="email-date">Dec 29, 2017</span>
+        <p class="email-content"><strong>PD 17-72 officially issued</strong>, signed by Joseph E. Ribsam, Jr., DCYF Director — twenty-five days after the December 4 statutory objection was documented.</p>
+      </div>
+    </div>
+
+    <p>The December 4 objection was not unknown to the people managing this timeline. The workgroup records were produced alongside the email chain. The urgency communicated in the December 18–19 emails was administrative, not corrective. Deputy Commissioner Tappan's directive was to finalize and sign — not to address the objection recorded three weeks earlier. Director Ribsam was copied on the tracking document showing the appeal rights gap as unresolved the day before the signature folder was assembled. He signed the form ten days later.</p>
+
+    <p>Every URC determination issued after December 4, 2017 was issued with documented actual institutional knowledge — at the field level, at the Policy Manager level, at the Deputy Director level, and at the Director level — that the notice form was legally deficient and that the administrative appeals framework had not been revised to cover the new category. This is not inference. It is direct, contemporaneous, written evidence, produced in DCYF's own RTK response.</p>
+
+    <h3>Nine Years, Four Revisions, Zero Corrections</h3>
+
+    <p>Form 1213 was not a first-draft oversight that was caught and corrected. It was issued under four separate policy directives, by two different DCYF directors, across nearly nine years of active child protective service operations.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="tl-year">December 2017 — PD 17-72 (Director Ribsam)</span>
+        <p>Form 1213 created over documented statewide field consensus that it doesn't meet statutory requirements. No findings of fact, no conclusions of law, no notice of appeal rights. Issued while the form was already being piloted in the field.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="tl-year">March 2019 — PD 19-10 (Director Ribsam)</span>
+        <p>First revision. The form sent to families unchanged. Appeal rights remain absent.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="tl-year">May 2022 — PD 22-10 (Director Ribsam)</span>
+        <p>Second revision, which simultaneously introduced SOP 1213.2 instructing workers to track a 30-day appeal window — the same window the agency was actively denying existed in litigation. The form sent to families unchanged. Appeal rights remain absent.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="tl-year">January 2026 — PD 26-03 (Director Noonan)</span>
+        <p>Third revision, issued four months after ALJ Towle's binding ruling that URC findings are appealable final adverse decisions. Form 1213 received two RSA citations. Appeal rights remain absent.</p>
+      </div>
+    </div>
+
+    <p>Throughout this period, DCYF's own December 2017 legislative tracking spreadsheet shows that Policy 1215 — the Administrative Appeals policy — was identified at the system's inception as requiring revision to address URC determinations, with status: <em>"Needs Bridges process first to identify procedures."</em> That revision was never made. The Bridges process prerequisite was never completed.</p>
+
+    <h3>The January 2026 Proof — Confirmed From the Documents Themselves</h3>
+
+    <p>The most structurally decisive evidence of what the nine-year omission represents is not the December 2017 admission. It is what DCYF did — and did not do — in January 2026, now confirmed from the produced PD 26-03 release packet.</p>
+
+    <p>Four months after ALJ Towle ruled that URC findings are appealable final adverse decisions, Director Marie Noonan revised both Form 1213 and Form 1214 in a single policy action. The same director. The same release packet. The same effective date. The cover memorandum states three rationales for the revision: SIU functionality, formatting updates, and standardizing closing letters. It does not mention the September 2025 ALJ ruling. It does not mention that URC findings had just been ruled final appealable decisions. It does not mention any question about appeal rights for Form 1213 recipients.</p>
+
+    <p>The comparison between the two forms produced in that single release packet is the proof the record requires:</p>
+
+    <div class="form-compare">
+      <div class="form-col">
+        <div class="form-col-label"><span class="badge badge-full">Form 1214</span> Founded Determination</div>
+        <ul>
+          <li>Explicit factual narrative section — specific abuse/neglect types, facts, dates, locations</li>
+          <li>Explicit appeal rights: "You have a right to appeal DCYF's decision at an administrative hearing if you dispute the finding"</li>
+          <li>Full hearing procedure description</li>
+          <li>Explicit right to counsel at recipient's expense</li>
+          <li>Central Registry notice with full statutory citations</li>
+          <li>Expungement right with court form reference (NHJB-2135-DF)</li>
+          <li>Case record access right under RSA 170-G:8-a</li>
+          <li>30-day deadline with waiver warning</li>
+          <li>Certified mail tracking number field</li>
+          <li>Attached hearing request form — full page</li>
+        </ul>
+      </div>
+      <div class="form-col">
+        <div class="form-col-label"><span class="badge badge-empty">Form 1213</span> URC Determination</div>
+        <ul>
+          <li>Two RSA citations: RSA 169-C:3 XXIX and RSA 169-C:34, II-a and II-b</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>This comparison eliminates every remaining explanation for the nine-year omission. It cannot be attributed to confusion about what adequate notice requires — the same people who revised Form 1213 knew exactly what to put in Form 1214, because they put it there in the same document. It cannot be attributed to resource constraints — the revision of both forms was a single simultaneous act. It cannot be attributed to institutional lag — the revision occurred four months into active administrative litigation over the very rights the form omitted, and the cover memo's silence about the ALJ ruling confirms the revision was not conceived as a response to it.</p>
+
+    <p>The omission from Form 1213 in January 2026 is the documented product of a deliberate institutional decision, made during active litigation, with full knowledge of the agency's legal obligations and of what equal treatment required. It retroactively closes the door on every innocent explanation for the previous nine years of the same omission.</p>
+
+    <h3>The Delivery Gap: An Independent Constitutional Argument</h3>
+
+    <p>The deficiency in Form 1213's content is the most visible failure of the paper system, but it is not the only one. An independent due process argument exists in the method of delivery DCYF used for every URC notice it issued.</p>
+
+    <p>Form 1214 — the Founded determination notice — is delivered by certified mail with a tracking number field on the form itself. DCYF cannot send a Founded notice without generating a delivery record. SOP 1213.2, issued under PD 22-10, reveals that DCYF built a parallel internal workflow for URC determinations that also centered on certified delivery: the SOP tracks "green card/receipt of delivery is pending" as a case management item for extensions. DCYF knew, from the moment it built SOP 1213.2's internal workflow, that verified delivery was operationally significant for URC determinations — because the 30-day appeal window it was tracking internally depended on when notice was received. Form 1213 itself contains no certified mail tracking field. The SOP's document change log is blank: the certified delivery workflow has been in continuous operation since May 2022 with zero recorded modifications — including after the September 25, 2025 ALJ Towle ruling, and including after the January 2026 PD 26-03 revision that updated both Form 1213 and Form 1214 without correcting either the delivery practice or the form's missing tracking field.</p>
+
+    <p>The due process consequence is precise: because URC notices were sent by first-class mail rather than certified mail, DCYF cannot establish for any individual recipient when — or whether — the notice was received at all. A 30-day limitations period cannot run from a delivery date that was never recorded. The delivery gap is the independent confirmation that the limitations period Principle 4 establishes never ran against any URC recipient.</p>
+
+    <h3>The New Form 1221 — The Unfounded Gap</h3>
+
+    <p>PD 26-03 also introduced Form 1221: the Unfounded Closing Letter to a Parent/Legal Guardian — a new standardized form for families receiving straight Unfounded determinations. Form 1221 contains this language:</p>
+
+    <div class="pullquote">
+      <p>"This determination does not mean that the allegations did not happen or that there are not concerns, but there is not sufficient evidence to substantiate a finding."</p>
+      <cite>Form 1221 — PD 26-03, January 2026</cite>
+    </div>
+
+    <p>Form 1221 contains no findings of fact. No conclusions of law. No notice of appeal rights. No deadline. No hearing procedure.</p>
+
+    <p>A fully Unfounded determination — where DCYF found insufficient evidence even of probable cause — now has a standardized closing letter that explicitly declines to clear the family while providing no mechanism whatsoever to challenge that characterization. The accountability gap the shadow system creates does not operate only at the URC level. PD 26-03 codified it into the Unfounded category as well.</p>
+  </section>
+
+  <hr class="section-break">
+
+  <!-- PART III -->
+  <section id="part-iii">
+    <span class="part-label">Part III</span>
+    <h2>The Operational System</h2>
+
+    <h3>The Investigation as Narrative Construction</h3>
+
+    <p>A child protective assessment begins when DCYF receives a report. By the time a caseworker makes first contact with a family, an internal case has already been opened, an allegation has been recorded, and a preliminary hypothesis about the family has been formed — often collaboratively, through supervisory consultation that occurs before the caseworker has met anyone. DCYF's own training materials confirm that supervisors and workers "brainstorm hypotheses" together before the assessment worker "hits the ground running." The investigation does not begin from a neutral starting point. It begins from a framework, and the caseworker's job is to build a record that supports it.</p>
+
+    <p>The training language is precise and revealing. Workers are instructed that their documentation should "tell the story of the interaction" with the family. They are told to "paint the picture" in their narration of observations. They are directed to use a "persuasive tone" and to provide "context" that "orients the reader" — specifically identified as the Judge — to the narrative being presented. This is not the language of fact-finding. It is the language of advocacy. The caseworker is not recording what happened. The caseworker is constructing a case.</p>
+
+    <h3>The Methodology of Selective Omission</h3>
+
+    <p>The training framework does not merely encourage persuasive documentation. It provides a specific methodology for filtering the record to support the emerging conclusion. Workers are trained to "over-write first" — to document everything initially — and then to return to each entry and ask: "Is it relevant? Does it 'prove' something?" If a piece of information does not prove an element of the applicable statute or provide the intended context, the training explicitly instructs the worker to "take it out" — to strike it from the record.</p>
+
+    <p>This instruction is the precise mechanism of the narrative construction the shadow system produces. It is not individual caseworker carelessness. It is a trained practice, institutionalized in documentation methodology, that systematically removes from the case record any information that does not advance the emerging conclusion. Exculpatory information — a parent's demonstrated cooperation, evidence that conditions identified as concerning were addressed, supervisory determinations inconsistent with the emerging narrative — survives in the case file only if it "proves an element." If it contradicts the narrative rather than supporting it, the training framework instructs the worker to remove it.</p>
+
+    <p>The connection between this methodology and Form 1213's designed emptiness is direct. Form 1213 contains no findings of fact not because no facts were gathered, but because the documentation methodology trained workers to remove from the record everything that doesn't prove the case. The closing letter is the end product of a filtering process. What it contains is what survived. What it omits is what the training framework instructed workers to strike.</p>
+
+    <h3>The Supervisory and Attorney Markup Pipeline</h3>
+
+    <p>The narrative construction does not rest on individual caseworkers alone. DCYF's training documents confirm a systematic multi-layer review process through which the narrative is refined and filtered before it reaches any formal proceeding.</p>
+
+    <p>The standard workflow involves the supervisor "marking up" the caseworker's documentation and then sending it to the agency's attorney for their own "markup." The attorney review is framed in training materials as an exercise in building a legal case: attorneys are instructed to put on their "Judge and Respondent Attorney 'hats'" when editing affidavits, and the explicit goal of the review process is to ensure the narrative "makes out what would be akin to a prima facie case."</p>
+
+    <p>This is the layer that makes the closing determination structurally unreviewable from the outside. By the time a URC letter issues, the narrative it rests on has passed through caseworker documentation, supervisory markup, and attorney review — each layer filtering the record toward a legally sufficient conclusion. None of this process is visible in the closing letter. None of the inputs removed at the "strike it out" stage appear anywhere in the family's record.</p>
+
+    <p>The training framework completes this insulation by framing the final determination as a "Division decision, not an individual CPSW decision." By distributing accountability across the supervisory and attorney review pipeline, the framework ensures that no individual decision-maker can be identified as the source of a problematic determination. The narrative that emerges from the markup process appears institutional — the considered judgment of the agency — even when it rests on selectively omitted evidence and supervisory markup designed to make out a prima facie case rather than record what was actually found.</p>
+
+    <h3>Managing Constitutional Resistance</h3>
+
+    <p>The training framework addresses what happens when families invoke their constitutional rights — and it does so not by acknowledging the legal obligation those rights impose, but by reframing constitutional refusal as a clinical challenge to be managed.</p>
+
+    <p>Every parent in New Hampshire has the constitutional right to refuse a DCYF caseworker entry to their home. RSA 169-C:34(VII) acknowledges this right and specifies what happens when it is exercised: if a family refuses entry and DCYF has probable cause to believe abuse or neglect is occurring, DCYF shall seek a court order. The word "shall" is mandatory. The court order requirement exists specifically to impose judicial oversight on the moment when government investigative authority meets private constitutional resistance.</p>
+
+    <p>The training framework does not incorporate this statutory requirement as the mandatory response to refusal. It incorporates Motivational Interviewing — a therapeutic concept borrowed from addiction counseling and repurposed as an investigative technique for bypassing a parent's refusal. Workers are taught to "roll with resistance." Training scenarios present parents who refuse entry and train workers to use specific introduction scripts to "justify the request for certain information" and continue the investigation despite the parent's invocation of constitutional rights. The court order — the legislature's required response to refusal — does not appear in this framework. The clinical management of resistance does.</p>
+
+    <div class="pullquote">
+      <p>The legal consequence is inescapable. If probable cause existed when entry was refused, RSA 169-C:34(VII) was triggered and the agency violated a mandatory statutory obligation. If probable cause did not exist, the URC finding rests on a factually false foundation. There is no third option available in the statute.</p>
+    </div>
+
+    <p>DHHS's own Deputy Chief Counsel confirmed in a July 2025 RTK response that the agency does not track compliance with the court order requirement of RSA 169-C:34(VII) across any of its approximately 20,000 annual assessments. A second independent DHHS legal office reached the identical conclusion six months later: "The Department does not track the number of court orders sought under RSA 169-C:34, VII or any related statistics. This portion of your request is denied as no such records exist." The same RTK production that confirmed no tracking exists produced the training curriculum explaining why: the framework governing RSA 169-C:34(VII) situations does not present the court order as the required response to refusal.</p>
+
+    <h3>The Bidirectionality of Narrative Construction</h3>
+
+    <p>The training methodology described above is typically analyzed from the perspective of a family against whom a narrative of concern is being built. But the same framework operates with equal force when the narrative runs in the other direction.</p>
+
+    <p>"Strike what doesn't prove an element" works in both directions. When the emerging conclusion is that a family poses a concern, the instruction produces the selective omission of exculpatory information. When the emerging conclusion is that reported concerns don't warrant action, the same instruction produces the selective omission of information that would support protective intervention — a child's disclosed statements that don't make it into the formal record, physical observations characterized as within normal range rather than as indicators of harm, prior reports treated as unrelated rather than as evidence of an escalating pattern.</p>
+
+    <p>The "paint the picture" mandate, the persuasive tone requirement, the attorney markup toward a prima facie case — these tools have no fixed direction. They serve whatever conclusion the investigation is building toward. A narrative can be constructed to support a URC finding against a parent. It can equally be constructed to support a finding that a reporting family's concerns were unfounded — closing a case involving a child who remains in danger, framed as a legally sufficient determination presented in a closing letter that contains no findings, no conclusions, and no mechanism for anyone to challenge what was decided or why.</p>
+  </section>
+
+  <hr class="section-break">
+
+  <!-- PART IV -->
+  <section id="part-iv">
+    <span class="part-label">Part IV</span>
+    <h2>The Immunity Apparatus</h2>
+
+    <h3>Three Foundational Layers of Insulation</h3>
+
+    <p>The paper system makes URC determinations unreviewable on their face — no findings to challenge, no conclusions to contest, no notice that review is available. The operational system generates those determinations through a narrative construction process insulated from external examination by the markup pipeline. But these two layers required a third: a mechanism to ensure that families could not access the administrative bodies that might otherwise correct either failure.</p>
+
+    <p>For nearly nine years, DCYF maintained — as an active litigation position, pressed in formal administrative proceedings — that URC determinations were not appealable final decisions and that families had no right to challenge them before the Administrative Appeals Unit. This was not a minor procedural stance. It was the institutional answer to every family that received a URC letter and asked what they could do about it. The answer, for nearly nine years, was nothing.</p>
+
+    <p>The position was not overturned until September 25, 2025, when ALJ Towle held in unambiguous terms that URC determinations are adverse final decisions subject to administrative review; that individuals have no method to challenge factual conclusions drawn by DCYF without that review; and that potentially inappropriately imposed URC findings could otherwise stand without remedy.</p>
+
+    <h3>The Two Parallel Systems: SOP 1213.2</h3>
+
+    <p>Perhaps the most structurally damaging evidence in the entire record is not the December 4, 2017 workgroup admission, as significant as it is. It is SOP 1213.2.</p>
+
+    <p>SOP 1213.2, issued under Policy Directive 22-10 in May 2022 and approved by DCYF Director Joseph E. Ribsam, Jr., is a formal Standard Operating Procedure. Under the extension category "Delays related to making an internal finding," SOP 1213.2 instructs workers to track:</p>
+
+    <ul>
+      <li>Pending fair hearing completion and once the finding is made</li>
+      <li>Green card/receipt of delivery is pending</li>
+      <li><strong>30-day appeal request time if pending</strong></li>
+      <li>An appeal has been requested and has not been completed</li>
+    </ul>
+
+    <div class="pullquote">
+      <p>From at least May 2022, DCYF workers were being instructed, in official Standard Operating Procedures approved by the Director, to manage a 30-day appeal request period for URC determinations as part of standard case workflow — while the form sent to families contained no mention of any appeal period, any appeal right, or any deadline of any kind — and while the agency was simultaneously arguing in formal administrative proceedings that no such appeal right existed.</p>
+    </div>
+
+    <p>DCYF cannot simultaneously maintain in litigation that URC findings are not appealable final decisions, and instruct its workers in official procedure to track a 30-day appeal window for those exact findings. One of those positions is false. The SOP is the more reliable document: it reflects what DCYF actually did, rather than what DCYF chose to argue when challenged.</p>
+
+    <p>The agency built and maintained two parallel systems: an internal system in which the appeal window was operationally real and tracked in standard workflow, and an external system in which families were told — through both the form they received and the litigation position pressed against them — that no appeal existed. This is not institutional confusion. It is institutional architecture.</p>
+
+    <h3>The "Division Decision" as Liability Architecture</h3>
+
+    <p>The training framework's framing of URC determinations as "Division decisions, not individual CPSW decisions" is not merely a quality control mechanism. It is the operational layer of the immunity apparatus.</p>
+
+    <p>By distributing accountability for each determination across caseworker, supervisor, and attorney — through the markup pipeline — the framework ensures that no single actor can be identified as the decision-maker responsible for a problematic outcome. A family challenging a URC finding faces not an identifiable individual whose judgment can be examined, but an institutional determination ratified at multiple levels, each of which deflects to the others.</p>
+
+    <p>Without findings, there are no identified facts to challenge. Without identified facts, there is no identified fact-finder whose judgment is at issue. Without an identified fact-finder, there is no individual decision whose process can be examined. The "Division decision" framing and the absence of findings in Form 1213 are two components of the same accountability-avoidance design.</p>
+
+    <h3>Policy 1215: The Gap Confirmed in the Policy's Own Text</h3>
+
+    <p>Policy 1215 — DCYF's Administrative Appeals policy — is now in the record. Its appeal framework covers two categories of determination:</p>
+
+    <p><strong>Section I</strong> covers court order findings, appealable to the Superior Court under RSA 169-C:28.</p>
+
+    <p><strong>Section II</strong> covers administrative determinations: "When a finding is made through the Division's administrative determination and a Notice of Finding (Form 1214, Form 1215, or Form 1216) has been provided to a person responsible for child abuse and/or neglect, the person responsible for child abuse and/or neglect has a right to an Administrative Appeal pursuant to RSA 541."</p>
+
+    <p>Form 1213 — the URC determination notice — does not appear in Section I. It does not appear in Section II. It does not appear in Section III, the Practice Guidance, or the definitions. In a five-page policy governing the administrative appeals process for DCYF determinations, the URC determination category is entirely absent.</p>
+
+    <h3>The Agency's Own Due Process Standard — Written Into the Policy It Violated</h3>
+
+    <p>Policy 1215's definition section provides DCYF's own written definition of due process:</p>
+
+    <div class="definition-block">
+      <p><strong>"Due Process"</strong> means the execution of fairness in all legal matters, including notice, an opportunity to be heard, and the right to defend in an orderly proceeding, must be followed for each individual <strong>so that no prejudicial or unequal treatment will result.</strong></p>
+    </div>
+
+    <p>This is not an external legal standard being imposed on the agency. It is the standard DCYF wrote for itself in the policy governing its own appeals process. For nine years, DCYF applied this standard to Founded determination recipients — giving them notice, an opportunity to be heard, and a right to defend. For nine years, DCYF denied this standard to URC recipients — who received a form its own staff said didn't meet statutory requirements, containing none of those elements. The agency's own written definition of due process is the measure of the obligation it failed.</p>
+
+    <h3>The Bidirectionality of Structural Immunity</h3>
+
+    <p>The immunity apparatus, like the operational system, operates without regard to direction. It does not distinguish between families seeking to challenge a URC finding they believe was unwarranted and families seeking to challenge a determination they believe was inadequate. Both populations received Form 1213. Both faced the absence of findings. Both faced, for nearly nine years, an active agency litigation position that no appeal was available. The mechanism that harmed both populations is the same. The immunity was structurally complete — not because the system happened to fail both populations simultaneously, but because the system was built to serve both failures through identical means.</p>
+  </section>
+
+  <hr class="section-break">
+
+  <!-- PART V -->
+  <section id="part-v">
+    <span class="part-label">Part V</span>
+    <h2>The Scale</h2>
+
+    <div class="scale-stat">
+      <span class="scale-num">~19,400</span>
+      <span class="scale-desc">URC determinations issued using Form 1213 between December 2017 and the present — every one without findings of fact, conclusions of law, or notice of appeal rights</span>
+    </div>
+
+    <p>Between December 2017 and the present, DCYF issued approximately 19,400 URC determinations using Form 1213. Every one of those determinations was issued using a form that DCYF's own staff identified as legally deficient before the first one was sent. Every one was issued without findings of fact, without conclusions of law, without notice of appeal rights. And for the first nearly eight years of that period, every one was issued while the agency maintained in litigation that no appeal was available — and while its own SOP instructed workers to track the appeal window it was publicly denying existed.</p>
+
+    <p>The figure of 19,400 families is not an aggregation of 19,400 individual caseworker errors. It is the output of a single training framework, a single documentation methodology, and a single supervisory review pipeline applied across every assessment in which the determination was made. Every determination in that count passed through the same "over-write first, then strike" methodology. Every one was filtered through the same markup pipeline. Every one was issued on the same Form 1213 that DCYF's own workgroup said didn't meet statutory requirements.</p>
+
+    <p>An agency that issues one defective notice might have made a drafting error. An agency that issues 19,400 defective notices across nearly nine years, through four policy revisions, under two directors, with documented staff awareness of the deficiency from two separate workgroup sessions before the first notice was ever sent, while managing an internal appeal tracking window it declined to share with families, while litigating that no appeal existed, and while its own Standard Operating Procedures tracked the appeal window it was publicly denying — has made a choice. The scale of that choice is the measure of what accountability requires.</p>
+  </section>
+
+  <hr class="section-break">
+
+  <!-- PART VI -->
+  <section id="part-vi">
+    <span class="part-label">Part VI</span>
+    <h2>The Bidirectional Trap</h2>
+
+    <h3>The Mechanism, Stated Plainly</h3>
+
+    <p>The three components of the shadow system — the paper system, the operational system, and the immunity apparatus — are directionally agnostic. None of them was built to produce one specific type of error. All of them were built to prevent accountability for whatever error the system produces.</p>
+
+    <p>The paper system seals the narrative from external review by presenting a conclusion without disclosing the construction behind it — regardless of whether the conclusion is that a family poses a concern or that reported concerns were insufficient. The form that reaches both families is identical. The absence of findings is identical. The absence of appeal rights is identical.</p>
+
+    <p>The operational system generates the narrative through a trained methodology of selective construction. This methodology has no fixed direction. An investigation moving toward a URC finding filters the record to support that finding. An investigation moving toward closure without adequate action filters the record to support that closure. "Strike what doesn't prove an element" operates identically in both directions.</p>
+
+    <p>The immunity apparatus denied for nearly nine years that any appeal of these determinations was available. That denial reached both families wrongly marked and families whose reports were inadequately addressed. Neither could challenge the determination. Neither could demand an explanation. The structural immunity was complete — not directionally selective, but total.</p>
+
+    <h3>Three Populations, One Mechanism</h3>
+
+    <p>PD 26-03's introduction of Form 1221 extends the accountability analysis to a third affected population that the prior paper did not fully address.</p>
+
+    <div class="populations">
+      <div class="population-item">
+        <div class="pop-marker"></div>
+        <p><strong>URC recipients</strong> received a formal probable cause finding with no findings of fact, no conclusions of law, no notice of appeal rights, and no mechanism to challenge a determination that will follow them indefinitely, admissible as pattern evidence in future proceedings.</p>
+      </div>
+      <div class="population-item">
+        <div class="pop-marker"></div>
+        <p><strong>Reporting families</strong> who received a URC closure — where DCYF found probable cause but insufficient evidence — have no mechanism to challenge a determination they may believe was inadequate, to demand what evidence was weighed, or to compel reconsideration of an investigation they believe was deficient.</p>
+      </div>
+      <div class="population-item">
+        <div class="pop-marker"></div>
+        <p><strong>Families found fully Unfounded</strong> now receive Form 1221, which explicitly states: "This determination does not mean that the allegations did not happen or that there are not concerns, but there is not sufficient evidence to substantiate a finding." A family that was the subject of a report receives a government document explicitly declining to clear them — a characterization with practical implications for reputation, future assessments, and custody matters — with no mechanism to challenge it, demand the factual basis for it, or invoke any review process whatsoever.</p>
+      </div>
+    </div>
+
+    <p>PD 26-03 codified the accountability gap into the Unfounded category at the same moment it declined to close it in the URC category. The shadow system, as of January 2026, reaches every family DCYF touches in an investigation — in whatever direction that investigation runs.</p>
+
+    <h3>The Structural Inversion: The Appeal Right Runs to the Alleged Offender, Not to the Child's Protector</h3>
+
+    <p>The bidirectionality framing, by itself, does not fully capture what the system has built. The problem is not simply that the shadow system operates in multiple directions without accountability. It is that the entire appellate architecture — to the extent it exists at all — is oriented toward the wrong person.</p>
+
+    <p>In every child protective case involving separated households — separated parents, children in relative placements, children moving between custodial arrangements, children in the care of someone other than the reporting parent — two structurally distinct people are involved:</p>
+
+    <p><strong>The alleged offender:</strong> the person to whom the URC finding is addressed, who receives Form 1213, who is the formal subject of the probable cause determination, and who has whatever appellate rights exist.</p>
+
+    <p><strong>The non-offending responsible adult:</strong> the person with legal responsibility for the child's safety and welfare, who must make decisions based on what the agency found, who bears the practical consequences of both an accurate finding and an inaccurate one, and who has no appellate rights whatsoever.</p>
+
+    <p>These two people are not the same person, and they do not share a household, in the most common fact patterns child protective services encounters. The non-offending responsible adult is structurally separated from the alleged offender — and the appeal right follows the alleged offender, not the child's protector.</p>
+
+    <p>This is not a gap in the reporting family's rights. It is a structural inversion: the appeal right attaches to the person with the greatest interest in defeating the finding, and is unavailable to the person with the greatest legal responsibility for the child's safety. When DCYF issues a URC finding to an alleged offender in a separated-household case, the non-offending responsible adult receives either Form 1213 without appeal rights because the finding was addressed to someone else, or Form 1221 without appeal rights because that form has none. In neither case does the responsible adult's legal relationship to the child — their duty to protect that child, their right to make decisions for that child, their obligation to act on safety information about that child — translate into any cognizable appellate interest.</p>
+
+    <h3>Form 1221: The Structural Inversion Codified</h3>
+
+    <p>Policy Directive 26-03, issued January 20, 2026, created Form 1221 — the Unfounded Closing Letter to a Parent/Legal Guardian. This is the standardized communication to the non-offending responsible adult when a case closes Unfounded. It tells them: <em>"This determination does not mean that the allegations did not happen or that there are not concerns, but there is not sufficient evidence to substantiate a finding."</em></p>
+
+    <p>Read that sentence carefully in the context of the structural inversion. The agency is telling a parent — a parent who reported that their child was in danger, or a parent who bears legal responsibility for a child in another adult's care — that something may have happened to their child, that the agency's concerns are not resolved, but that the administrative process is closed and there is nothing they can do about it.</p>
+
+    <p>Form 1221 is not a form that clears the alleged offender. It is a form that tells the non-offending responsible adult that their child may still be in danger, while simultaneously closing every avenue through which they might demand that the finding be examined more carefully. It creates anxiety without remedy. It acknowledges risk without accountability. And it does this in standardized, permanent, institutional form — issued to the parent legally responsible for protecting the child the form identifies as potentially still at risk.</p>
+
+    <p>Before January 20, 2026, the non-offending responsible adult in an Unfounded case received whatever informal closing communication the caseworker produced. Form 1221 elevated that communication to institutional form — complete with DHHS letterhead, form number, and statutory citation — while preserving its defining feature: no findings, no conclusions, no appeal rights, and no mechanism for the responsible adult to demand anything more. The structural inversion that existed informally is now codified. It has a form number. It was approved by the Director. It is policy.</p>
+
+    <h3>The Child: The Invisible Third Party</h3>
+
+    <p>Both the alleged offender's appeal and the non-offending responsible adult's non-existent appeal share one feature: neither is oriented toward the child's interest as a distinct legal consideration.</p>
+
+    <p>RSA 169-C creates safety obligations running to the child. The statute's entire framework is premised on the child's interest in protection from abuse and neglect. The administrative appeal framework, by contrast, creates rights running to the alleged offender — the person named in the determination. These two legal structures operate in parallel without intersecting. The child whose safety is at issue in the URC determination is not a party to any appellate proceeding. The child has no representative in the administrative appeal process. No guardian ad litem equivalent exists in the URC administrative framework. The child's statutory interest in an accurate safety determination has no procedural home.</p>
+
+    <p>The non-offending responsible adult's interest in challenging a URC finding or an Unfounded closure is, at its core, an interest in the child's safety — not an interest in the adult's own procedural vindication. But the appellate framework, even as it is now being constructed through the ALJ Towle ruling, does not recognize standing on the basis of the child's safety interest. It recognizes standing, if at all, on the basis of whether the adult's name appeared on the closing letter — a narrower and more contested foundation that severs the appellate process from the safety interest the statute was built to protect. The child's own interest in an accurate safety determination has no procedural voice at any stage of the administrative process that determines it.</p>
+
+    <h3>The Structural Inversion at the Investigation Level</h3>
+
+    <p>The structural inversion does not begin at the appellate level. It begins at the investigation itself.</p>
+
+    <p>RSA 169-C:34(VII) requires DCYF to seek a court order when entry is refused and probable cause exists. That statutory requirement can only be invoked by DCYF. The non-offending responsible adult cannot petition a court to compel DCYF to seek a court order. The non-offending responsible adult cannot invoke the mandatory process on the child's behalf. They cannot trigger the judicial oversight mechanism the legislature built into the entry refusal situation. Only DCYF has that authority — and the training framework governing entry refusal substitutes clinical technique for court orders, while two independent DHHS legal offices confirm no tracking exists.</p>
+
+    <p>A non-offending responsible adult who reports credible safety concerns can call DCYF, file reports, contact the Office of the Child Advocate, and notify law enforcement. None of those actions can compel DCYF to seek a court order. None of them can invoke the mandatory statutory process when an alleged offender refuses entry. The mechanism the legislature built specifically to bring judicial oversight into that situation — the court order that RSA 169-C:34(VII) requires — is entirely within DCYF's discretion to invoke or not, regardless of how many times the responsible adult asks.</p>
+
+    <p>The structural inversion is therefore complete at both levels. At the investigation level, the non-offending responsible adult cannot compel the mandatory protective process. At the appellate level, the non-offending responsible adult cannot challenge the failure to invoke it. The system sealed both entry points simultaneously. The child's safety interest was unrepresented at the moment of investigation and unreviewable at the moment of closure.</p>
+
+    <h3>The Live Jurisdictional Argument: Formal Proof of the Design</h3>
+
+    <p>DCYF's escape hatch argument in the Becker administrative proceedings converts this structural design from an implicit feature into an explicit, formally asserted legal position.</p>
+
+    <p>In those proceedings, DCYF has argued — or is positioned to argue — that Mr. Becker's standing to appeal a URC determination depends on whether the closing assessment letter was addressed to him specifically. If the letter was addressed to Ms. Becker alone, the argument goes, Mr. Becker has no appellate standing regardless of his legal relationship to the child, regardless of his custodial responsibilities, and regardless of the fact that the URC determination concerns the safety of a child for whom he bears legal responsibility.</p>
+
+    <p>This argument is not a creative procedural maneuver. It is a formal statement of the structural design: standing to challenge a URC determination belongs to the person to whom the finding was addressed — the alleged offender — and the non-offending responsible adult's legal relationship to the child creates no cognizable appellate interest. Put in the terms of this paper: the appeal right runs to the alleged offender, and the child's protector has none.</p>
+
+    <div class="pullquote">
+      <p>A probable cause determination that a child in Mr. Becker's household was abused or neglected will stand, unchallenged, because the form was addressed to Ms. Becker rather than to him. His custodial status, his legal obligations, his daily responsibility for that child's safety — none of these create standing to demand that the determination be examined. The finding follows the household. The right to contest it does not.</p>
+    </div>
+
+    <p>That result — a probable cause determination insulated from challenge because the procedural architecture assigns the appeal right to a different adult in the same child's life — is the structural inversion stated in its most precise form. And the fact that DCYF has argued for it in an adjudicative proceeding means the design is now on the formal record. It is no longer an inference from the system's structure. It is the agency's own stated position about how the system works.</p>
+
+    <h3>What the Non-Offending Responsible Adult Cannot Do</h3>
+
+    <p>The non-offending responsible adult — whether a parent reporting abuse in a relative's household, a family member witnessing harm to a child in their network, or a custodial parent whose child is the subject of a finding addressed to someone else — cannot do any of the following through the shadow system as currently designed:</p>
+
+    <ul>
+      <li>Compel DCYF to seek a court order when the alleged offender refuses entry, even when probable cause exists and the statute makes the court order mandatory.</li>
+      <li>Challenge the adequacy of a URC finding issued to the alleged offender — cannot demand what evidence was gathered, cannot ask whether the court order requirement was met, cannot put the investigation's conduct before an independent adjudicator.</li>
+      <li>Challenge the adequacy of an Unfounded closure — cannot demand what evidence was weighed, cannot ask whether the caseworker's investigation was sufficient, cannot invoke any review mechanism.</li>
+      <li>Use the Central Registry to their child's benefit — because the Registry reflects only founded determinations and entries, not the probable cause findings that URC represents or the inadequate investigations that produce Unfounded closures.</li>
+      <li>Appeal Form 1221 — the form that tells them their child may still be in danger provides no mechanism through which they can respond to what it tells them except to close it and hope.</li>
+      <li>Appeal a determination on the basis of their relationship to the child whose safety is at issue — if, as in the Becker proceedings, DCYF's formal position is that their standing depends entirely on whether their name appeared on the closing letter.</li>
+    </ul>
+
+    <h3>The Training Framework as the Unifying Explanation</h3>
+
+    <p>The bidirectionality of the shadow system's failures is not a coincidence or a side effect. It is the logical consequence of building an investigative methodology around constructing cases rather than finding facts.</p>
+
+    <p>A system trained to build persuasive narratives toward legally sufficient conclusions will build them in whatever direction the investigation is pointing. The "paint the picture" instruction does not ask which picture before it operates. The "strike what doesn't prove an element" instruction does not ask which elements before it strikes. The supervisor markup pipeline does not ask which conclusion it is ratifying before it marks up the document. The attorney review does not ask which family it is affecting before it confirms legal sufficiency.</p>
+
+    <p>The training methodology is direction-neutral. It produces whatever narrative the agency is building toward — toward marking an alleged offender with probable cause, or toward justifying a closure that leaves a child in danger — with equal institutional competence and equal institutional insulation from accountability. The alleged offender receives Form 1213 with no findings and no appeal rights. The non-offending responsible adult receives Form 1213 with no standing, or Form 1221 with no rights, or nothing actionable at all. The child's safety interest receives no procedural representation at any stage.</p>
+
+    <p>The mechanism that operates in each direction is identical. The form that seals each case from review is the same form. The training framework that builds the narrative in each direction is the same framework. And the structural inversion that assigns appeal rights to the alleged offender while denying them to the child's protector is the same inversion — operating across two-parent households, across separated households, across grandparent placements, across any configuration where the alleged offender and the non-offending responsible adult are different people.</p>
+
+    <p>This is why the bidirectional trap cannot be addressed by giving URC recipients the right to appeal their own findings while leaving the non-offending responsible adult without standing. That reform addresses one dimension of the inversion. The other dimension — the child's protector who cannot challenge an inadequate finding, a failed investigation, or a closure that leaves the child in danger — remains sealed from any process. And the child whose safety is at stake in every one of the 19,400 URC determinations issued since December 2017 has no representative in the administrative process built to protect them.
+  </section>
+
+  <hr class="section-break">
+
+  <!-- PART VII -->
+  <section id="part-vii">
+    <span class="part-label">Part VII</span>
+    <h2>The Pending Record</h2>
+
+    <h3>What Outstanding Productions Will Prove — Either Way</h3>
+
+    <p>Three Right-to-Know requests filed in March 2026 target the three most significant evidentiary gaps remaining in this record. Each asks questions that cannot have an innocent answer regardless of what the production reveals.</p>
+
+    <div class="rtk-grid">
+      <div class="rtk-item">
+        <span class="rtk-label">RTK Request · March 2026</span>
+        <h4>The Post-Ruling Internal Communications</h4>
+        <p>This request seeks all internal communications regarding ALJ Towle's September 25, 2025 ruling in the eleven weeks between that ruling and the issuance of the first URC determination after it — a determination issued without findings, without conclusions of law, and without notice of appeal rights, by a caseworker who had been personally notified of the ruling. If responsive records show leadership discussed the ruling and decided not to update the form, that is documented institutional bad faith at the highest level. If no guidance was issued to field staff, that explains how a URC determination could be issued six weeks after a binding ruling without any field-level instruction to the contrary. Both outcomes confirm the willful non-compliance argument. Both eliminate the possibility of innocent explanation.</p>
+      </div>
+      <div class="rtk-item">
+        <span class="rtk-label">RTK Request · March 2026</span>
+        <h4>The PD 26-03 Development Records</h4>
+        <p>This request seeks all records relating to the development of Policy Directive 26-03 — specifically including records reflecting any decision whether Form 1213 should include explicit notice of appeal rights, and any records reflecting a decision not to include such notice. The internal deliberative records would provide the complete picture: whether the appeal rights question was raised, evaluated, and rejected during the revision process — which would be documentary proof of deliberate omission during active litigation — or whether it was never raised at all, which means the people simultaneously providing full rights language to Form 1214 did not ask whether the deficient form should be corrected during the fourth month of active administrative litigation over precisely that question. Either outcome documents the institutional choice at the center of this record.</p>
+      </div>
+      <div class="rtk-item">
+        <span class="rtk-label">RTK Request · March 2026</span>
+        <h4>The Policy 1215 Production Status</h4>
+        <p>Policy 1215 has been produced and confirms that URC determinations are entirely absent from the administrative appeals framework. What the pending RTK request will clarify is whether any version of Policy 1215 from 2017 to the present addressed URC — and whether any internal records reflect the decision to defer or abandon the revision identified as necessary in December 2017. The produced policy contains no URC provisions and no document change log entries reflecting any consideration of the December 2017 tracking item. The absence is confirmed. The deliberative record surrounding it is the remaining evidentiary gap.</p>
+      </div>
+    </div>
+
+    <h3>The December 4, 2017 Workgroup — Non-Offending Parent Discussion</h3>
+
+    <p>The produced December 4, 2017 workgroup minutes contain a redacted section, marked "Nonresponsive," covering the workgroup's discussion of the non-offending parent letter — the discussion that immediately follows the recorded statutory deficiency finding. The workgroup was addressing what the non-offending parent would receive on the same day and in the same session that it recorded the form's legal inadequacy. That discussion was withheld as nonresponsive to the RTK request that produced the rest of the minutes.</p>
+
+    <p>The withholding is directly contestable. What DCYF's statewide field workgroup said about non-offending parent notice on December 4, 2017 — three days before the December 7 urgency push and twenty-five days before Director Ribsam signed the policy — is directly relevant to whether the omission of non-offending parent appeal rights was a knowing institutional choice from the beginning. A targeted RTK request seeking the non-offending parent letter discussion from both the November 5 and December 4, 2017 workgroup sessions will either produce the withheld discussion or produce a renewed withholding claim that is itself contestable given the direct relevance to the standing and structural inversion issues pending in the Becker proceedings.</p>
+
+    <h3>The Training Document Record</h3>
+
+    <p>The training materials on which this paper's operational system analysis rests are formally produced documents, obtained through a Right-to-Know request filed July 17, 2025 and fulfilled by DHHS Deputy Chief Counsel John B. Martin on August 20, 2025. The production comprised 17 files delivered the same afternoon the request was processed, supplemented by a corrected data file produced by Martin on a Saturday in September 2025 when an omission was identified. It is among the most complete and cooperative RTK productions in this record.</p>
+
+    <p>The training language on which this paper relies — the documentation-as-storytelling framework, the "paint the picture" instruction, the persuasive tone requirement, the "over-write first then strike what doesn't prove an element" methodology, the supervisor and attorney markup pipeline, the Motivational Interviewing reframe of constitutional resistance — is sourced to these formally produced documents. None of it is inferred. None of it is pending. It is in the agency's own produced training record.</p>
+
+    <p>Martin is the same DHHS Deputy Chief Counsel who confirmed in a July 2025 RTK response that the agency does not track compliance with RSA 169-C:34(VII)'s court order requirement. The training curriculum that explains why — the framework governing refusal situations presents clinical management rather than court order compliance as the operative response — came from the same official in the same production cycle. The admissions and the training record came from the same source, without resistance. The evidentiary connection between what the agency confirmed it doesn't track and what the agency trained its workers to do instead is documented in a single RTK production.</p>
+
+  </section>
+
+  <hr class="section-break">
+
+  <!-- PART VIII -->
+  <section id="part-viii">
+    <span class="part-label">Part VIII</span>
+    <h2>What the Shadow System Requires</h2>
+
+    <h3>The Remedy Is Not Complex</h3>
+
+    <p>The corrective action the shadow system requires is, at its core, simple: DCYF must say what it decided, in writing, with enough specificity that someone can challenge it.</p>
+
+    <p>That requirement — the most basic obligation of a government agency making consequential decisions about families — is what nine years of documented institutional practice has systematically avoided. Addressing it requires reform at each of the three levels at which the shadow system operates.</p>
+
+    <div class="remedy-section">
+      <span class="remedy-label">For the Paper System</span>
+      <p>Form 1213 must be revised to include what Form 1214 has always provided and what PD 26-03 confirmed in full: specific findings of fact identifying the factual basis for the probable cause determination; conclusions of law stating what evidence was considered and why it meets the statutory standard; explicit notice of the right to appeal; the applicable deadline with waiver warning; the procedure for filing an appeal with the DHHS Administrative Appeals Unit; notice of the right to legal representation at any hearing; certified mail delivery with tracking confirmation; and an attached hearing request form.</p>
+      <p>This is not a new requirement. It is the requirement of RSA 541-A:35 applied to a category of determination the agency has treated as exempt since 2017. The ALJ Towle's September 2025 ruling established that URC determinations are final adverse decisions within the meaning of the Administrative Procedure Act. The statutory requirement therefore applies. The form must reflect it — including the certified mail delivery standard that Form 1214 has always required and that SOP 1213.2's internal workflow was designed around but never operationally implemented.</p>
+      <p>Form 1221 requires parallel correction. A standardized closing letter that explicitly declines to clear a family while providing no mechanism to challenge that characterization extends the accountability gap the shadow system created into the Unfounded category. The agency that built Form 1221 with hedging language and no appeal mechanism created the same problem it built into Form 1213, applied now to the population found not to meet even the probable cause threshold.</p>
+    </div>
+
+    <div class="remedy-section">
+      <span class="remedy-label">For the Operational System</span>
+      <p>The training framework must be revised at the level of its core methodology. Documentation training must be reoriented from narrative construction toward factual recording — from "paint the picture" and "persuasive tone" toward accurate, complete, and balanced documentation of what was found, including information that does not support the emerging conclusion. The "over-write first, then strike what doesn't prove an element" methodology must be replaced with a methodology that requires documentation of all material findings, including findings that complicate or contradict the determination ultimately made.</p>
+      <p>The supervisory and attorney markup pipeline must be restructured away from narrative refinement toward legal compliance review — ensuring that documentation is accurate and complete rather than ensuring that it "makes out what would be akin to a prima facie case." The goal of supervisory and attorney review is not to build the agency's legal case. It is to ensure that the agency's determinations are lawful, accurate, and supported by evidence that can withstand scrutiny.</p>
+      <p>RSA 169-C:34(VII) must be integrated into training and practice as a mandatory legal obligation triggered automatically by parental refusal of entry — not as a discretionary option, not as a clinical challenge to be managed through Motivational Interviewing. Compliance with the court order requirement must be tracked, audited, and reported. Two independent DHHS legal offices have confirmed that no such tracking currently exists. Its absence is not a gap to be noted. It is a compliance failure to be corrected.</p>
+    </div>
+
+    <div class="remedy-section">
+      <span class="remedy-label">For the Immunity Apparatus</span>
+      <p>Policy 1215 must be revised to include the URC category. The infrastructure required for that revision is already present in the policy: Section II governs administrative determination appeals, the Bridges AAU contact log protocols are documented, the 30-day tracking requirement is specified, and the Central Registry entry timing is established. Adding URC to Section II's coverage, adding Form 1213 to the list alongside Forms 1214 and 1215, and creating an attached hearing request form for Form 1213 are administrative actions, not structural redesigns. The infrastructure exists. The decision to exclude URC from it was and remains a choice.</p>
+      <p>DCYF's own written definition of due process — written into Policy 1215 as requiring that "no prejudicial or unequal treatment will result" — is the standard the agency wrote for itself and has denied to URC recipients for nine years. That standard must now be applied.</p>
+      <p>All prior URC recipients must be notified of their right to appeal their determination, accompanied by a tolled filing window of not less than 90 days from the date of notification. A limitations period cannot run against a right the recipient was never told they possessed. As established under Principle 4 above, this is not a generous accommodation. It is the only constitutionally permissible result: the families who received Form 1213 without any notice of appeal rights did not miss a deadline. They were never told a clock existed. And because URC notices were sent by first-class mail rather than certified mail, DCYF cannot establish for any individual recipient when or whether that clock could have started running — a delivery failure that independently confirms the clock never ran against any URC recipient.</p>
+    </div>
+
+    <div class="remedy-section">
+      <span class="remedy-label">For the Bidirectionality and the Structural Inversion</span>
+      <p>The remedy for the alleged offender dimension — giving URC recipients the right to challenge determinations they believe were unwarranted — addresses one dimension of the shadow system's accountability gap. The structural inversion Part VI identifies requires three additional remedies, each independent and each necessary.</p>
+
+      <p><strong>For the non-offending responsible adult.</strong> A mechanism must exist for the non-offending responsible adult with legal responsibility for a child's safety to challenge both URC findings issued to an alleged offender and Unfounded closures they believe were inadequate. This standing is not derivative of the alleged offender's procedural rights and is not identical to the reporting family's interest. It is grounded in the non-offending responsible adult's independent legal duty to the child — the duty to protect, to make decisions for, and to act on credible safety information about that child. A system that routes the appeal right to the alleged offender and denies it to the child's legal protector has inverted the statute's own protective logic. RSA 169-C creates obligations running to the child's safety. The administrative appeal framework must reflect that the child has a protector with cognizable standing to vindicate those obligations — regardless of whether that protector's name appears on the closing letter.</p>
+
+      <p>That mechanism must allow the non-offending responsible adult to demand that DCYF explain what evidence it considered, why it was deemed insufficient to support a Founded determination, whether the RSA 169-C:34(VII) court order requirement was triggered and met, and whether the investigation that produced the determination complied with applicable policy and law. It must allow an independent adjudicator to examine the case record and determine whether the agency's conclusion was supported by the evidence actually gathered.</p>
+
+      <p><strong>For Form 1221.</strong> A standardized closing letter that tells a non-offending responsible adult their child may still be in danger — "this determination does not mean the allegations did not happen" — while providing no mechanism to act on that information is not an administrative notice. It is an institutional abdication. Form 1221 must be revised to either clearly close the matter without hedge language implying ongoing risk, or provide the non-offending responsible adult with a mechanism to challenge the closure's adequacy. A form cannot simultaneously communicate ongoing concern and foreclose any administrative response to it.</p>
+
+      <p><strong>For the RSA 169-C:34(VII) compliance gap.</strong> The non-offending responsible adult cannot compel DCYF to seek a court order. The non-offending responsible adult cannot challenge the failure to seek one through any existing administrative mechanism. DCYF's exclusive authority over the court order process, combined with its documented failure to track compliance with the mandatory court order requirement, means that the legislature's primary protective mechanism for the entry refusal situation is entirely within the agency's unreviewable discretion. Compliance tracking and audit reporting are the minimum corrective steps. A mechanism by which a non-offending responsible adult can trigger independent review of whether RSA 169-C:34(VII) was required and not invoked — as part of a challenge to the adequacy of the resulting determination — is the complete structural remedy.</p>
+
+      <p><strong>For the AAU capacity.</strong> As of February 17, 2026, the Administrative Appeals Unit has 629 appeals pending, no internal processing-time standards, and no tracked decision timelines. A notification to approximately 19,400 prior URC recipients of their right to appeal, combined with a new mechanism for non-offending responsible adults, represents a volume the AAU as currently constituted cannot process. The systemic relief required includes not only the substantive appellate rights but the institutional capacity to vindicate them. Giving 19,400 families the right to appeal and routing them into a system with 629 pending cases and no processing standards is not a remedy. It is a new form of the same delay that has always characterized this system's response to accountability demands.</p>
+
+      <p>None of the reforms above is sufficient without the others. An agency that must now explain its URC findings to alleged offenders who challenge them, but that need not explain its closure decisions to the non-offending responsible adults who bear legal responsibility for the children those closures concern, has addressed one dimension of the structural inversion while leaving the others intact. The mechanism that harmed all of these populations is the same. The reform that addresses one must address all.</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- CLOSING STATEMENT -->
+<div class="closing-statement">
+  <div class="container">
+    <p>The shadow system's defining feature is not that it operates outside the law in dramatic or visible ways. It operates quietly, through the cumulative effect of what is absent: no findings, no conclusions, no appeal rights, no judicial review of mandatory statutory compliance, no training methodology oriented toward accurate fact-finding rather than persuasive narrative construction.</p>
+    <p>Whether DCYF is wrong because it found too much or wrong because it found too little, the result is the same — the agency is never required to say what it decided or to answer for the consequences. That is what nine years of a paper system, an operational system built around narrative construction, and an immunity apparatus denying that any review was available have produced for approximately 19,400 New Hampshire families.</p>
+    <p class="final-line">The corrective action required is simply this: make DCYF say what it decided, in writing, with enough specificity that someone can challenge it. That requirement is what the Administrative Procedure Act has always mandated. That requirement is what the Constitution has always demanded. And that requirement is what this system was built, from December 2017 forward, to avoid.</p>
+  </div>
+</div>
+
+<!-- FOOTNOTE -->
+<footer class="footnote">
+  <p>This paper describes documented institutional practices of the New Hampshire Division for Children, Youth and Families between December 2017 and the present. All factual claims are sourced to agency-produced records. Primary sources include: Policy Directive 17-72 and its successor directives (PD 19-10, PD 22-10, PD 26-03); Intake and Assessment Workgroup minutes (November 5, 2017 and December 4, 2017); legislative implementation tracking spreadsheet (December 2017); internal email correspondence, Allen–Tappan–Deputy Director Michael O'Connor chain (December 18–19, 2017); Allen–Thomas O'Connor correspondence (December 1, 2017); DHHS Right-to-Know production by Deputy Chief Counsel John B. Martin, August 20 and September 27, 2025 (RTK Request #2025-196), including the complete CPS training curriculum; Right-to-Know responses from DHHS Deputy Chief Counsel Martin (July 24, 2025) and DHHS Legal Unit Coordinator Caitlin Sittig (February 17, 2026) confirming absence of RSA 169-C:34(VII) compliance tracking; the AAU Order on Motion to Dismiss, Docket 2025-1149 (September 25, 2025); DCYF Policy 1215 Administrative Appeals (produced 2026); SOP 1213.2 Considerations for an Assessment Timeframe Extension (PD 22-10, May 2022); Form 1213 (all versions, December 2017 through January 2026); Form 1214 (January 2026); PD 26-03 Release Packet including Forms 1212, 1213, 1214, 1215, 1217, 1218, 1220, and 1221 (January 2026); the Becker v. DCYF Supplemental Constitutional Argument V — Pre-HB 400 Framework, AAU Dockets 2026-0310 and 2026-0311 (March 2026); and the RTK-7 production, RTK-Becker-AAU_Redacted.pdf (completed March 2, 2026), including the Executive Order 2025-02 Hiring Waiver Request (DHHS Administrative Appeals Unit, March 3, 2025, POC: Melissa St. Cyr), the Cremmen–St. Cyr email chain (February 2, 2026), and the Cremmen–St. Cyr NHH email (December 17, 2025). The Becker proceedings (AAU Dockets 2026-0310 and 2026-0311) are referenced for procedural events occurring within those proceedings; the March 25, 2026 Good Cause hearing and the presiding officer's verbal order are referenced from the appellant's firsthand account. No specific case determination is referenced. The paper is an internal working draft intended as the basis for a final version to be prepared with full citation attributions to specific documents and page references within the produced record.</p>
+</footer>
+
+</main>
+</body>
+</html>
