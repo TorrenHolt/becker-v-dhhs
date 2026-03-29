@@ -540,9 +540,148 @@
     .card-num { min-width: 48px; font-size: 9px; }
     .tl-date { min-width: 58px; }
   }
+
+  /* ── PASSWORD GATE ── */
+  #password-gate {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  #password-gate::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 80px,
+      rgba(201,168,76,0.03) 80px,
+      rgba(201,168,76,0.03) 81px
+    );
+    pointer-events: none;
+  }
+  .gate-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    position: relative;
+  }
+  .gate-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--text);
+    text-align: center;
+    letter-spacing: -0.02em;
+    position: relative;
+  }
+  .gate-rule {
+    width: 3rem;
+    height: 1px;
+    background: var(--accent2);
+    position: relative;
+  }
+  .gate-input {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    padding: 0.7rem 1.25rem;
+    width: 16rem;
+    outline: none;
+    text-align: center;
+    border-radius: 6px;
+    transition: border-color 0.2s;
+  }
+  .gate-input:focus { border-color: var(--accent2); }
+  .gate-input::placeholder { color: var(--text3); letter-spacing: 0.08em; }
+  .gate-btn {
+    background: rgba(201,168,76,0.12);
+    color: var(--accent);
+    border: 1px solid var(--accent2);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.65rem 1.75rem;
+    cursor: pointer;
+    border-radius: 6px;
+    width: 16rem;
+    transition: background 0.2s, color 0.2s;
+  }
+  .gate-btn:hover { background: rgba(201,168,76,0.22); color: var(--text); }
+  .gate-error {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    color: var(--danger-text);
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.2s;
+    min-height: 1rem;
+    position: relative;
+  }
+  .gate-error.visible { opacity: 1; }
 </style>
 </head>
 <body>
+
+<!-- PASSWORD GATE -->
+<div id="password-gate">
+  <span class="gate-label">Case Record · Restricted Access</span>
+  <h2 class="gate-title">RTK Request Roadmap</h2>
+  <div class="gate-rule"></div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;position:relative;">
+    <input
+      class="gate-input"
+      id="gate-input"
+      type="password"
+      placeholder="Enter password"
+      autocomplete="off"
+      autofocus
+    />
+    <button class="gate-btn" id="gate-btn">Enter</button>
+    <span class="gate-error" id="gate-error">Incorrect password</span>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var CORRECT = 'Becker2026';
+    var gate  = document.getElementById('password-gate');
+    var input = document.getElementById('gate-input');
+    var btn   = document.getElementById('gate-btn');
+    var error = document.getElementById('gate-error');
+
+    function attempt() {
+      if (input.value === CORRECT) {
+        gate.style.transition = 'opacity 0.4s ease';
+        gate.style.opacity = '0';
+        setTimeout(function () { gate.remove(); }, 420);
+      } else {
+        error.classList.add('visible');
+        input.value = '';
+        input.focus();
+        setTimeout(function () { error.classList.remove('visible'); }, 2000);
+      }
+    }
+
+    btn.addEventListener('click', attempt);
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') attempt();
+    });
+  })();
+</script>
 
 <!-- HEADER -->
 <header class="site-header">
