@@ -125,7 +125,7 @@
   /* ── Stats grid ── */
   .stats {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 1px;
     background: var(--border);
     border: 1px solid var(--border);
@@ -692,7 +692,7 @@
     <div class="header-meta">
       <div class="header-meta-item">Requestor: <span>Torrence H. Becker, Pro Se</span></div>
       <div class="header-meta-item">Agency: <span>NH DHHS / DCYF</span></div>
-      <div class="header-meta-item">Generated: <span>March 28, 2026</span></div>
+      <div class="header-meta-item">Generated: <span>March 29, 2026</span></div>
       <div class="header-meta-item">State case: <span>216-2025-CV-00240</span></div>
       <div class="header-meta-item">Federal case: <span>1:24-cv-00430-JL-TSM</span></div>
     </div>
@@ -711,7 +711,7 @@
     <div class="stat">
       <div class="stat-label">Open / awaiting</div>
       <div class="stat-val warn">5</div>
-      <div class="stat-sub">SNAP + RTK-5, 8, 9 + 170-G</div>
+      <div class="stat-sub">RTK-5 suppl. + RTK-8, 9 + 170-G + SNAP</div>
     </div>
     <div class="stat">
       <div class="stat-label">Commissioner complaint</div>
@@ -722,6 +722,11 @@
       <div class="stat-label">Active litigation</div>
       <div class="stat-val">2</div>
       <div class="stat-sub">State court + Federal</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Key evidentiary findings</div>
+      <div class="stat-val danger">4</div>
+      <div class="stat-sub">Nov 5 + Dec 4 workgroup · Surgento 2016 · Staff review bypassed</div>
     </div>
   </div>
 
@@ -1139,15 +1144,15 @@
     </div>
 
     <!-- RTK-5 (PD 17-72 + Policy 1215) — filed Jan 5, 2026 -->
-    <div class="rtk-card" id="rtk1" onclick="toggleCard('rtk1')">
+    <div class="rtk-card notable" id="rtk1" onclick="toggleCard('rtk1')">
       <div class="card-header">
         <div class="card-num">RTK-5</div>
         <div class="card-main">
           <div class="card-title">DCYF Policy Directive 17-72 Development Records + Policy 1215 Administrative Appeals</div>
-          <div class="card-meta">Filed Jan 5, 2026 &nbsp;·&nbsp; Supplemental filed Mar 6, 2026 &nbsp;·&nbsp; Respondent: Caitlin Sittig</div>
+          <div class="card-meta">Filed Jan 5, 2026 &nbsp;·&nbsp; Second production Mar 6, 2026 (150 pp.) &nbsp;·&nbsp; Supplemental (Policy 1215) due Apr 24, 2026 &nbsp;·&nbsp; Respondent: Caitlin Sittig</div>
         </div>
         <div class="card-right">
-          <span class="badge open">Open</span>
+          <span class="badge notable">4 Key Findings</span>
           <span class="due">Supp. due Apr 24, 2026</span>
         </div>
         <div class="chevron">▶</div>
@@ -1156,18 +1161,57 @@
         <div class="timeline">
           <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Jan 5, 2026</div><div class="tl-text"><strong>Filed</strong> — PD 17-72 policy, transmittal documents, signatory identification, meeting minutes and deliberative records (2016–present), superseding or revised directives</div></div>
           <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Jan 9, 2026</div><div class="tl-text"><strong>Acknowledged</strong> — Caitlin Sittig; 30 business days; response on or before Feb 20, 2026</div></div>
-          <div class="tl-item"><div class="tl-dot warn"></div><div class="tl-date">Feb 20, 2026</div><div class="tl-text"><strong>Initial response</strong> — Docs on SFTP. Meeting minutes: "no responsive records." Only deliberative doc produced dates from Dec 2018 (wrong timeframe). Missing: 3 attachments from Jan 3, 2018 transmittal email + PD 26-03 directive.</div></div>
-          <div class="tl-item"><div class="tl-dot info"></div><div class="tl-date">Feb 24, 2026</div><div class="tl-text"><strong>4-deficiency follow-up</strong> — (1) Self-contradicting response: Dec 2018 email confirms other staff feedback was collected yet "no responsive records" claimed; (2) Missing attachments listed by filename in produced email; (3) Missing PD 26-03 referenced in produced Form 1213; (4) Wrong timeframe — 2016–2017 deliberative records requested, 2018 records produced</div></div>
-          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Mar 4, 2026</div><div class="tl-text"><strong>DHHS reconduces search</strong> — Policy Unit re-searched; new documents found; missing attachments acknowledged as "oversight"; PD 26-03 Release Packet attached</div></div>
-          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Mar 6, 2026</div><div class="tl-text"><strong>Additional production</strong> — Becker-RTK-PD17-72.PDF (redacted with marked exemptions: draft, nonresponsive)</div></div>
-          <div class="tl-item"><div class="tl-dot info"></div><div class="tl-date">Mar 6, 2026</div><div class="tl-text"><strong>Supplemental RTK filed</strong> — Policy 1215 Administrative Appeals: all versions 2017–present; HB 400 revision decision records; Bridges prerequisite status; policy directives for 1215 from Jan 1, 2017 to present</div></div>
+          <div class="tl-item"><div class="tl-dot warn"></div><div class="tl-date">Feb 20, 2026</div><div class="tl-text"><strong>Initial response — self-contradicting</strong> — Docs on SFTP. Meeting minutes: "no responsive records." Only deliberative doc produced dates from Dec 2018 (wrong timeframe). Missing: 3 attachments from Jan 3, 2018 transmittal email + PD 26-03 directive. The Dec 2018 Eve Allen email produced in the same response explicitly states other staff feedback was collected and brought to the Workgroup — directly contradicting the "no responsive records" representation in the same production.</div></div>
+          <div class="tl-item"><div class="tl-dot info"></div><div class="tl-date">Feb 24, 2026</div><div class="tl-text"><strong>4-deficiency follow-up sent</strong> — (1) Self-contradicting response: Dec 2018 email confirms other staff feedback was collected yet "no responsive records" claimed; (2) Missing attachments listed by filename in produced email; (3) Missing PD 26-03 referenced in produced Form 1213; (4) Wrong timeframe — 2016–2017 deliberative records requested, 2018 records produced</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Mar 4, 2026</div><div class="tl-text"><strong>DHHS reconducts search</strong> — Policy Unit re-searched; new documents found; missing attachments acknowledged as "oversight"; PD 26-03 Release Packet attached</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Mar 6, 2026</div><div class="tl-text"><strong>Second production — 150 pages, Documents 001–045</strong> — Becker-RTK-PD17-72.PDF; redactions marked as "Draft" or "Nonresponsive"; includes Workgroup minutes Jul 2016 through Dec 2017, internal email chains, two versions of PD 17-72 Release Memo (dated Dec 29, 2017 and Jan 2, 2018 with different policy receipt due dates — discrepancy unexplained in any produced document)</div></div>
+          <div class="tl-item"><div class="tl-dot warn"></div><div class="tl-date">Mar 6, 2026</div><div class="tl-text"><strong>Redaction pattern documented</strong> — Final Workgroup recommendations survived production; deliberative reasoning preceding those recommendations consistently redacted as "Nonresponsive"; Oct 24, 2017 Leadership Meeting: 7 pages redacted, one line survives — <em>"No Unfounded but With Reasonable Concerns talk today"</em>; all draft policy documents (Documents 006, 007, 008, 012, 013, 017, 022) produced as single-page "Draft" markers with no content</div></div>
+          <div class="tl-item"><div class="tl-dot info"></div><div class="tl-date">Mar 6, 2026</div><div class="tl-text"><strong>Policy 1215 supplemental RTK filed</strong> — All versions 2017–present; HB 400 revision decision records; Bridges prerequisite completion status; policy directives for 1215 from Jan 1, 2017 to present</div></div>
           <div class="tl-item"><div class="tl-dot pend"></div><div class="tl-date">Apr 24, 2026</div><div class="tl-text"><strong>Response due</strong> — Policy 1215 supplemental request</div></div>
         </div>
+
+        <!-- KEY FINDINGS CALLOUT -->
+        <div class="callout danger">
+          <div class="callout-title">Key Findings — Second Production (4 of 4)</div>
+          <div class="callout-item"><span class="callout-arrow">1.</span><span><strong>Surgento was in the room at the origin.</strong> J. Surgento appears in the July 11, 2016 Intake &amp; Assessment Workgroup attendee list — the earliest documented stage of URC framework development. The same Jessica Surgento is the supervisor named in RTK-1 (recording produced day before litigation), and whose inter-agency communications with BFA are sought in RTK-4 Category B. When Surgento applied the URC framework in the Becker case she was not following a policy handed to her — she was applying a framework she participated in developing. This directly affects the "individual responsibility for systematic violations" framing in the original RTK legal basis, and makes Surgento a more sophisticated actor than a field worker following direction. From an ACF standpoint: when a supervisor who participated in policy development applies that policy in ways alleged to be improper, the question of intent becomes more complex and more significant.</span></div>
+          <div class="callout-item"><span class="callout-arrow">2.</span><span><strong>"Doesn't meet statutory requirements" — field staff said it before finalization.</strong> The November 5, 2017 Workgroup minutes document, under the heading "LETTER," the bullet point: <em>"Doesn't meet statutory requirements."</em> The identical concern appears again in the December 4, 2017 Workgroup minutes — three weeks before PD 17-72 was issued on December 29, 2017. The draft documents that would show what happened between December 4 and December 29 are entirely redacted as "Draft." No indication in the production that this concern was resolved, addressed in writing, or forwarded up the chain. The policy was issued anyway. A state agency's own field supervisors raised a statutory compliance concern about the notice form across two consecutive monthly meetings before it became binding policy — and the policy was issued without resolution of that concern.</span></div>
+          <div class="callout-item"><span class="callout-arrow">3.</span><span><strong>One-month staff review bypassed.</strong> Eve Allen's December 26, 2017 pre-release email states explicitly: <em>"these documents were unable to be sent for the one month Staff Review."</em> DHHS's standard process for new policy releases included a one-month staff review period designed to surface compliance concerns. PD 17-72 bypassed this process entirely at Mike O'Connor's direction because Bureau Chief Christine Tappan wanted the policy official before the new year. The December 4 Workgroup had just documented that the letter "doesn't meet statutory requirements" — exactly the kind of concern a one-month review is designed to surface and resolve. The standard safeguard was bypassed at the moment it was most needed.</span></div>
+          <div class="callout-item"><span class="callout-arrow">4.</span><span><strong>"Leadership discussions" transmittal language contradicted by the record.</strong> PD 17-72 states practices <em>"have been communicated and piloted through practice discussions at Leadership."</em> The October 24, 2017 Leadership Meeting had URC scheduled as a 30-minute agenda item (2:30–3:00 PM, "Unfounded w/Reasonable Concerns — Update, FAs"). The meeting notes confirm it didn't happen: <em>"No Unfounded but With Reasonable Concerns talk today."</em> The only Leadership-level meeting in the production where URC was a substantive agenda item is the one where it was cancelled. The seven redacted pages of that meeting are not produced. The transmittal's representation about Leadership-level communication is not supported by the produced record and is directly contradicted by the only relevant meeting notes in the production.</span></div>
+        </div>
+
+        <!-- NON-OFFENDING PARENT DECISION -->
+        <div class="callout danger">
+          <div class="callout-title">December 4, 2017 — Non-Offending Parent Policy Decision</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>The December 4, 2017 Workgroup produced a formal recommendation under "LETTER FOR NON-OFFENDING PARENT": <em>"URC letters will be sent to all parents at closure whether they are the offending parent or not with clear recommendations for each parent."</em> This is the institutional policy decision that governed the November 7, 2025 letter to Torrence Becker. The Seacoast District Office did not misaddress that letter — it followed eight years of documented institutional policy.</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>Direct anti-mootness implication (AAU Docket 2026-0311):</strong> Any DCYF representation that a corrected letter would clarify the finding was not directed at Torrence Becker directly contradicts this documented institutional policy. The presiding officer's escape hatch suggestion — a pre-hearing conference with Seacoast to clarify the letter's addressee — proposes asking the respondent to interpret its own document in a way that contradicts both the document's face and the eight-year policy that produced it.</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>The deliberative pages immediately preceding this recommendation are redacted as "Nonresponsive" (Document 004.002, 004.003 pages between the discussion and the final recommendations). The final decision survived. The reasoning did not. The nonresponsive designation was applied by Sittig's office on documents central to the standing question in active litigation, 63 days after the non-offending parent question was formally filed.</span></div>
+        </div>
+
+        <!-- DECEMBER 2017 TRACKING SPREADSHEET -->
+        <div class="callout warn">
+          <div class="callout-title">December 19, 2017 — Legislative Tracking Spreadsheet and Policy 1215 Gap</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>The December 19, 2017 Eve Allen → Christine Tappan email produced in the second production contains the legislative tracking spreadsheet showing: <strong>Policy 1215 Administrative Appeals</strong> — "Consider use of new disposition of 'Unfounded but Reasonable Concern' for documenting MU Overturned Findings." Status: <em>"Needs Bridges process first to identify procedures."</em></span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>This is the document establishing that the failure to revise Policy 1215 was a known, named, dated gap — identified by a named official on a specific date — at the moment PD 17-72 was being finalized. Not a gap discovered externally years later. PD 17-72 was released without that revision being made. It has never been made in the eight years since. The prerequisite Bridges process was never completed.</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>The pending Policy 1215 supplemental RTK (due April 24, 2026) is specifically designed to establish what happened to this known gap: whether any version of Policy 1215 ever addressed URC determinations, and whether any internal records document the decision to defer or abandon the revision identified as necessary in December 2017.</span></div>
+        </div>
+
+        <!-- FORM 1213 VERSION HISTORY -->
+        <div class="callout info">
+          <div class="callout-title">Form 1213 Version History — Four Revision Cycles, Consistent Omission</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>The second production completes the Form 1213 evidentiary record across all four policy directives: PD 17-72 (Dec 2017), PD 19-10 (Mar 2019), PD 22-10 (May 2022), PD 26-03 (Jan 2026). Across all four revision cycles, Form 1213 has never contained notice of appeal rights, findings of fact, or conclusions of law.</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Other forms released under the same directives — Forms 1214 and 1215 — explicitly contain appeal rights language, 30-day deadlines, and detachable request forms. The agency knows how to write notice of appeal rights. The absence from Form 1213 across four revision cycles spanning eight years is a documented affirmative choice, not oversight — visible in a single policy directive packet (PD 26-03) that contains both forms with and without appeal rights language.</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Melissa Duyon (Supervisor, Seacoast District Office) received the founding documents in the December 26, 2017 pre-release distribution and was on the distribution lists for the 2018 staff review and the May 2022 PD 22-10 transmittal. She co-signed the November 7, 2025 URC letter using the same form, without appeal rights, eight years later. Heather Cremmen (now Senior ALJ) also appears in the December 2018 distribution list — she was a DCYF staff member when the URC policy was being developed and revised.</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>The January 2026 Form 1213 (PD 26-03) adds two RSA citations (169-C:3 XXIX and 169-C:34, II-a and II-b) not present in prior versions. The PD 26-03 cover memo attributes this revision entirely to SIU functionality. It does not mention the Towle ruling issued four months earlier establishing URC findings are appealable final decisions. The RTK-9 production (due April 24) will establish who authorized that RSA addition and whether any deliberative records address the Towle ruling's implications for Form 1213.</span></div>
+        </div>
+
+        <!-- STILL OPEN -->
         <div class="callout warn">
           <div class="callout-title">Still Open</div>
-          <div class="callout-item"><span class="callout-arrow">→</span><span>2016–2017 deliberative records (Leadership discussions referenced in PD 17-72 itself) — no substantive response ever provided</span></div>
-          <div class="callout-item"><span class="callout-arrow">→</span><span>Policy 1215 supplemental response due April 24, 2026</span></div>
-          <div class="callout-item"><span class="callout-arrow">→</span><span>Intake and Assessment Workgroup feedback from Dec 2018 explicitly acknowledged in a produced document — never searched for or addressed</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>2016–2017 deliberative records (Leadership discussions referenced in PD 17-72 transmittal itself) — no substantive response ever provided; October 24, 2017 Leadership Meeting content is 7 pages redacted</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Policy 1215 supplemental response due April 24, 2026 — will establish whether any version of Policy 1215 ever addressed URC determinations and whether the December 2017 Bridges prerequisite was ever completed</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>December 2018 Workgroup feedback explicitly acknowledged in produced Eve Allen email — additional staff written feedback confirmed to exist, never searched for or produced</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Document 004.002 / 004.003 deliberative pages (non-offending parent discussion preceding the formal recommendation) — redacted as "Nonresponsive" without identified statutory basis; supplemental RTK challenge prepared</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Two versions of PD 17-72 Release Memo (Dec 29, 2017 / Jan 2, 2018) — discrepancy in dates and policy receipt due dates unexplained in any produced document</span></div>
         </div>
       </div>
     </div>
@@ -1228,10 +1272,18 @@
         </div>
         <div class="callout success">
           <div class="callout-title">Key Findings</div>
-          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>629 appeals pending</strong> as of February 17, 2026 — critical evidence for mandamus proceedings showing systemic backlog</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>629 appeals pending</strong> as of February 17, 2026 — Cremmen's own words in the Feb 2 exchange confirm "all but 2–5 cases are over 90 days without some justification when I report to CMS" — 624 of 629 in documented federal timeliness violation at the time of the March 25 Good Cause hearing</span></div>
           <div class="callout-item"><span class="callout-arrow">→</span><span>No internal processing-time standards exist — the AAU formally confirmed it tracks no metrics on decision timelines</span></div>
-          <div class="callout-item"><span class="callout-arrow">→</span><span>Staffing/resource records produced (redacted) — the redacted content reveals DHHS was aware of resource constraints affecting decision timelines</span></div>
-          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>Pages 6–7 withheld</strong> as "case-specific confidential/nonresponsive content" — no privilege log produced; 170-G:8-a request filed Mar 28, 2026 to obtain withheld pages through subject-access vehicle Sittig's own practice established</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Staffing/resource records produced (redacted) including the Hiring Waiver (Mar 3, 2025) filed by St. Cyr predicting the violations that materialized; framed crisis as DHHS institutional exposure (funding at risk), not appellants' due process deprivation</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>Pages 6–7 withheld</strong> as "case-specific confidential/nonresponsive content" — no privilege log produced; production decision made by respondent's attorneys (Nachman and Sittig); 170-G:8-a request filed Mar 28, 2026</span></div>
+        </div>
+        <div class="callout danger">
+          <div class="callout-title">Structural Independence — Complete Picture from RTK-7 Production</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>Feb 2, 2026 exchange (produced):</strong> Cremmen → St. Cyr productivity report sent "so you and I can see what they are producing." CLO asks for guidance on "what's important to the Department right now." Cremmen provides informal prioritization scheme placing child abuse/neglect findings last. This is not interagency coordination — it is the respondent's CLO characterizing the tribunal's docket as a function of the respondent's institutional priorities.</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>Dec 17, 2025 NHH email (produced):</strong> Cremmen reports AAU operational status to St. Cyr regarding scheduling difficulties, closing "No action is necessary, I just wanted to make you aware." Establishes the Feb 2 exchange was not isolated — the Senior ALJ maintained an ongoing practice of routine operational reporting to the respondent's CLO across case types and across time.</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>Feb 23, 2026 production decision (documented):</strong> Cremmen forwarded the Feb 2 exchange and Dec 17 NHH email to Nachman and Sittig for production review. The respondent's legal staff — managing the Becker proceedings — reviewed communications between the tribunal's Senior ALJ and the respondent's CLO and made the decision about what to produce and what to withhold. Pages 6–7 did not survive that review.</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>Mar 5, 2026 hearing notice (produced):</strong> Notice of Hearing for Dockets 2026-0310 and 2026-0311 bears <em>Melissa A. St. Cyr, Esq., Chief Legal Officer</em> on institutional letterhead. This document is now an exhibit in federal Case No. 1:24-cv-00430-JL-TSM. The respondent's CLO appears on the institutional face of the nominally independent tribunal's official communications in the active Becker proceedings.</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>RSA 541-A:36 requires adjudicative functions be exercised with structural independence from the agency whose decisions are reviewed. Due process requires the <em>appearance</em> of impartiality as well as its substance. The structural independence violation does not require proof that any specific outcome was corrupted.</span></div>
         </div>
       </div>
     </div>
@@ -1324,10 +1376,11 @@
           <div class="tl-item"><div class="tl-dot pend"></div><div class="tl-date">Apr 24, 2026</div><div class="tl-text"><strong>Response due</strong></div></div>
         </div>
         <div class="callout warn">
-          <div class="callout-title">Strategic Note</div>
-          <div class="callout-item"><span class="callout-arrow">→</span><span>PD 26-03 was issued January 2026 — the records are recent and a 30-day gathering estimate is difficult to justify; send the draft follow-up now</span></div>
-          <div class="callout-item"><span class="callout-arrow">→</span><span>Key target: the January 2026 Form 1213 adds citations to RSA 169-C:34, II-a and II-b that did not appear in prior versions — this is a deliberate policy decision whose authorization trail is a responsive record</span></div>
-          <div class="callout-item"><span class="callout-arrow">→</span><span>RTK-5 established the pattern of initial incomplete response followed by supplemental production — anticipate needing a follow-up deficiency letter after initial response</span></div>
+          <div class="callout-title">Strategic Note — Most Consequential Pending Production</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>PD 26-03 was issued January 20, 2026 — eighteen days after Docket 2026-0311 was filed on January 2, 2026. The records are recent and a 30-day gathering estimate is difficult to justify; send the draft follow-up now.</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>The escape hatch proposed at the March 25 hearing is a corrected Form 1213 — not Form 1221.</strong> Form 1221 is an Unfounded Closing Letter (RSA 169-C:3 XXVIII), a categorically different determination than the URC (RSA 169-C:3 XXIX) at issue here. The development timeline question is about PD 26-03 generally: whether the policy directive's development, including any revised Form 1213 mechanism, predates or postdates the January 2, 2026 filing of Docket 2026-0311. This is the single most consequential factual question the production will answer.</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Key additional target: the January 2026 Form 1213 adds citations to RSA 169-C:34, II-a and II-b that did not appear in prior versions — this is a deliberate policy decision whose authorization trail is a responsive record. Records should also show whether any guidance was issued following the September 25, 2025 Towle ruling regarding Form 1213's appeal rights deficiency.</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>RTK-5 established the pattern of initial incomplete response followed by supplemental production — prepare deficiency letter template in advance; anticipate needing to push for Workgroup meeting records as was necessary in RTK-5.</span></div>
         </div>
       </div>
     </div>
@@ -1339,14 +1392,14 @@
   <div class="weaver-wrapper">
     <div class="weaver-card" id="aau" onclick="toggleCard('aau')">
       <div class="weaver-banner-bar" style="background:rgba(31,111,235,0.15); border-color:#388bfd; color:#79c0ff;">
-        March 25, 2026 Good Cause Hearing — split ruling — Motion for Reconsideration due April 24
+        Combined Post-Hearing Motion drafted — 0310 Reconsideration (4 grounds) + 0311 Anti-Mootness (6 grounds) · Written order pending
         <span class="no-reply-pill" style="background:rgba(31,111,235,0.15); border-color:#388bfd; color:#79c0ff;">Written order pending</span>
       </div>
       <div class="card-header">
         <div class="card-num" style="color:var(--info-text)">AAU</div>
         <div class="card-main">
           <div class="card-title">Good Cause Preliminary Hearing — Dockets 2026-0310 &amp; 2026-0311</div>
-          <div class="card-meta">Heard Mar 25, 2026 &nbsp;·&nbsp; Oral ruling same day &nbsp;·&nbsp; Written order confirmed pending &nbsp;·&nbsp; Recon. deadline Apr 24, 2026</div>
+          <div class="card-meta">Mandamus denied Mar 9 (without prejudice) &nbsp;·&nbsp; Hearing forced Mar 25, 2026 &nbsp;·&nbsp; Split ruling same day &nbsp;·&nbsp; Combined motion ready to file &nbsp;·&nbsp; He-C 204 deadline Apr 24, 2026</div>
         </div>
         <div class="card-right">
           <span class="badge open">Active</span>
@@ -1355,24 +1408,53 @@
       </div>
       <div class="card-body">
         <div class="timeline">
+          <div class="tl-item"><div class="tl-dot deny"></div><div class="tl-date">Mar 9, 2026</div><div class="tl-text"><strong>Mandamus DENIED without prejudice</strong> — Judge St. Hilaire accepted respondent's representation that the presiding ALJ was on FMLA from December 2025; found this sufficient for the post-December delay in Docket 2025-1149. Order does <em>not</em> address: (a) 97-day pre-hearing delay June–October 2025; (b) October–December gap before FMLA began; (c) delays in Dockets 2026-0310 and 2026-0311 not attributable to any individual ALJ's leave. Court explicitly authorized refiling <em>"in the coming few months"</em> if no decision issues. Clock runs from March 9.</div></div>
+          <div class="tl-item"><div class="tl-dot warn"></div><div class="tl-date">Mar 5, 2026</div><div class="tl-text"><strong>Good Cause Hearing notice issued — four days before mandamus hearing</strong> — AAU scheduled March 25 hearing for both dockets after months of inaction; notice dated four days before the March 9 mandamus proceeding. Notice bears the name of <strong>Melissa A. St. Cyr, Esq., DHHS Chief Legal Officer</strong>, on AAU institutional letterhead — the respondent's top attorney on the face of the nominally independent tribunal's official communications. This document is now in the federal case record.</div></div>
           <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Mar 25, 2026</div><div class="tl-text"><strong>2026-0311: Good cause GRANTED</strong> — Actual-receipt standard applied; November 7, 2025 letter not received until December 21, 2025; 12-day gap to January 2 filing deemed sufficient</div></div>
-          <div class="tl-item"><div class="tl-dot deny"></div><div class="tl-date">Mar 25, 2026</div><div class="tl-text"><strong>2026-0310: Good cause DENIED</strong> — Presiding officer inferred that because Becker filed one URC appeal on June 5, 2025, he should have filed both; 140-day gap found unreasonable; inference has no basis in He-C 201.03(b), RSA 541-A, or administrative law</div></div>
-          <div class="tl-item"><div class="tl-dot deny"></div><div class="tl-date">Mar 25, 2026</div><div class="tl-text"><strong>Sua sponte escape hatch raised</strong> — Immediately after denying good cause for 2026-0310, presiding officer raised unprompted whether the URC letter addressed both parents or only Ms. Becker; proposed Zoom conference with DCYF Seacoast office to clarify; stated explicitly that if Seacoast confirmed letter addressed only Ms. Becker, "that will make this appeal moot." DCYF attorneys had not raised this argument. This is Ground VIII of the Motion for Reconsideration.</div></div>
+          <div class="tl-item"><div class="tl-dot deny"></div><div class="tl-date">Mar 25, 2026</div><div class="tl-text"><strong>2026-0310: Good cause DENIED</strong> — Presiding officer inferred that because Becker filed one URC appeal on June 5, 2025, he should have filed both; 140-day gap found unreasonable. Inference has no basis in He-C 201.03(b), RSA 541-A, or administrative law. Same standard as 2026-0311 (actual receipt) would yield 27-day appellant-attributable gap from the Sept 25 Order.</div></div>
+          <div class="tl-item"><div class="tl-dot deny"></div><div class="tl-date">Mar 25, 2026</div><div class="tl-text"><strong>Sua sponte escape hatch raised — 2026-0311</strong> — Immediately after granting good cause in 2026-0311, presiding officer raised unprompted whether the URC letter addressed both parents or only Ms. Becker; proposed Zoom conference with DCYF Seacoast to clarify; stated <em>"that will make this appeal moot"</em> if Seacoast confirmed letter addressed only Ms. Becker. DCYF attorneys had not raised this argument. The argument was generated by the presiding officer, the vehicle was designed by the presiding officer, and the favorable outcome was previewed by the presiding officer — in a hearing forced by mandamus four days after it was scheduled, on a docket managed within an institutional framework placing child protection cases last.</div></div>
           <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Mar 26, 2026</div><div class="tl-text"><strong>Written order and recording confirmed</strong> — AAU email: written order will issue; reconsideration period runs from March 25 oral ruling; audio recording invoiced separately upon payment</div></div>
-          <div class="tl-item"><div class="tl-dot pend"></div><div class="tl-date">Apr 24, 2026</div><div class="tl-text"><strong>Motion for Reconsideration due</strong> — He-C 204; runs from oral ruling; draft complete; 8 grounds</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Mar 29, 2026</div><div class="tl-text"><strong>Combined Post-Hearing Motion drafted — ready to file</strong> — Part I: Motion for Reconsideration, Docket 2026-0310, 4 grounds; Part II: Anti-Mootness Statement, Docket 2026-0311, 6 grounds; shared factual record covering Cremmen–St. Cyr exchange, 624/629 CMS disclosure, hiring waiver, mandamus context</div></div>
+          <div class="tl-item"><div class="tl-dot pend"></div><div class="tl-date">Apr 24, 2026</div><div class="tl-text"><strong>Combined motion due</strong> — He-C 204; runs from March 25 oral ruling</div></div>
         </div>
+
+        <!-- PART I RECONSIDERATION -->
         <div class="callout danger">
-          <div class="callout-title">Ground VIII — The Sua Sponte Escape Hatch</div>
-          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>She generated the respondent's argument</strong> — The standing/mooting theory was raised by the presiding officer, not DCYF's attorneys; a structurally independent adjudicator notes an unraised standing issue and directs parties to brief it; she identified it, designed the vehicle, and previewed the outcome in the respondent's favor</span></div>
-          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>She proposed asking the respondent to interpret its own document</strong> — Zoom conference with DCYF Seacoast would assign the threshold standing determination to the respondent; no principle of administrative adjudication permits this</span></div>
-          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>She named the outcome</strong> — "That will make this appeal moot" previewed the result if DCYF provided the answer that benefits DCYF; this is not neutral adjudication</span></div>
-          <div class="callout-item"><span class="callout-arrow">→</span><span>All characterizations from appellant's firsthand account; audio recording requested and invoiced; motion filed on this basis with reservation to supplement upon recording receipt</span></div>
+          <div class="callout-title">Part I — Motion for Reconsideration (Docket 2026-0310) — 4 Grounds</div>
+          <div class="callout-item"><span class="callout-arrow">I.</span><span><strong>Internal inconsistency</strong> — Presiding officer applied actual-receipt standard to grant good cause in 2026-0311; same standard applied to 2026-0310 compels the same result. Same form, same appellant, same absence of notice — different outcomes in the same hearing require a principled distinction that the record does not supply.</span></div>
+          <div class="callout-item"><span class="callout-arrow">II.</span><span><strong>27-day appellant-attributable gap</strong> — Physical receipt of Form 1213 on June 4, 2025 was not legally adequate notice that an appeal right existed. The September 25, 2025 Order was the first legally adequate notice (appeal right confirmed, nunc pro tunc viable, DCYF's position rejected). Appellant filed 27 days later. The remaining 113 days of the 140-day total predate legally adequate notice or belong to the tribunal's own deliberative period.</span></div>
+          <div class="callout-item"><span class="callout-arrow">III.</span><span><strong>Asymmetric timeliness standard</strong> — 140 days found unreasonable. AAU's own gaps in these proceedings: 97 days to resolve the jurisdictional question; 154 days to hold the good cause hearing on the October 22 filing; 171+ days without a merits decision in Docket 2025-1149. 624 of 629 pending appeals beyond 90 days at the time of the March 25 hearing. RSA 541-A:29 applies to the tribunal as well as to parties.</span></div>
+          <div class="callout-item"><span class="callout-arrow">IV.</span><span><strong>Structural independence context</strong> — The Feb 2, 2026 Cremmen–St. Cyr exchange places the Senior ALJ in a reporting relationship with the respondent's CLO, with the CLO asking for guidance on what is "important to the Department right now." Child abuse and neglect findings occupy the lowest tier of the resulting prioritization scheme. A timeliness standard applied against child protection appellants within this framework is not a neutral standard.</span></div>
         </div>
+
+        <!-- PART II ANTI-MOOTNESS -->
+        <div class="callout danger">
+          <div class="callout-title">Part II — Anti-Mootness Statement (Docket 2026-0311) — 6 Grounds</div>
+          <div class="callout-item"><span class="callout-arrow">I.</span><span><strong>Permanent record entry is the injury</strong> — A corrected letter does not expunge Assessment #1153786. RSA 169-C:35-a, III: URC findings retained indefinitely. RSA 169-C:12: admissible to establish pattern. Only expungement addresses the injury.</span></div>
+          <div class="callout-item"><span class="callout-arrow">II.</span><span><strong>December 2017 institutional policy decision</strong> — The December 4, 2017 Workgroup formally recommended URC letters go to all parents, offending and non-offending alike. Seacoast followed the policy. Any DCYF representation that the letter was misdirected contradicts both the face of the document and eight years of documented institutional practice. <em>See RTK-5 Key Findings above.</em></span></div>
+          <div class="callout-item"><span class="callout-arrow">III.</span><span><strong>Underreach dimension survives entirely</strong> — Non-offending parent standing to challenge adequacy of investigation on behalf of the child is a distinct ground that cannot be addressed by any letter correction.</span></div>
+          <div class="callout-item"><span class="callout-arrow">IV.</span><span><strong>DCYF's own Finding of Law B</strong> — Proposed Finding of Law B establishes refusal of entry provides probable cause. Torrence refused entry. Under DCYF's own legal theory his refusal is part of the factual and legal basis for the determination. A corrected letter cannot sever this connection. RSA 169-C:34(VII) was triggered — DCYF confirmed in two RTK responses it does not track compliance with that mandatory court order requirement.</span></div>
+          <div class="callout-item"><span class="callout-arrow">V.</span><span><strong>Systemic RSA 541-A:35 practice</strong> — The challenge is to the form and its eight-year absence of required findings of fact and conclusions of law. That challenge survives any individual letter correction because it challenges the institutional practice, not the recipient.</span></div>
+          <div class="callout-item"><span class="callout-arrow">VI.</span><span><strong>Procedural context requires written examination — not a further conference</strong> — The threshold addressee question is answered by the face of the November 7 letter and confirmed by December 2017 policy; it requires an email from DCYF's counsel, not a 30-day conference cycle. The proposed conference sequence produces minimum 60 additional days in either path. PD 26-03 released January 20 — 18 days after this docket was filed; development records pending RTK-9. Hearing forced by mandamus in institutional framework placing child protection cases last. Written merits examination required now.</span></div>
+        </div>
+
+        <!-- STRUCTURAL INDEPENDENCE -->
+        <div class="callout danger">
+          <div class="callout-title">Structural Independence — Documented in This Tribunal's Own Produced Records</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>Feb 2, 2026 — Cremmen → St. Cyr productivity report:</strong> Senior ALJ sent monthly judge output numbers to DHHS CLO "so you and I can see what they are producing." CLO responded: <em>"give the judges some guidance on what's important to the Department right now."</em> Cremmen replied with the informal prioritization scheme placing child abuse/neglect findings last. 624 of 629 pending appeals confirmed beyond 90 days.</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>Dec 17, 2025 — NHH email establishes ongoing pattern:</strong> Cremmen reported AAU operational status to St. Cyr regarding New Hampshire Hospital scheduling, closing: <em>"No action is necessary, I just wanted to make you aware."</em> The Feb 2 exchange was not an isolated event triggered by unusual circumstances — it was routine operational reporting by the tribunal's Senior ALJ to the respondent's Chief Legal Officer.</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>Mar 3, 2025 — Hiring Waiver filed by St. Cyr:</strong> DHHS CLO filed the independent tribunal's own staffing paperwork, identified herself as point of contact, and framed the staffing crisis as DHHS's institutional exposure (funding at risk) rather than appellants' due process deprivation. Filed ten weeks before Appellant's first appeal. AAU predicted its own violations before Appellant's cases arrived.</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>Mar 5, 2026 — St. Cyr letterhead on AAU hearing notice:</strong> The Notice of Hearing for Dockets 2026-0310 and 2026-0311 bears Melissa A. St. Cyr, Esq., Chief Legal Officer, on its institutional letterhead. This document is now an exhibit in the related federal case (Case No. 1:24-cv-00430-JL-TSM). RSA 541-A:36 requires adjudicative functions be exercised with structural independence from the agency whose decisions are reviewed.</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span><strong>Production decision on Cremmen–St. Cyr emails:</strong> The communications between the tribunal's Senior ALJ and the respondent's CLO were reviewed for production by DHHS attorneys Nachman and Sittig — the respondent's own legal staff — who withheld RTK-7 pages 6 and 7. The documents that survived redaction review are the ones that document the structural compromise. The documents that did not survive were reviewed by the party with the greatest interest in non-disclosure.</span></div>
+        </div>
+
+        <!-- EVIDENTIARY STATUS -->
         <div class="callout warn">
-          <div class="callout-title">Evidentiary Gap</div>
-          <div class="callout-item"><span class="callout-arrow">→</span><span>No written order yet — motion must characterize oral ruling from firsthand account; reconsideration clock already running from March 25</span></div>
-          <div class="callout-item"><span class="callout-arrow">→</span><span>Audio recording requested March 26; invoice pending; payment to be tendered upon receipt; recording is the evidentiary foundation for Ground VIII quote</span></div>
-          <div class="callout-item"><span class="callout-arrow">→</span><span>If written order arrives before April 24: review against motion and supplement; if after filing: file notice of supplementation</span></div>
+          <div class="callout-title">Evidentiary Status</div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>No written order yet from March 25 hearing — combined motion characterizes oral ruling from firsthand account; reconsideration clock runs from March 25 regardless</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Audio recording of March 25 hearing requested March 26; invoice pending; payment upon receipt; recording is evidentiary confirmation of presiding officer's exact words on the escape hatch ("that will make this appeal moot"); motion filed on firsthand account; recording supplements upon arrival</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>If written order arrives before April 24: review against motion characterization and supplement if necessary; if after filing: file notice of supplementation</span></div>
+          <div class="callout-item"><span class="callout-arrow">→</span><span>Mandamus without-prejudice clock running from March 9 — if no Docket 2025-1149 merits decision issues by approximately May/June 2026, refile supported by AAU's failure to comply with the Superior Court's own recommendation and the 171+ day post-hearing delay</span></div>
         </div>
       </div>
     </div>
@@ -1385,14 +1467,20 @@
 
     <div class="action-item">
       <div class="action-dot" style="background:#f85149"></div>
-      <div class="action-date">Apr 24, 2026</div>
-      <div><strong>Motion for Reconsideration due</strong> — AAU Docket 2026-0310, He-C 204; reconsideration period runs from March 25 oral ruling. Eight grounds including: (I) internal inconsistency with 2026-0311 ruling; (II–IV) no legal basis for "should have filed both" inference; (V) 43-day appellant-attributable gap after subtracting 97 AAU days; (VI) AAU applied timeliness standard it has not itself met; (VII) Cremmen–St. Cyr structural independence; (VIII) sua sponte escape hatch — ALJ raised, designed vehicle for, and previewed outcome of, standing argument DCYF attorneys had not raised, immediately after denying good cause. Draft complete.</div>
+      <div class="action-date">File now</div>
+      <div><strong>Supplemental Notice of Related State Court Proceedings</strong> — File in federal Case No. 1:24-cv-00430-JL-TSM. Updates court on: (1) March 9, 2026 mandamus denial without prejudice — FMLA basis accepted, scope limitations noted; (2) March 25, 2026 Good Cause hearing — split ruling, escape hatch raised sua sponte; (3) St. Cyr name on AAU hearing notice — respondent's CLO on face of nominally independent tribunal's official communications, now an exhibit in federal case; (4) RTK productions bearing on structural independence including Cremmen–St. Cyr exchange. Draft complete.</div>
     </div>
 
     <div class="action-item">
       <div class="action-dot" style="background:#f85149"></div>
       <div class="action-date">Apr 24, 2026</div>
-      <div><strong>Three RTK responses due simultaneously</strong> — RTK-5 Policy 1215 supplemental, RTK-8 post-AAU internal communications, RTK-9 PD 26-03 development records. Prepare deficiency letter templates in advance based on RTK-5 initial response pattern. Anticipate blanket attorney-client privilege claims on RTK-8; push for privilege log.</div>
+      <div><strong>Combined Post-Hearing Motion due</strong> — AAU Dockets 2026-0310 and 2026-0311; He-C 204; reconsideration period runs from March 25 oral ruling. <strong>Part I (Docket 2026-0310 — Reconsideration):</strong> (I) Internal inconsistency with 2026-0311 actual-receipt ruling; (II) 27-day appellant-attributable gap from Sept 25 legally adequate notice; (III) Asymmetric timeliness standard — 140 days found unreasonable vs. AAU's own 97/154/171+ day gaps; (IV) Structural independence context — Cremmen–St. Cyr exchange and prioritization scheme. <strong>Part II (Docket 2026-0311 — Anti-Mootness):</strong> (I) Record entry is the injury; (II) December 2017 institutional policy decision on non-offending parent notice; (III) Underreach dimension survives; (IV) Finding of Law B and RSA 169-C:34(VII); (V) Systemic RSA 541-A:35 practice; (VI) Conference sequence is delay engine — threshold question requires email not conference. Draft complete.</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-dot" style="background:#f85149"></div>
+      <div class="action-date">Apr 24, 2026</div>
+      <div><strong>Three RTK responses due simultaneously</strong> — RTK-5 Policy 1215 supplemental, RTK-8 post-AAU internal communications, RTK-9 PD 26-03 development records. Prepare deficiency letter templates in advance based on RTK-5 initial response pattern. Anticipate blanket attorney-client privilege claims on RTK-8; push for privilege log. RTK-9 is the single most consequential pending production: will establish whether PD 26-03 development predates or postdates the January 2, 2026 filing of Docket 2026-0311.</div>
     </div>
 
     <div class="action-item">
@@ -1403,8 +1491,14 @@
 
     <div class="action-item">
       <div class="action-dot" style="background:#d29922"></div>
+      <div class="action-date">~May–Jun 2026</div>
+      <div><strong>Mandamus refiling window — Docket 2025-1149</strong> — Judge St. Hilaire's March 9, 2026 order denied the petition without prejudice and authorized refiling <em>"in the coming few months"</em> if no decision issues. Clock runs from March 9. Monitor Docket 2025-1149; if no merits decision by approximately May/June 2026, refile with: (a) the AAU's failure to comply with the Superior Court's own recommendation that a decision issue before March 25; (b) 171+ day post-hearing delay; (c) the Cremmen–St. Cyr exchange establishing that child abuse/neglect findings are placed last in the informal prioritization scheme; (d) the FMLA rationale does not account for the pre-December delay or the delays in Dockets 2026-0310 and 2026-0311.</div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-dot" style="background:#d29922"></div>
       <div class="action-date">Pending</div>
-      <div><strong>AAU audio recording — March 25 hearing</strong> — Requested March 26; invoice to follow per AAU. Payment to be tendered upon receipt. Recording is the evidentiary confirmation of Ground VIII (sua sponte escape hatch quote). Motion for Reconsideration filed on firsthand account; recording supplements the record upon arrival. Critical to obtain before any merits hearing on reconsideration.</div>
+      <div><strong>AAU audio recording — March 25 hearing</strong> — Requested March 26; invoice to follow per AAU. Payment to be tendered upon receipt. Recording is the evidentiary confirmation of presiding officer's exact words on the escape hatch (<em>"that will make this appeal moot"</em>). Combined motion filed on firsthand account; recording supplements the record upon arrival. Critical to obtain before any merits hearing on reconsideration.</div>
     </div>
 
     <div class="action-item">
@@ -1416,7 +1510,7 @@
     <div class="action-item">
       <div class="action-dot" style="background:#d29922"></div>
       <div class="action-date">Pending</div>
-      <div><strong>170-G:8-a response — withheld RTK-7 pages 6–7</strong> — Filed March 28 to Sittig; CC Martin. No statutory deadline established for 170-G:8-a responses. Follow up if no response within 10 business days (~Apr 11). Result feeds Ground VII/VIII of Motion for Reconsideration.</div>
+      <div><strong>170-G:8-a response — withheld RTK-7 pages 6–7</strong> — Filed March 28 to Sittig; CC Martin. No statutory deadline established for 170-G:8-a responses. Follow up if no response within 10 business days (~Apr 11). Pages 6–7 were withheld from a production documenting the Cremmen–St. Cyr relationship; production decision made by respondent's own attorneys (Nachman and Sittig). Result feeds structural independence argument in combined motion.</div>
     </div>
 
     <div class="action-item">
@@ -1446,7 +1540,7 @@
     <div class="action-item">
       <div class="action-dot" style="background:#484f58"></div>
       <div class="action-date">Cross-reference</div>
-      <div>RTK-3 training materials — Court Forms.pdf, Investigations FG 20240801.pdf, and the RSA 169-C.pdf should be systematically cross-referenced with RTK-2 (what DCYF workers were trained to do re: RSA 169-C:34 petitions) and RTK-1 arguments about McKinney and Surgento's conduct.</div>
+      <div>RTK-3 training materials — Court Forms.pdf, Investigations FG 20240801.pdf, and the RSA 169-C.pdf should be systematically cross-referenced with RTK-2 (what DCYF workers were trained to do re: RSA 169-C:34 petitions) and RTK-1 arguments about McKinney and Surgento's conduct. Note: Surgento appears in the July 2016 Workgroup attendee list — she participated in the URC framework's development before applying it in the Becker case.</div>
     </div>
 
     <div class="action-item">
@@ -1460,7 +1554,7 @@
 </main>
 
 <footer>
-  Becker v. NH DHHS/DCYF &nbsp;·&nbsp; RSA 91-A Campaign 2024–2026 &nbsp;·&nbsp; Generated March 28, 2026 &nbsp;·&nbsp; Pro Se
+  Becker v. NH DHHS/DCYF &nbsp;·&nbsp; RSA 91-A Campaign 2024–2026 &nbsp;·&nbsp; Generated March 29, 2026 &nbsp;·&nbsp; Pro Se
 </footer>
 
 <script>
