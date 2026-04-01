@@ -1501,6 +1501,151 @@
   })();
 </script>
 
+<!-- FLOATING TOC -->
+<script>
+(function() {
+  // ----- SECTIONS -----
+  const tocItems = [
+    { id: 'executive-summary', label: '— Executive Summary'          },
+    { id: 'unified-theory',    label: '— The Unified Theory'         },
+    { id: 'part-i',            label: 'I · Constitutional Foundation' },
+    { id: 'part-ii',           label: 'II · The Paper System'        },
+    { id: 'part-iii',          label: 'III · The Operational System' },
+    { id: 'part-iv',           label: 'IV · The Immunity Apparatus'  },
+    { id: 'part-v',            label: 'V · The Scale'                },
+    { id: 'part-vi',           label: 'VI · The Bidirectional Trap'  },
+    { id: 'part-vii',          label: 'VII · The Pending Record'     },
+    { id: 'part-viii',         label: 'VIII · Remedies Required'     },
+  ];
+
+  // ----- STYLES -----
+  const style = document.createElement('style');
+  style.textContent = `
+    #ftoc {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      z-index: 900;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+    }
+    #ftoc-toggle {
+      writing-mode: vertical-rl;
+      background: var(--ink);
+      border: 1px solid var(--accent);
+      border-right: none;
+      color: var(--accent);
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 1rem 0.45rem;
+      cursor: pointer;
+      user-select: none;
+      font-family: var(--mono);
+      transition: background 0.15s;
+    }
+    #ftoc-toggle:hover {
+      background: rgba(139,26,26,0.15);
+    }
+    #ftoc-panel {
+      background: var(--ink);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-right: none;
+      border-top: 2px solid var(--accent);
+      width: 220px;
+      max-height: 80vh;
+      overflow-y: auto;
+      display: none;
+      flex-direction: column;
+      padding: 0.6rem 0;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) transparent;
+    }
+    #ftoc-panel.open { display: flex; }
+    #ftoc-panel-header {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(250,248,245,0.3);
+      padding: 0.4rem 1rem 0.8rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      margin-bottom: 0.35rem;
+    }
+    #ftoc-panel a {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(250,248,245,0.45);
+      text-decoration: none;
+      padding: 0.48rem 1rem;
+      border-left: 2px solid transparent;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: color 0.12s, background 0.12s;
+    }
+    #ftoc-panel a:hover {
+      color: var(--page);
+      background: rgba(255,255,255,0.05);
+    }
+    #ftoc-panel a.active {
+      color: var(--accent);
+      border-left-color: var(--accent);
+      background: rgba(139,26,26,0.1);
+    }
+    @media (max-width: 1100px) { #ftoc { display: none; } }
+  `;
+  document.head.appendChild(style);
+
+  // ----- BUILD DOM -----
+  const ftoc   = document.createElement('div'); ftoc.id = 'ftoc';
+  const panel  = document.createElement('div'); panel.id = 'ftoc-panel';
+  const toggle = document.createElement('div'); toggle.id = 'ftoc-toggle';
+  toggle.textContent = 'Contents';
+
+  const header = document.createElement('div');
+  header.id = 'ftoc-panel-header';
+  header.textContent = 'The Shadow System';
+  panel.appendChild(header);
+
+  toggle.addEventListener('click', () => panel.classList.toggle('open'));
+
+  tocItems.forEach(item => {
+    const a = document.createElement('a');
+    a.href        = '#' + item.id;
+    a.textContent = item.label;
+    a.dataset.id  = item.id;
+    a.addEventListener('click', () => panel.classList.remove('open'));
+    panel.appendChild(a);
+  });
+
+  ftoc.appendChild(panel);
+  ftoc.appendChild(toggle);
+  document.body.appendChild(ftoc);
+
+  // ----- ACTIVE HIGHLIGHT ON SCROLL -----
+  const links    = panel.querySelectorAll('a[data-id]');
+  const sections = tocItems
+    .map(i => document.getElementById(i.id))
+    .filter(Boolean);
+
+  function updateActive() {
+    let current = sections[0]?.id || '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 140) current = s.id;
+    });
+    links.forEach(a => a.classList.toggle('active', a.dataset.id === current));
+  }
+
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive(); // set on load
+})();
+</script>
+
 </main>
 </body>
 </html>
